@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+    "navigationBarBackgroundColor": "#48a6fd",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "我的智能名片",
+    "backgroundColor": "#48a6fd",
+    "backgroundTextStyle": "light"
 }
