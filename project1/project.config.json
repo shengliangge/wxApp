@@ -19,13 +19,13 @@
 		"useIsolateContext": true,
 		"nodeModules": false,
 		"enhance": false,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false,
 		"showShadowRootInWxmlPanel": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.0",
-	"appid": "wx1a515f9a5eaafd27",
+	"appid": "wx8f25667256296406",
 	"projectname": "project1",
 	"debugOptions": {
 		"hidedInDevtools": []

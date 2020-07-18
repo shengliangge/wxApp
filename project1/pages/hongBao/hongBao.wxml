@@ -1,2 +1,57 @@
 <!--pages/hongBao/hongBao.wxml-->
-<text>pages/hongBao/hongBao.wxml</text>
+<view class="all">
+    <view class="wraper">
+
+         <!-- 头像 -->
+         <view class="wraper-pic">  
+               <!--背景图 + 头像照片  -->
+            <image class="bg" src="../../img/red-envelope.png" />
+            <image mode="aspectFill" class="group-content-item-img" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=137628589,3436980029&fm=26&gp=0.jpg"/>
+        </view>
+
+        <!-- 名字 -->
+        <view class="wraper-name">
+            <text>Ailsa</text>
+        </view>
+
+        <!-- 红包字 -->
+        <view class="wraper-jili">
+            <text>恭喜发财，大吉大利</text>
+        </view>
+
+        <!-- 红包金额 -->
+        <view class="wraper-num">
+                <text class="wraper-num-n">12.3</text>
+                <text class="wraper-num-m">元</text>
+        </view>
+
+        <!-- 三组蓝色字体 -->
+        <view class="wraper-info">
+            <text class="wraper-info-h">红包记录</text>
+            <text class="wraper-info-q">前去提现</text>
+            <text class="wraper-info-z">转发给好友</text>
+        </view>
+
+    </view>
+
+    <!-- 红包个数 -->
+    <view class="grap">
+        <text class="grap-num">共100个，已领取3个</text>
+    </view>
+
+    <!-- 红包详情 -->
+    <view class="open">
+        <text class="open-n">拆红包</text>
+        <text class="open-m">（浅浅的夏）</text>
+        <text class="open-num">5元</text>
+        <view class="open-time">2018/12/20 21:43</view>
+    </view>
+
+    <!-- 拆红包 -->
+    <view class="open">
+        <text class="open-n">拆红包</text>
+        <text class="open-m">（浅浅的夏）</text>
+        <text class="open-num">5元</text>
+        <view class="open-time">2018/12/20 21:43</view>
+    </view>
+</view>
