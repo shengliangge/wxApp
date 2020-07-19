@@ -46,12 +46,12 @@
         <text class="open-num">5元</text>
         <view class="open-time">2018/12/20 21:43</view>
     </view>
-
+    
     <!-- 拆红包 -->
-    <view class="open">
-        <text class="open-n">拆红包</text>
-        <text class="open-m">（浅浅的夏）</text>
-        <text class="open-num">5元</text>
-        <view class="open-time">2018/12/20 21:43</view>
+    <view class="opened">
+        <text class="opened-n">拆红包</text>
+        <text class="opened-m">（浅浅的夏）</text>
+        <text class="opened-num">5元</text>
+        <view class="opened-time">2018/12/20 21:43</view>
     </view>
 </view>
