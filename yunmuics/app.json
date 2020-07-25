@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/find/find",
+    "pages/mine/mine",
+    "pages/cloud/cloud",
+    "pages/video/video"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "云声悦",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

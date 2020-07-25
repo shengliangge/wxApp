@@ -1,2 +1,129 @@
-<!--pages/card/card.wxml-->
-<text>pages/card/card.wxm</text>
+<!-- 页面背景 -->
+<view class="body">
+  <!-- card容器 -->
+  <view class="card-wrapper">
+    <!-- 用户个人信息栏 -->
+    <view class="card user-info">
+      <!-- 用户图片 -->
+      <view class="user-info__pic">
+        <image class="info-pic" src="../../img/user.png" mode="widthFix" />
+      </view>
+      <!-- 信息下方 -->
+      <view class="user-info-down">
+        <!-- 详细信息（左边） -->
+        <view class="user-info-left">
+          <view class="info-top">
+            <text class="info-name">Ailsa</text>
+            <image class="info-sex" src="../../img/girl.png" alt="" />
+          </view>
+          <!-- 人物标签 -->
+          <view class="user-label">
+            <text class="label label-left">开朗</text>
+            <text class="label label-mid">自由职业</text>
+            <text class="label label-right">爱折腾</text>
+          </view>
+          <!-- 任务描述 -->
+          <view class="user-desc">
+            <!-- 第一行描述 -->
+            <view class="user-desc-line">
+              <view class="user-desc-part">
+                <image class="user-desc-icon" src="../../img/地址.png" />
+                <text class="user-desc-text">深圳市</text>
+              </view>
+              <view class="user-desc-part">
+                <image class="user-desc-icon" src="../../img/领带.png" />
+                <text class="user-desc-text">互联网</text>
+              </view>
+            </view>
+            <!-- 第二行 -->
+            <view class="user-desc-line">
+              <view class="user-desc-part">
+                <image class="user-desc-icon" src="../../img/爱心.png" />
+                <text class="user-desc-text">角色扮演</text>
+              </view>
+              <view class="user-desc-part">
+                <image class="user-desc-icon" src="../../img/微信.png" />
+                <text class="user-desc-text">luoqi741</text>
+              </view>
+            </view>
+            <!-- 第三行 -->
+            <view class="user-desc-line">
+              <view class="user-desc-part">
+                <image class="user-desc-icon" src="../../img/电话.png" />
+                <text class="user-desc-text">15017933191</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 二维码和红包(右边) -->
+        <view class="user-info-right">
+          <!-- 二维码 -->
+          <view class="right-code">
+            <image src="../../img/ewm.png" />
+          </view>
+          <view class="right-hongbao">
+            <image src="../../img/envelope.png" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 用户观看 -->
+    <view class="card card-see">
+      <view class="card-see-portrait">
+        <image src="../../img/头像1.jpg" alt="" />
+        <image src="../../img/头像2.jpg" alt="" />
+        <image src="../../img/头像3.jpg" alt="" />
+      </view>
+      <view class="card-see-text">
+        <text>今天2人，累计1092人看过我</text>
+        <text class="text">></text>
+      </view>
+    </view>
+    <!-- 提供 -->
+    <view class="card card-provide">
+      <view class="provide-need">
+        <view class="block"></view>
+        <text class="text">提供</text>
+      </view>
+      <view class="desc">
+        <text>软件设计、平面设计、产品设计、电商海报、商场装饰、各种你可以想到的设计</text>
+      </view>
+    </view>
+    <!-- 需求 -->
+    <view class="card card-need">
+      <view class="provide-need">
+        <view class="block"></view>
+        <text class="text">需求</text>
+      </view>
+      <view class="desc">
+        <text>软件设计、平面设计、产品设计、电商海报、商场装饰、各种你可以想到的设计</text>
+      </view>
+    </view>
+    <!-- 广告 -->
+    <view class="card card-ad">
+      <image src="../../img/广告.png" />
+    </view>
+    <!-- 个人品牌 -->
+    <view class="card card-brand">
+      <view class="provide-need">
+        <view class="block"></view>
+        <text class="text">个人品牌</text>
+      </view>
+      <view class="card-brand-pic">
+        <image src="../../img/品牌1.png" />
+        <image src="../../img/品牌2.png" />
+        <image src="../../img/品牌3.png" />
+      </view>
+    </view>
+    <!-- 按钮 -->
+    <view class="card-btn">
+      <view class="btn bth-left">
+        <image src="../../img/编辑.png" />
+        <text class="btn-text">编辑</text>
+      </view>
+      <view class="btn btn-right">
+        <text class="">分享名片</text>
+      </view>
+    </view>
+  </view>
+</view>
