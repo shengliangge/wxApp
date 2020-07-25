@@ -1,2 +1,225 @@
-<!--pages/find/find.wxml-->
-<text>pages/find/find.wxml</text>
+<nav></nav>
+<!-- 引入头部导航栏 -->
+<view class="container">
+
+	<!-- 头部轮播图 -->
+	<view class="head-swiper__banners">
+		<swiper
+		 class="swiper-banners"
+		 indicator-dots="{{indicatorDots}}"
+		 indicator-color="{{indicatorColor}}"
+		 indicator-active-color="{{indicatorActiveColor}}"
+		 autoplay="{{autoplay}}"
+		 interval="{{interval}}"
+		 duration="{{duration}}"
+		 circular="{{circular}}"
+		>
+			<block wx:for="{{banners}}" wx:key="index">
+				<swiper-item item-id>
+					<image class="banners-image" src="{{item.imageUrl}}" />
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+	<!-- 跳转入口 -->
+	<view class="head-entrance">
+		<scroll-view
+		 class="scroll-view"
+		 scroll-x="true"
+		 bindscroll="scroll"
+		 style="width: 100%"
+		>
+			<view class="scroll-view__X">
+				<image class="entrance-icon" src="./img/每日推荐.png"></image>
+				<view clsaa="entrance-text">
+					<text>每日推荐</text>
+				</view>
+			</view>
+			<view class="scroll-view__X">
+				<image class="entrance-icon" src="./img/每日推荐.png"></image>
+				<view clsaa="entrance-text">
+					<text>歌单</text>
+				</view>
+			</view>
+			<view class=" scroll-view__X">
+				<image class="entrance-icon" src="./img/每日推荐.png"></image>
+				<view clsaa="entrance-text">
+					<text>排行榜</text>
+				</view>
+			</view>
+			<view class="scroll-view__X">
+				<image class="entrance-icon" src="./img/每日推荐.png"></image>
+				<view clsaa="entrance-text">
+					<text>电台</text>
+				</view>
+			</view>
+			<view class=" scroll-view__X">
+				<image class="entrance-icon" src="./img/每日推荐.png"></image>
+				<view clsaa="entrance-text">
+					<text>直播</text>
+				</view>
+			</view>
+			<view class="scroll-view__X">
+				<image class="entrance-icon" src="./img/每日推荐.png"></image>
+				<view clsaa="entrance-text">
+					<text>火前留名</text>
+				</view>
+			</view>
+			<view class=" scroll-view__X">
+				<image class="entrance-icon" src="./img/每日推荐.png"></image>
+				<view clsaa="entrance-text">
+					<text>电台</text>
+				</view>
+			</view>
+			<view class="scroll-view__X">
+				<image class="entrance-icon" src="./img/每日推荐.png"></image>
+				<view clsaa="entrance-text">
+					<text>电台</text>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+	<!-- 第一层精选 -->
+	<view class="page-select">
+		<view class="select-title">
+			<view class="select-text-front">
+				{{blocks[0].uiElement.subTitle.title}}
+			</view>
+			<view class="select-text-after">
+				{{blocks[0].uiElement.button.text}}
+			</view>
+		</view>
+		<view class="select-body">
+			<scroll-view
+			 class="scroll-view"
+			 scroll-x="true"
+			 bindscroll="scroll"
+			 style="width: 100%"
+			>
+				<block wx:for="{{blocks[0].creatives}}" wx:key="index">
+					<view class="select-box">
+						<image class="select-img" src="{{item.uiElement.image.imageUrl}}"></image>
+						<text class="select-text" >
+          {{item.uiElement.mainTitle.title}}
+        </text>
+					</view>
+				</block>
+			</scroll-view>
+
+		</view>
+	</view>
+
+	<!-- 第二层华语经典 -->
+	<view class="page-play">
+		<view class="play-title">
+			<view class="play-text-front">
+				{{blocks[1].uiElement.subTitle.title}}
+			</view>
+			<view class="play-text-after">
+				<image class="play-text-img" src="./img/播放.png"></image>
+				{{blocks[1].uiElement.button.text}}
+			</view>
+		</view>
+
+		<view class="play-body">
+
+			<view>
+				<scroll-view
+				 class="scroll-view"
+				 scroll-x="true"
+				 bindscroll="scroll"
+				 style="width: 100%"
+				>
+					<view
+					 class="play-body-outside"
+					 wx:for="{{blocks[1].creatives}}"
+					 wx:key="index"
+					 wx:for-item="creatives"
+					>
+						<block wx:for="{{creatives.resources}}" wx:key="index">
+							<view class="play-box">
+								<image class="play-img-bef" src="{{item.uiElement.image.imageUrl}}"></image>
+								<view class="play-box-text">
+									<view class="box-text-bre">
+										<view class="text-bre-one">
+											{{item.uiElement.mainTitle.title}}
+										</view>
+										<view class="text-bre-two">
+											- {{item.resourceExtInfo.artists[0].name}}
+										</view>
+									</view>
+									<view class="box-text-aft">
+										{{item.uiElement.subTitle.title}}
+									</view>
+								</view>
+								<view class="play-box-img">
+									<image class="play-img-aft" src="./img/play.png"></image>
+								</view>
+							</view>
+						</block>
+					</view>
+				</scroll-view>
+			</view>
+		</view>
+	</view>
+	<!-- 第三层 -->
+	<view class="page-select">
+		<view class="select-title">
+			<view class="select-text-front">
+				{{blocks[2].uiElement.subTitle.title}}
+			</view>
+			<view class="select-text-after">
+				{{blocks[2].uiElement.button.text}}
+			</view>
+		</view>
+		<view class="select-body">
+			<scroll-view
+			 class="scroll-view"
+			 scroll-x="true"
+			 bindscroll="scroll"
+			 style="width: 100%"
+			>
+				<block wx:for="{{blocks[2].creatives}}" wx:key="index">
+					<view class="select-box">
+						<image class="select-img" src="{{item.uiElement.image.imageUrl}}"></image>
+						<text class="select-text" >
+          {{item.uiElement.mainTitle.title}}
+        </text>
+					</view>
+				</block>
+			</scroll-view>
+
+		</view>
+	</view>
+
+	<!-- 第四层 -->
+	<view class="page-select">
+		<view class="select-title">
+			<view class="select-text-front">
+				{{blocks[7].uiElement.subTitle.title}}
+			</view>
+			<view class="select-text-after">
+				{{blocks[7].uiElement.button.text}}
+			</view>
+		</view>
+		<view class="select-body">
+			<scroll-view
+			 class="scroll-view"
+			 scroll-x="true"
+			 bindscroll="scroll"
+			 style="width: 100%"
+			>
+				<block wx:for="{{blocks[7].creatives}}" wx:key="index">
+					<view class="select-box">
+						<image class="select-img" src="{{item.uiElement.image.imageUrl}}"></image>
+						<text class="select-text" >
+          {{item.uiElement.mainTitle.title}}
+        </text>
+					</view>
+				</block>
+			</scroll-view>
+
+		</view>
+	</view>
+</view>
+

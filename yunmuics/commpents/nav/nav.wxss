@@ -1,0 +1,16 @@
+.nav{
+  display: flex;
+  margin: 63rpx 0 10rpx 0;
+  color:rgb(159,159,159);
+}
+.nav-change{
+  display: flex;
+  margin: 0 40rpx;
+}
+.nav-img{
+width: 45rpx;
+height: 45rpx;
+}
+.nav-text{
+margin: 0 16rpx;
+}
