@@ -1,0 +1,41 @@
+<!-- 这种时候点击没有反应，有两种情况：
+1.一般这种情况是路径没有配置对，并且控制台会报错。
+
+然而后台没有报错。那么就是下面的情况
+
+2.你配置的路径是tabbar里定义的路径，控制台不报错，但是也不会跳转，这个时候如果你需要在导航和tabbar同时跳转，需要加个属性：需要注意的是，当你路径变成非tabbar路径时，需要把这个属性去掉。 -->
+
+<view class="nav">
+	<view class="nav-back">
+		<image class="nav-img back__img" src="../../image/back.png" />
+	</view>
+	<view class="nav-change">
+		<view class="nav-text nav-mine">
+			<navigator url="../../pages/mine/mine" open-type="switchTab">
+				我的
+			</navigator>
+		</view>
+		<view class="nav-text nav-find">
+			<navigator url="../../pages/find/find" open-type="switchTab">
+				发现
+			</navigator>
+		</view>
+		<view class="nav-text nav-cloud">
+			<navigator url="../../pages/cloud/mine" open-type="switchTab">
+				云村
+			</navigator>
+		</view>
+		<view class="nav-text nav-video">
+			<navigator url="../../pages/mine/mine" open-type="switchTab">
+				视频
+			</navigator>
+		</view>
+	</view>
+	<view class="nav-serach">
+		<navigator url="../../pages/mine/mine">
+			<image class="nav-img serach__img" src="../../image/seach.png"></image>
+		</navigator>
+
+	</view>
+</view>
+
