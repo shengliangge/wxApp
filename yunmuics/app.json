@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/find/find",
     "pages/mine/mine",
+    "pages/find/find",
     "pages/cloud/cloud",
     "pages/video/video",
     "custom-tab-bar/index",
