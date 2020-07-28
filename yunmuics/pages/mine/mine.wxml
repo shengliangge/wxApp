@@ -1,5 +1,6 @@
 <!-- pages/mine/mine.wxml -->
 <view class="wrapper">
+    <view class="maintop"></view>
     <view class="main">
         <view class="mine">
             <image class="mine-pic" src="img/pic.jpg" />
