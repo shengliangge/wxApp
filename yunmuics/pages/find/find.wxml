@@ -35,7 +35,7 @@
 					<text>每日推荐</text>
 				</view>
 			</view>
-			<view class="scroll-view__X">
+			<view class="scroll-view__X" bindtap="tosongSheet">
 				<image class="entrance-icon" src="./img/每日推荐.png"></image>
 				<view clsaa="entrance-text">
 					<text>歌单</text>
