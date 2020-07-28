@@ -1,0 +1,62 @@
+<!-- 自定义组件 -->
+<nav></nav>
+<!-- 外层容器 -->
+<view class="container">
+	<!-- 导航栏 -->
+	<view class="recommend-head">
+		<view>
+			<text>推荐</text>
+		</view>
+		<view>
+			<text>官方</text>
+		</view>
+		<view>
+			<text>精品</text>
+		</view>
+		<view>
+			<text>欧美</text>
+		</view>
+		<view>
+			<text>民谣</text>
+		</view>
+		<view>
+			<image class="recommend-head__more" src="../../image/more1.png"></image>
+		</view>
+	</view>
+
+	<view class="content-page">
+		<swiper class="page-swiper">
+
+			<block wx:for="{{songsheet}}" wx:key="index">
+				<view class="content-swiper-block" wx:if='{{index <=2}}'>
+					<swiper-item class="content-swiper-item" item-id="">
+						<!-- 前三张循环 -->
+						<view>
+							<image class="content-swiper-img" src="{{item.coverImgUrl}}"></image>
+						</view>
+						<view class="content-swiper-text">
+							{{item.name}}
+						</view>
+					</swiper-item>
+				</view>
+			</block>
+
+		</swiper>
+
+		<!-- //后面 -->
+		<view class="content-page-block">
+
+			<block wx:for="{{songsheet}}" wx:key="index">
+				<view class="content-block" wx:if='{{index >2}}'>
+					<view class="content-img">
+						<image lazy-load="true " src="{{item.coverImgUrl}}"></image>
+					</view>
+					<view class="content-text">
+						{{item.name}}
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
+</view>
+

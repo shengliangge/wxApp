@@ -6,7 +6,7 @@
 2.你配置的路径是tabbar里定义的路径，控制台不报错，但是也不会跳转，这个时候如果你需要在导航和tabbar同时跳转，需要加个属性：需要注意的是，当你路径变成非tabbar路径时，需要把这个属性去掉。 -->
 
 <view class="nav">
-	<view class="nav-back">
+	<view class="nav-back" bindtap="back">
 		<image class="nav-img back__img" src="../../image/back.png" />
 	</view>
 	<view class="nav-change">

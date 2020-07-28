@@ -1,11 +1,13 @@
 {
-  "pages": [
-    "pages/mine/mine",
+  "pages": [   
+    "pages/songSeet/songSeet",
     "pages/find/find",
+    "pages/mine/mine",
     "pages/cloud/cloud",
     "pages/video/video",
     "custom-tab-bar/index",
     "commpents/nav/nav"
+ 
   ],
   "window": {
     "backgroundTextStyle": "light",

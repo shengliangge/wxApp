@@ -23,7 +23,6 @@ const request = (url, data) => {
   });
 }
 
-
 module.exports ={
   getPage:(data)=>{
     return request('/homepage/dragon/ball',data)//首页-发现
@@ -76,6 +75,4 @@ module.exports ={
   getSonger:(data)=>{
     return request('/toplist/artist',data)//歌手排行
   }
-
-  
 }

@@ -74,7 +74,11 @@
 }
 
 .des {
+<<<<<<< HEAD
     background-color: white;
+=======
+    background-color: #fff;
+>>>>>>> 84b9c8ee8b74eec8518a233cf09791a3610d3c78
     width: 100%;
     height: 100%;
     padding:20rpx;

@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/hongBao/hongBao",
-    "pages/card/card"
+    "pages/card/card",
+    "pages/hongBao/hongBao"
+   
    
   ],
   "window": {
