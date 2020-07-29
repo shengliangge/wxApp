@@ -1,1 +1,94 @@
 /* pages/video/video.wxss */
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+/* 左滑的标题栏 */
+.scroll {
+    width: 100%;
+    height: 80rpx;
+    box-sizing: border-box;
+    border-bottom: 1px solid #999999;
+}
+.scroll-box {
+    width: 100%;
+    height: 50rpx;
+    display: inline-block;
+    margin: 20rpx 20rpx 0 35rpx;
+    text-align: center;
+    
+}
+.scroll-name {
+    font-size: 28rpx;
+    margin-right: 80rpx;
+}
+
+
+/* 视频栏：视频图片+视频描述栏+发布人信息栏 */
+.messageallbox {
+    border-bottom: 10px solid #999999;
+}
+.message-box {
+    margin: 20rpx 0 0 35rpx;
+}
+.message-pic {
+    border-radius: 15rpx;
+    width: 680rpx;
+    height: 400rpx;
+}
+/* 视频描述栏 */
+.message-desc {
+    width: 680rpx;
+    height: 60rpx;
+    font-size: 28rpx;
+    margin-top: 20rpx;
+    border-bottom: 1px solid #999999;
+}
+
+
+/* 发布者信息栏：头像+网名+点赞+评论图标 */
+.message-name {
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+}
+.message-name-box {
+    display: inline-block;
+}
+.message-name-pic {
+    border-radius: 50%;
+    width: 60rpx;
+    height: 60rpx;
+   
+}
+.message-name-na {
+    font-size: 25rpx;
+    position: absolute;
+    line-height: 100rpx;
+    margin-left: 70rpx;
+}
+.message-name-pic1{
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 350rpx;
+}
+.message-name-na1 {
+    font-size: 18rpx;
+    margin-top: -20rpx;
+}
+.message-name-pic2 {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 50rpx;
+}
+.message-name-na2 {
+   font-size: 18rpx;
+   margin-top: -20rpx;
+}
+.message-name-pic3 {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 60rpx;
+}

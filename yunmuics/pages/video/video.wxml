@@ -1,2 +1,43 @@
-<!--pages/video/video.wxml-->
-<text>pages/video/video.wxml</text>
+<!-- pages/video/video.wxml -->
+<nav></nav>
+<!-- 整个界面 -->
+<view class="wrapper">
+    
+    <!-- 左滑的标题栏 -->
+    <view class="scroll">
+        <scroll-view class="scroll-box" scroll-x="true">
+            <block wx:for="{{titleList}}" wx:key="index">
+                <text class="scroll-name">{{item.titlename}}</text>
+            </block>
+        </scroll-view>
+    </view>
+
+    <!-- 视频栏：视频图片+视频描述栏+发布人信息栏 -->
+    <view class="message">
+        <block wx:for="{{detail}}" wx:key="index">
+            <view class="messageallbox">
+                <view class="message-box">
+
+                    <!-- 视频图片 -->
+                    <image class="message-pic" src="{{item.pic}}" />
+                    <view class="message-desc">
+
+                        <!-- 视频描述栏内容 -->
+                        <text>{{item.des}}</text>
+                    </view>
+
+                    <!-- 发布者信息栏：头像+网名+点赞+评论图标 -->
+                    <view class="message-name">
+                        <image class="message-name-pic" src="{{item.imge}}" />
+                        <text class="message-name-na">{{item.na}}</text>
+                        <image class="message-name-pic1" src="{{item.imge1}}" />
+                        <text class="message-name-na1">{{item.na1}}</text>
+                        <image class="message-name-pic2" src="{{item.imge2}}" />
+                        <text class="message-name-na2">{{item.na2}}</text>
+                        <image class="message-name-pic3" src="{{item.imge3}}" />
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
