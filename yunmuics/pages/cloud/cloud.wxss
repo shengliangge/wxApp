@@ -1,1 +1,153 @@
 /* pages/cloud/cloud.wxss */
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+.header{
+    flex: 1;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 6vh;
+  }
+  .header_bd{
+    width: 240rpx;
+    height: 80rpx;
+    display: inline-block;
+    line-height: 90rpx;
+    text-align: center;
+    font-weight: 600;
+    color: #666;
+  }
+  .buttomLine{
+    width: 100rpx;
+    height: 4rpx;
+    background-color: #ef4238;
+    position: absolute;
+    margin-left: 56rpx;
+    bottom: 0;
+    transition: left 0.5s;
+  } 
+
+
+
+.downbox{
+  width: 100%;
+  height: 94vh;
+  background-color: #f8f8f8;
+}
+.comment {
+  background-color: #f8f8f8;
+}
+.commentbox {
+    display: inline-block;
+    margin: 20rpx 20rpx 20rpx 20rpx;
+    background-color: #999999;
+    border-radius: 15rpx;
+    height: 140rpx;
+    width: 710rpx;
+}
+.comment-arrow {
+  width: 14rpx;
+  height: 14rpx;
+  border: 1px solid white;
+  border-left: none;
+  border-top: none;
+  transform: rotate(-45deg);
+  position: absolute;
+  margin-left: 180rpx;
+  margin-top: 44rpx;
+}
+.comment-name {
+  position: absolute;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: white;
+  font-weight: 550;
+}
+.comment-des {
+  font-size: 20rpx;
+  color: white;
+  margin-top: 90rpx;
+  margin-left: 30rpx;
+}
+
+
+.video-allbox {
+  background-color: #f8f8f8;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+.firstbox {
+  width: 345rpx;
+  height: 460rpx;
+  display: inline-block;
+  border-radius: 15rpx;
+  margin: 0rpx 0rpx 0rpx 20rpx;
+  background-color: white;
+}
+.otherbox{
+  width: 345rpx;
+  height: 520rpx;
+  display: inline-block;
+  border-radius: 15rpx;
+  margin: 0rpx 0rpx 0rpx 20rpx;
+  background-color: white;
+}
+.videopic {
+  width: 345rpx;
+  height: 330rpx;
+}
+.videoimage{
+  width: 345rpx;
+  height: 390rpx;
+}
+.describe {
+  width: 345rpx;
+  height: 60rpx;
+  max-width: 320rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.describe text {
+  font-size: 25rpx;
+  margin-left: 20rpx;
+}
+.writer {
+  width: 335rpx;
+  height: 40rpx;
+}
+.writer-pic {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+}
+.writer-name {
+  font-size: 18rpx;
+  color: #666;
+  position: absolute;
+  margin-top: 15rpx;
+  margin-left: 8rpx;
+  max-width: 120rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+.writer-num {
+  font-size: 18rpx;
+  color: #666;
+  position: absolute;
+  margin-left: 180rpx;
+  margin-top: 15rpx;
+}
+.writer-daohanglan {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 250rpx;
+}

@@ -5,8 +5,64 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isLeft: true,
+    detail: [
+      {
+        videopict: 'https://p1.music.126.net/NvNqY6FKWvI0QPLdfL7uOA==/109951164583067600.jpg?param=300x300" alt="music',
+        desc: '最棒的抖腿车载',
+        headpic: 'img/t1.jpg',
+        writer: 'RM-Music',
+        good: '3268赞',
+        navigation: 'img/daohang.png'
+      },
+      {
+        videopict: 'https://p1.music.126.net/5qehxWSSDYYmhfRc9BHcxQ==/109951165125269160.jpg?param=300x300" alt="music',
+        desc: '好听到可以单曲循环鸭',
+        headpic: 'img/t2.jpg',
+        writer: 'THE上官李昂LYON3',
+        good: '4960赞',
+        navigation: 'img/daohang.png'
+      },
+      {
+        videopict: 'https://p1.music.126.net/fNadutk_u3NAaxsNhCjUCA==/109951164890583661.jpg?param=300x300" alt="music',
+        desc: '网易云音乐过10w+评论的中文歌曲',
+        headpic: 'img/t3.jpg',
+        writer: 'Rangsiz',
+        good: '5858赞',
+        navigation: 'img/daohang.png'
+      },
+      {
+        videopict: 'https://p1.music.126.net/5OEBqDp1aSVGktt-OxpsCg==/109951164978811959.jpg?param=300x300" alt="music',
+        desc: '情迷春日|山花开满遍地，正式心动时分',
+        headpic: 'img/t4.jpg',
+        writer: 'Z在此婷留',
+        good: '980赞',
+        navigation: 'img/daohang.png'
+      },
+      {
+        videopict: 'https://p1.music.126.net/uvJnSVQUWU6VM_F9bxWFHw==/109951165145592233.jpg?param=300x300" alt="music',
+        desc: '你有时差症，总以为他还爱你',
+        headpic: 'img/t5.jpg',
+        writer: 'QC队长',
+        good: '6580赞',
+        navigation: 'img/daohang.png'
+      }
+    ]
   },
+
+  tabChangeHot(){
+    this.setData({
+      isLeft: true
+    })
+  },
+
+  tabChangeWaiting(){
+    //console.log('点击了即将上映')
+    //错误写法: this.data.isLeft = false
+    this.setData({
+      isLeft: false
+    })
+  }, 
 
   /**
    * 生命周期函数--监听页面加载

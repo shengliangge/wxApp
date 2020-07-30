@@ -76,22 +76,22 @@ Page({
       },
       {
         picture: 'img/s3.png',
-        listname: '甜甜的纯音乐❤❤❤请保持...',
+        listname: '甜甜的纯音乐❤❤',
         describe: '本周最热的歌曲',
       },
       {
         picture: 'img/s4.png',
-        listname: '学习歌单~ （超赞纯音乐！）',
+        listname: '学习歌单~(超赞纯音乐!)',
         describe: '本周热门收藏',
       },
       {
         picture: 'img/s5.png',
-        listname: '夏日浪漫旅行 | 电车沿途 除...',
+        listname: '夏日浪漫旅行|电车沿途',
         describe: '本周热门收听',
       },
       {
         picture: 'img/s6.png',
-        listname: '竞选|超好听的网络热歌❤',
+        listname: '超好听的网络热歌❤',
         describe: '本周热门收听',
       }
     ]
