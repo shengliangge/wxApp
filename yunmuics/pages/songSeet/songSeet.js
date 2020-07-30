@@ -7,9 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    songsheet: []
+    songsheet: [],
+    swiperIdx: 0
   },
-
+  bindchange(e) {
+    this.setData({
+      swiperIdx: e.detail.current
+    })
+  },
   //获取歌单信息
   getsongsheet: function () {
     API.getsongsheet({

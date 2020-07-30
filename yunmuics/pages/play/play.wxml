@@ -1,0 +1,22 @@
+<view class="play-wrapper">
+	<view class="play-title">
+		<view class="title-back">返回</view>
+		<view class="singer-info">
+			<view class="title-songName">意外</view>
+			<view class="title-singer">薛之谦</view>
+		</view>
+	</view>
+	<view class="play-body">
+		<image
+		 class="body-record"
+		 mode="aspectFit"
+		 src="https://s3.music.126.net/mobile-new/img/needle-ip6.png?be4ebbeb6befadfcae75ce174e7db862="
+		></image>
+		<view class="body-round">
+			<image class="singer-img" src="https://s3.music.126.net/mobile-new/img/disc-ip6.png?69796123ad7cfe95781ea38aac8f2d48="></image>
+		</view>
+
+	</view>
+	<view class="play-foot"></view>
+</view>
+

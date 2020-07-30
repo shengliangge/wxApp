@@ -25,23 +25,36 @@
 	</view>
 
 	<view class="content-page">
-		<swiper class="page-swiper">
 
-			<block wx:for="{{songsheet}}" wx:key="index">
-				<view class="content-swiper-block" wx:if='{{index <=2}}'>
-					<swiper-item class="content-swiper-item" item-id="">
-						<!-- 前三张循环 -->
-						<view>
-							<image class="content-swiper-img" src="{{item.coverImgUrl}}"></image>
-						</view>
-						<view class="content-swiper-text">
-							{{item.name}}
+		<view class='page-swiper'>
+			<swiper
+			 class='swiperClass'
+			 previous-margin="210rpx"
+			 next-margin="210rpx"
+			 circular
+			 bindchange="bindchange"
+			>
+				<block wx:for="{{songsheet}}" wx:key="index">
+
+					<swiper-item wx:if="{{index<=2}}" class="page-swiper-item">
+						<view class="slide-item {{swiperIdx == index ? 'active' : 'quiet'}}">
+							<image
+							 class="slide-item-img"
+							 src="{{item.coverImgUrl}}"
+							 mode='aspectFill'
+							></image>
+							<view class="play-count">
+								<image class="play" src="./img/play.png"></image>
+								{{item.playCount}}
+							</view>
+							<view class="content-swiper-text">
+								{{item.name}}
+							</view>
 						</view>
 					</swiper-item>
-				</view>
-			</block>
-
-		</swiper>
+				</block>
+			</swiper>
+		</view>
 
 		<!-- //后面 -->
 		<view class="content-page-block">

@@ -1,0 +1,44 @@
+<view>
+	<!-- 弥补nav-bar的高度 -->
+	<view style="height:{{topHeight}}px"></view>
+	<view class="container">
+		<!-- 手机头部显示点亮栏 -->
+		<view style="{{statusBarStyle}}"></view>
+		<view class="nav-bar" style="{{navBarStyle}}">
+			<view class="nav">
+				<view class="nav-back" bindtap="back">
+					<image class="nav-img back__img" src="../../image/back.png" />
+				</view>
+				<view class="nav-change">
+					<view class="nav-text nav-mine">
+						<navigator url="../../pages/mine/mine">
+							我的
+						</navigator>
+					</view>
+					<view class="nav-text nav-find">
+						<navigator url="../../pages/find/find">
+							发现
+						</navigator>
+					</view>
+					<view class="nav-text nav-cloud">
+						<navigator url="../../pages/cloud/mine">
+							云村
+						</navigator>
+					</view>
+					<view class="nav-text nav-video">
+						<navigator url="../../pages/video/video">
+							视频
+						</navigator>
+					</view>
+				</view>
+				<view class="nav-serach">
+					<navigator url="../../pages/mine/mine">
+						<image class="nav-img serach__img" src="../../image/seach.png"></image>
+					</navigator>
+				</view>
+			</view>
+
+		</view>
+	</view>
+</view>
+

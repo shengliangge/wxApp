@@ -1,0 +1,43 @@
+.play-wrapper {
+  width: 100wh;
+  height: 100vh;
+  background-color: rgb(90, 89, 89);
+}
+
+.play-title {
+  padding: 50rpx;
+  display: flex;
+}
+.title-songName{
+
+}
+.body-record {
+  position: absolute;
+  left: 42%;
+  /* transform: translateX(-50%); */
+  width: 250rpx;
+  height: 250rpx;
+
+
+    z-index: 100;
+    background-size: contain;
+    transform-origin: 4.5vw 4.5vw;
+    transform: rotate(0deg);
+    background-position: 50% center;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease 0s;
+}
+
+.body-round {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100wh;
+  height: 830rpx;
+}
+
+.singer-img {
+  width: 600rpx;
+  height: 600rpx;
+}
+
