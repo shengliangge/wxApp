@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -69,6 +69,20 @@
 					"id": -1,
 					"name": "pages/songSeet/songSeet",
 					"pathName": "pages/songSeet/songSeet",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/video/video",
+					"pathName": "pages/video/video",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/cloud/cloud",
+					"pathName": "pages/cloud/cloud",
 					"scene": null
 				}
 			]

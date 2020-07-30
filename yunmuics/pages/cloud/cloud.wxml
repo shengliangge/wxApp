@@ -15,7 +15,7 @@
             <view class="commentbox">
                 <text class="comment-name">云村热评榜</text>
                 <text class="comment-arrow"></text>
-                <view class="comment-des">北秋丶柚，原来大家都在云村看这些评论！</view>
+                <view class="comment-des">北秋柚，原来大家都在云村看这些评论！</view>
             </view>
         </view>
         <view class="video-allbox">
