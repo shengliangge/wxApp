@@ -1,5 +1,5 @@
 <!-- pages/cloud/cloud.wxml -->
-<nav></nav>
+<nav-bar></nav-bar>
 <view class="wrapper">
     <view class="header">
         <view class="header_load header_bd" style="color:{{isLeft?'#ef4238':'#666'}}" bindtap="tabChangeHot">

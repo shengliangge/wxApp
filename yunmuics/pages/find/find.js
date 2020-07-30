@@ -1,5 +1,6 @@
 // pages/find/find.js
 const API = require('../../utils/api')
+const app = getApp();
 Page({
 
   /**
@@ -37,7 +38,22 @@ Page({
       }
     })
   },
-
+  playMusic: function (e) {
+    // console.log(e.currentTarget.dataset.in.id)
+    let musicId = e.currentTarget.dataset.in.id
+    wx.navigateTo({
+      url: `../play/play?musicId=${musicId}`,
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
 
   // 
   /**
@@ -55,7 +71,7 @@ Page({
       },
       //成功回调函数 成功 200
       success: (res) => {
-        console.log(res)
+        // console.log(res)
         this.setData({
           blocks: res.data.data.blocks
         })

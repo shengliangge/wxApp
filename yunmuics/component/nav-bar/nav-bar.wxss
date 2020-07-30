@@ -1,0 +1,32 @@
+.container{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:99;
+}
+.nav-bar{
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 34rpx; */
+}
+.nav-img {
+  width: 45rpx;
+  height: 45rpx;
+}
+.nav-change{
+  display: flex;
+  margin: 0 40rpx;
+}
+.nav{
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  margin: 63rpx 0 10rpx 0;
+  color:rgb(159,159,159);
+}
+.nav-text{
+  margin: 0 16rpx;
+  }

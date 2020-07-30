@@ -1,11 +1,14 @@
 .container {
   padding: 20rpx;
+  background-color: rgb(253,253,251);
 }
 
 .recommend-head {
   display: flex;
   padding-left: 10rpx;
   justify-content: space-between;
+  font-size: 30rpx;
+  color: rgb(104, 101, 101);
 }
 
 .recommend-head__more {
@@ -13,23 +16,59 @@
   height: 40rpx;
 }
 
-.content {
+/* 轮播图 */
 
+.page-swiper{
+  height: 430rpx;
 }
-.content-swiper-item{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.content-swiper-img {
-  width: 300rpx;
-  height: 300rpx;
-  border-radius: 10rpx;
-}
-
-.page-swiper {
+.page-swiper .swiperClass {
+  margin: 0;
+  margin-top: 10px;
   height: 400rpx;
 }
+
+ .slide-item {
+  width: 100%;
+  height: 80%;
+  border-radius: 10rpx;
+  position: relative;
+
+}
+
+
+.slide-item-img{
+  width: 100%;
+  height: 100%;
+}
+.play-count{
+  position: absolute;
+  top: 0;
+  left: 180rpx;
+  color: #fff;
+}
+.play{
+  width: 20rpx;
+  height: 20rpx;
+  /* border: 1px solid #000; */
+}
+.page-swiper-item{
+  font-size: 24rpx;
+  background-color: #fff;
+}
+.content-swiper-text{
+ padding: 10rpx 20rpx 0 20rpx;
+}
+.active {
+  transform: none;
+  transition: all 0.2s ease-in 0s;
+}
+
+.quiet {
+  transform: scale(0.86666);
+  transition: all 0.2s ease-in 0s;
+}
+
+/* 后面的图片 */
 
 .content-page-block {
   display: flex;
@@ -48,8 +87,8 @@
 }
 
 .content-img {
-  width: 200rpx;
-  height: 200rpx;
+  width: 220rpx;
+  height: 220rpx;
   border-radius: 10rpx;
   overflow: hidden;
 }
@@ -58,16 +97,17 @@
   width: 100%;
   height: 100%;
 }
-.content-text{
-  padding:0 18rpx;
+
+.content-text {
+  padding: 5rpx 15rpx;
+  max-height: 60rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
-/* .content-block {
-  width: 220rpx;
-  height: 240rpx;
 
-  margin-bottom: 70rpx;
-} */
-
-/* 
-*/
-
+.pageTwo .swiperClass {
+  margin: 0;
+  margin-top: 10px;
+}

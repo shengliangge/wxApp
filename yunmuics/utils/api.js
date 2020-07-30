@@ -28,7 +28,7 @@ module.exports ={
     return request('/homepage/dragon/ball',data)//首页-发现
   },
   gethotSongs:(data) =>{
-    return request('/search/hot',data)//热搜接口
+    return request('/song/url',data)//热搜接口
   },
   searchSuggest:(data)=>{
     return request('/search/suggest',data)//搜索建议接口

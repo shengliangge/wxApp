@@ -1,13 +1,11 @@
 {
-  "pages": [   
-    "pages/video/video",
-    "pages/songSeet/songSeet",
+  "pages": [
     "pages/find/find",
+    "pages/songSeet/songSeet",
     "pages/mine/mine",
     "pages/cloud/cloud",
     "custom-tab-bar/index",
-    "commpents/nav/nav"
- 
+    "pages/play/play"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,25 +16,5 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "tabBar": {
-    "custom": true,
-    "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/find/find",
-        "iconPath": "image/icon_component.png",
-        "selectedIconPath": "image/icon_component_HL.png",
-        "text": "组件"
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "iconPath": "image/icon_API.png",
-        "selectedIconPath": "image/icon_API_HL.png",
-        "text": "接口"
-      }
-    ]
-  }
+  "requiredBackgroundModes": ["audio"]
 }
