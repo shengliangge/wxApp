@@ -21,7 +21,7 @@
 						</navigator>
 					</view>
 					<view class="nav-text nav-cloud">
-						<navigator url="../../pages/cloud/mine">
+						<navigator url="../../pages/cloud/cloud">
 							云村
 						</navigator>
 					</view>

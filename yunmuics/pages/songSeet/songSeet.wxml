@@ -1,5 +1,5 @@
 <!-- 自定义组件 -->
-<nav></nav>
+<nav-bar></nav-bar>
 <!-- 外层容器 -->
 <view class="container">
 	<!-- 导航栏 -->

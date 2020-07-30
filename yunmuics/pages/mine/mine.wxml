@@ -1,85 +1,6 @@
 <nav-bar></nav-bar>
 <!-- pages/mine/mine.wxml -->
 <view class="wrapper">
-<<<<<<< HEAD
-    <view class="maintop"></view>
-    <view class="main">
-        <view class="mine">
-            <image class="mine-pic" src="img/pic.jpg" />
-            <text class="mine-name">北秋丶柚</text>
-            <text class="mine-vip">开通黑胶VIP</text>
-            <text class="mine-grade">Lv.0</text>
-        </view>
-        <view class="title">
-            <block wx:for="{{detail}}" wx:key="index">
-                <view class="local">
-                    <image class="local-pic" src="{{item.thumb}}" />
-                    <view>
-                        <text>{{item.name}}</text>
-                    </view>
-                </view>
-            </block>
-        </view>
-    </view>
-    <view class="des">
-        <view class="my">
-            <text class="my-name">我的音乐</text>
-            <image class="my-pic0" src="img/li.png" />
-            <image class="my-pic1" src="img/rt.png" />
-        </view>
-        <scroll-view class="scroll" scroll-x>
-            <block wx:for="{{describe}}" wx:key="index">
-                <view class="scroll-box">
-                    <view>
-                        <text class="scroll-box-top">{{item.mark}}</text>
-                    </view>
-                    <image class="scroll-box-pic" src="{{item.pict}}" />
-                    <view>
-                        <text class="scroll-box-mid">{{item.info}}</text>
-                    </view>
-                    <view>
-                        <text class="scroll-box-down">{{item.deta}}</text>
-                    </view>
-                </view>
-            </block>
-        </scroll-view>
-        <view class="listname">
-            <view class="listname-set">
-                <text class="listname-set-name">创建歌单</text>
-                <text class="listname-set-num">0</text>
-            </view>
-            <view class="listname-collect">
-                <text class="listname-collect-name">收藏歌单</text>
-                <text class="listname-collect-num">0</text>
-            </view>
-            <image class="listname-pic" src="img/lan.png" />
-        </view>
-        <view class="add">
-            <text class="add-sign">+</text>
-            <text class="add-name">导入外部歌单</text>
-        </view>
-        <view class="recommed">
-            <text class="recommed-name">推荐歌单</text>
-            <text class="recommen-delete">x</text>
-        </view>
-        <view class="musicsheet">
-            <block wx:for="{{sheet}}" wx:key="index">
-                <view class="musicsheet-box">
-                    <image class="musicsheet-pic" src="{{item.picture}}" />
-                    <view>
-                        <view class="musicsheet-list">
-                            <text>{{item.listname}}</text>
-                        </view>
-                        <view class="musicsheet-des">
-                            <text>{{item.describe}}</text>
-                        </view>
-                    </view>
-                </view>
-            </block>
-        </view>
-    </view>
-</view>
-=======
 	<view class="main">
 		<view class="mine">
 			<image class="mine-pic" src="img/pic.jpg" />
@@ -157,4 +78,3 @@
 	</view>
 </view>
 
->>>>>>> 84b9c8ee8b74eec8518a233cf09791a3610d3c78
