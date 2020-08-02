@@ -1,22 +1,68 @@
+<!-- 音乐播放背景图片 -->
+<image class="background_img" src="{{song.al.picUrl}}"></image>
 <view class="play-wrapper">
 	<view class="play-title">
-		<view class="title-back">返回</view>
+		<view class="title-back" bindtap="backPage">
+			<image class="" src="../../image/返回箭头.png" />
+		</view>
 		<view class="singer-info">
-			<view class="title-songName">意外</view>
+			<view class="title-songName">{{song.name}}</view>
 			<view class="title-singer">薛之谦</view>
 		</view>
 	</view>
 	<view class="play-body">
+
+		<!-- 添加转动动画 -->
 		<image
 		 class="body-record"
+		 style="{{isPlay?'':'transform:rotate(-40deg)'}}"
 		 mode="aspectFit"
-		 src="https://s3.music.126.net/mobile-new/img/needle-ip6.png?be4ebbeb6befadfcae75ce174e7db862="
+		 src="../../image/stick.png"
 		></image>
-		<view class="body-round">
-			<image class="singer-img" src="https://s3.music.126.net/mobile-new/img/disc-ip6.png?69796123ad7cfe95781ea38aac8f2d48="></image>
-		</view>
+		<view class="body-round  run" style="{{isPlay?'animation-play-state:running;':'animation-play-state:paused;'}}">
 
+			<view class="round-container">
+				<image class="round-img" src="https://s3.music.126.net/mobile-new/img/disc-ip6.png?69796123ad7cfe95781ea38aac8f2d48="></image>
+				<image class="singer-img" src="{{song.al.picUrl}}"></image>
+			</view>
+		</view>
 	</view>
-	<view class="play-foot"></view>
+	<!-- 底部播放暂停图标 -->
+	<view class="play-foot">
+		<!-- 上一首歌 -->
+		<view class="play_suspend">
+			<view class="icon_playing ">
+				<image
+				 src="../../image/lastSong.png"
+				 class=" icon_play"
+				 bindtap="go_lastSong"
+				/>
+			</view>
+			<!-- 暂停图标-->
+			<view class="icon_playing">
+				<image
+				 bindtap="handleToggleBGAudio"
+				 src="../../image/suspend.png"
+				 hidden="{{!isPlay}}"
+				 class="{{'img_play_suspend'}}"
+				/>
+				<!--播放图标-->
+				<image
+				 bindtap="handleToggleBGAudio"
+				 src="../../image/play.png"
+				 hidden="{{isPlay}}"
+				 class="{{'img_play_suspend'}}"
+				/>
+			</view>
+			<!-- 下一首歌 -->
+			<view class="icon_playing ">
+				<image
+				 src="../../image/nextSong.png"
+				 class="icon_play"
+				 bindtap="go_lastSong"
+				/>
+			</view>
+		</view>
+	</view>
 </view>
 

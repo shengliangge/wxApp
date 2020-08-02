@@ -14,14 +14,20 @@
 		 duration="{{duration}}"
 		 circular="{{circular}}"
 		>
+			<!-- 使用block进行循环 -->
 			<block wx:for="{{banners}}" wx:key="index">
 				<swiper-item item-id>
+					<!-- 轮播图 -->
 					<image class="banners-image" src="{{item.imageUrl}}" />
+					<view class="banners-typeTitle" style="background-color:{{item.titleColor}}">
+						<!-- 右下角标题 -->
+						{{item.typeTitle}}
+					</view>
 				</swiper-item>
 			</block>
 		</swiper>
 	</view>
-	<!-- 跳转入口 -->
+	<!-- 中部跳转入口 ，使用scroll-view横向滑动-->
 	<view class="head-entrance">
 		<scroll-view
 		 class="scroll-view"
@@ -29,56 +35,18 @@
 		 bindscroll="scroll"
 		 style="width: 100%"
 		>
-			<view class="scroll-view__X">
-				<image class="entrance-icon" src="./img/每日推荐.png"></image>
-				<view clsaa="entrance-text">
-					<text>每日推荐</text>
+			<!-- block循环 -->
+			<block wx:for="{{entryIcon}}">
+				<view class="scroll-view__X" bindtap="toSongSheet">
+					<image class="entrance-icon" src="{{item.imgUrl}}"></image>
+					<view clsaa="entrance-text">
+						<text>{{item.title}}</text>
+					</view>
 				</view>
-			</view>
-			<view class="scroll-view__X" bindtap="tosongSheet">
-				<image class="entrance-icon" src="./img/每日推荐.png"></image>
-				<view clsaa="entrance-text">
-					<text>歌单</text>
-				</view>
-			</view>
-			<view class=" scroll-view__X">
-				<image class="entrance-icon" src="./img/每日推荐.png"></image>
-				<view clsaa="entrance-text">
-					<text>排行榜</text>
-				</view>
-			</view>
-			<view class="scroll-view__X">
-				<image class="entrance-icon" src="./img/每日推荐.png"></image>
-				<view clsaa="entrance-text">
-					<text>电台</text>
-				</view>
-			</view>
-			<view class=" scroll-view__X">
-				<image class="entrance-icon" src="./img/每日推荐.png"></image>
-				<view clsaa="entrance-text">
-					<text>直播</text>
-				</view>
-			</view>
-			<view class="scroll-view__X">
-				<image class="entrance-icon" src="./img/每日推荐.png"></image>
-				<view clsaa="entrance-text">
-					<text>火前留名</text>
-				</view>
-			</view>
-			<view class=" scroll-view__X">
-				<image class="entrance-icon" src="./img/每日推荐.png"></image>
-				<view clsaa="entrance-text">
-					<text>电台</text>
-				</view>
-			</view>
-			<view class="scroll-view__X">
-				<image class="entrance-icon" src="./img/每日推荐.png"></image>
-				<view clsaa="entrance-text">
-					<text>电台</text>
-				</view>
-			</view>
+			</block>
 		</scroll-view>
 	</view>
+
 	<!-- 第一层精选 -->
 	<view class="page-select">
 		<view class="select-title">
@@ -109,7 +77,7 @@
 		</view>
 	</view>
 
-	<!-- 第二层华语经典 -->
+	<!-- 第二层推荐 -->
 	<view class="page-play">
 		<view class="play-title">
 			<view class="play-text-front">
@@ -122,7 +90,6 @@
 		</view>
 
 		<view class="play-body">
-
 			<view>
 				<scroll-view
 				 class="scroll-view"
