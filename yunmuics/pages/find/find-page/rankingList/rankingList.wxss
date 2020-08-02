@@ -1,0 +1,87 @@
+/* pages/find/find-page/rankingList/rankingList.wxss */
+/* 上部分：榜单推荐容器 */
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+.ranking {
+    margin: 60rpx 0 0 40rpx;
+}
+.rankingbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+.rankinglist {
+    margin: 30rpx 30rpx  30rpx 0rpx;
+}
+.ranking-name {
+    font-size: 35rpx;
+    font-weight: 550;
+}
+
+.ranking-img {
+    width: 204rpx;
+    height: 204rpx;
+    border-radius: 10rpx;
+}
+
+.updatetime {
+    position: absolute;
+    margin-top: -45rpx;
+    margin-left: 15rpx;
+    font-size: 18rpx;
+    color: rgb(241, 241, 241);
+    
+}
+.rankinglist-name {
+    font-size: 20rpx;
+    max-width: 180rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ranking-des {
+    width: 530rpx;
+    height: 150rpx;
+    margin: 0rpx 20rpx 0 20rpx;
+    float: right;
+    position: absolute;
+    margin-top: -200rpx;
+    margin-left: 210rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1 1 0%;
+    padding: 10px;
+}
+
+
+/*上部分榜单推荐和下部分其他所有榜单所用css一样*/
+/*中间官方榜单部分的榜单名，图片和上部分一样*/
+
+
+/* 中间部分：官方榜容器 */
+.officiallist {
+    margin: 60rpx 0 0rpx 40rpx;
+}
+.officiallistbox {
+    margin: 30rpx 0 20rpx 0rpx;
+}
+.official-list {
+    margin: 0rpx 0 15rpx 0rpx;
+}
+.songlist {
+    max-width: 450rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.songname {
+    font-size: 25rpx;
+}
+
+.otherrankingbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10rpx 40rpx;
+}

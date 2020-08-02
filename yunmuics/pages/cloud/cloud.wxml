@@ -1,63 +1,50 @@
 <!-- pages/cloud/cloud.wxml -->
 <nav-bar></nav-bar>
 <view class="wrapper">
-	<view class="header">
-		<view
-		 class="header_load header_bd"
-		 style="color:{{isLeft?'#ef4238':'#666'}}"
-		 bindtap="tabChangeHot"
-		>
-			广场
-		</view>
-		<view
-		 class="header_fllow header_bd"
-		 style="color:{{isLeft?'#666':'#ef4238'}}"
-		 bindtap="tabChangeWaiting"
-		>
-			关注
-		</view>
-		<view class="buttomLine" style="left:{{isLeft?'73px':'195px'}}"></view>
-	</view>
-	<sxroll-view class="downbox" scroll-y="true">
-		<view class="comment">
-			<view class="commentbox">
-				<text class="comment-name">云村热评榜</text>
-				<text class="comment-arrow"></text>
-				<view class="comment-des">北秋丶柚，原来大家都在云村看这些评论！</view>
-			</view>
-		</view>
-		<view class="video-allbox">
-			<view class="firstbox">
-				<image
-				 class="videopic"
-				 src="https://p1.music.126.net/fV2p23UfzKPkwpqpiluo8g==/109951165181946588.jpg?param=300x300"
-				 alt="music"
-				/>
-				<view class="describe">
-					<text>[中文咚鼓] 热播上头曲</text>
-				</view>
-				<view class="writer">
-					<image class="writer-pic" src="img/t0.jpg" />
-					<text class="writer-name">不吃香菜-菜菜</text>
-					<text class="writer-num">4140赞</text>
-					<image class="writer-daohanglan" src="img/daohang.png" />
-				</view>
-			</view>
-			<block wx:for="{{detail}}" wx:key="index">
-				<view class="otherbox">
-					<image class="videoimage" src="{{item.videopict}}" />
-					<view class="describe">
-						<text>{{item. desc}}</text>
-					</view>
-					<view class="writer">
-						<image class="writer-pic" src="{{item.headpic}}" />
-						<text class="writer-name">{{item.writer}}</text>
-						<text class="writer-num">{{item.good}}</text>
-						<image class="writer-daohanglan" src="{{item.navigation}}" />
-					</view>
-				</view>
-			</block>
-		</view>
-	</sxroll-view>
+    <view class="header">
+        <view class="header_load header_bd" style="color:{{isLeft?'#ef4238':'#666'}}" bindtap="tabChangeHot">
+            广场
+        </view>
+        <view class="header_fllow header_bd" style="color:{{isLeft?'#666':'#ef4238'}}" bindtap="tabChangeWaiting">
+            关注
+        </view>
+        <view class="buttomLine" style="left:{{isLeft?'73px':'195px'}}"></view>
+    </view>
+    <sxroll-view class="downbox" scroll-y="true">
+        <view class="comment">
+            <view class="commentbox">
+                <text class="comment-name">云村热评榜</text>
+                <text class="comment-arrow"></text>
+                <view class="comment-des">北秋柚，原来大家都在云村看这些评论！</view>
+            </view>
+        </view>
+        <view class="video-allbox">
+            <view class="firstbox">
+                <image class="videopic" src="https://p1.music.126.net/fV2p23UfzKPkwpqpiluo8g==/109951165181946588.jpg?param=300x300" alt="music" />
+                <view class="describe">
+                    <text>[中文咚鼓] 热播上头曲</text>
+                </view>
+                <view class="writer">
+                    <image class="writer-pic" src="img/t0.jpg" />
+                    <text class="writer-name">不吃香菜-菜菜</text>
+                    <text class="writer-num">4140赞</text>
+                    <image class="writer-daohanglan" src="img/daohang.png" />
+                </view>
+            </view>
+            <block wx:for="{{detail}}" wx:key="index">
+                <view class="otherbox">
+                    <image class="videoimage" src="{{item.videopict}}" />
+                    <view class="describe">
+                        <text>{{item. desc}}</text>
+                    </view>
+                    <view class="writer">
+                        <image class="writer-pic" src="{{item.headpic}}" />
+                        <text class="writer-name">{{item.writer}}</text>
+                        <text class="writer-num">{{item.good}}</text>
+                        <image class="writer-daohanglan" src="{{item.navigation}}" />
+                    </view>
+                </view>
+            </block>
+        </view>
+    </sxroll-view>
 </view>
-
