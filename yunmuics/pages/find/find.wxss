@@ -122,7 +122,12 @@ color: #ffffff;
   align-items: center;
   margin-bottom: 20rpx;
 }
-
+.box-text-bre{
+  max-width: 420rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .play-text-after {
   width: 150rpx;
 }

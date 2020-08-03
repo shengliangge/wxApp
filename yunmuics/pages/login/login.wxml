@@ -32,9 +32,6 @@
 			>
 				登录
 			</button>
-			<!-- <input type='text' class='userBox' name='username'></input>
-      <input type='text' class='pwdBox' name='pwd'></input>
-      <button class='login' form-type='submit'>登录</button> -->
 		</form>
 	</view>
 

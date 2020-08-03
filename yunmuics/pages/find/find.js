@@ -5,42 +5,45 @@ Page({
   // 页面的初始数据
   data: {
     //入口图标
-    entryIcon:[
+    entryIcon: [
       {
-        title:"每日推荐",
-        imgUrl:"./img/每日推荐.png"
+        title: "每日推荐",
+        imgUrl: "./img/每日推荐.png",
+        gotoUrl: "./find-page/recommend/recommend"
       },
       {
-        title:"歌单",
-        imgUrl:"./img/歌单.png"
+        title: "歌单",
+        imgUrl: "./img/歌单.png",
+        gotoUrl: "../songSeet/songSeet"
       },
       {
-        title:"排行榜",
-        imgUrl:"./img/排行榜.png"
+        title: "排行榜",
+        imgUrl: "./img/排行榜.png",
+        gotoUrl: "./find-page/rankingList/rankingList"
       },
       {
-        title:"电台",
-        imgUrl:"./img/电台.png"
+        title: "电台",
+        imgUrl: "./img/电台.png"
       },
       {
-        title:"直播",
-        imgUrl:"./img/直播.png"
+        title: "直播",
+        imgUrl: "./img/直播.png"
       },
       {
-        title:"火前留名",
-        imgUrl:"./img/火前留名.png"
+        title: "火前留名",
+        imgUrl: "./img/火前留名.png"
       },
       {
-        title:"数字专辑",
-        imgUrl:"./img/数字专辑.png"
+        title: "数字专辑",
+        imgUrl: "./img/数字专辑.png"
       },
       {
-        title:"唱聊",
-        imgUrl:"./img/唱聊.png"
+        title: "唱聊",
+        imgUrl: "./img/唱聊.png"
       },
       {
-        title:"线上演出",
-        imgUrl:"./img/线上演出.png"
+        title: "线上演出",
+        imgUrl: "./img/线上演出.png"
       },
     ],
     indicatorDots: "true",
@@ -55,12 +58,14 @@ Page({
     blocks: [],
     songsheet: [],
     boll: [],
-    userInfo: {}
+    userInfo: {},
+    login_token: ""
   },
-  toSongSheet: function () {
-    // console.log("点击")
+  //首页跳转到相应的入口页面
+  toSongSheet: function (e) {
+    // console.log(e)
     wx.navigateTo({
-      url: '../songList/songList'
+      url: e.currentTarget.dataset.url
     })
   },
 
@@ -80,7 +85,9 @@ Page({
   //播放音乐
   playMusic: function (e) {
     // console.log(e.currentTarget.dataset.in.id)
+    // 获取音乐id
     let musicId = e.currentTarget.dataset.in.id
+    // 跳转到播放页面
     wx.navigateTo({
       url: `../play/play?musicId=${musicId}`,
       success: function (res) {
@@ -101,13 +108,26 @@ Page({
    */
   onLoad: function (options) {
     // this.getsongsheet()//查看数据使用
+    wx.getStorage({
+      key: 'login_token',
+      success: (result) => {
+        // console.log("获取的login",result)
+        this.setData({
+          login_token: result.data
+        })
+      },
+    });
+
     this.setData({
-      userInfo: app.globalData.userInfo
+      userInfo: app.globalData.userInfo,
+      login_token: app.globalData.login_token
     })
     console.log(this.data.userInfo)
+    //获取轮播图
     this.getBanner()
+    //获取首页数据
     wx.request({
-      url: 'https://music.163.com/api/homepage/block/page', //获取首页数据
+      url: 'https://music.163.com/api/homepage/block/page',
       data: {
         refresh: true
       },
@@ -122,39 +142,9 @@ Page({
         })
       }
     })
-    console.log(this.data.userInfo.cookies[2])
-    wx.request({
-      url: 'http://neteasecloudmusicapi.zhaoboy.com/recommend/songs', //仅为示例，并非真实的接口地址
-      data: {
-        "cookie": this.data.userInfo.cookies[2]
-      },
-      header: {
-        "Content-Type": "application/json",
-        "cookie": this.data.userInfo.cookies[2]
-      },
-      //成功回调函数 成功 200
-      success: (res) => {
-        console.log("find歌单登陆成功吗？" + res.data)
-        console.log(res)
-      }
-    })
-    console.log(this.data.userInfo.cookies[2])
-    wx.request({
-      url: 'https://music.163.com/eapi/homepage/dragon/ball/static', //仅为示例，并非真实的接口地址
-      data: {
-        "cookie": this.data.userInfo.cookies[2]
-      },
-      header: {
-        "Content-Type": "application/json",
-        "cookie": this.data.userInfo.cookies[2]
-      },
-      //成功回调函数 成功 200
-      success: (res) => {
-        console.log("find首页登陆成功吗？" + res)
-        console.log(res)
-      }
-    })
-    
+    console.log("输出的token")
+    console.log(this.data.login_token)
+  
   },
 
   /**
@@ -195,7 +185,7 @@ Page({
     wx.request({
       url: 'https://music.163.com/api/homepage/block/page', //仅为示例，并非真实的接口地址
       data: {
-        timestamp:time_stamp  //加上时间戳，更新请求
+        timestamp: time_stamp  //加上时间戳，更新请求
       },
       header: {
         "Content-Type": "application/json"

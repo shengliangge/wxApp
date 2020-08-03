@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -67,8 +67,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/find/find",
-					"pathName": "pages/find/find",
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
 					"query": "",
 					"scene": null
 				}

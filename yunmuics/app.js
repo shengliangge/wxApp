@@ -19,6 +19,7 @@ App({
     songImg:[],
     waitForPlaying:[],
     songName:[],
-    backgroundAudioManager:{}
+    backgroundAudioManager:{},
+    login_token:''
   }
 })

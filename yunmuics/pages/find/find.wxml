@@ -32,12 +32,15 @@
 		<scroll-view
 		 class="scroll-view"
 		 scroll-x="true"
-		 bindscroll="scroll"
 		 style="width: 100%"
 		>
 			<!-- block循环 -->
-			<block wx:for="{{entryIcon}}">
-				<view class="scroll-view__X" bindtap="toSongSheet">
+			<block wx:for="{{entryIcon}}" wx:key="index">
+				<view
+				 class="scroll-view__X"
+				 bindtap="toSongSheet"
+				 data-url="{{item.gotoUrl}}"
+				>
 					<image class="entrance-icon" src="{{item.imgUrl}}"></image>
 					<view clsaa="entrance-text">
 						<text>{{item.title}}</text>
@@ -147,7 +150,6 @@
 			<scroll-view
 			 class="scroll-view"
 			 scroll-x="true"
-			 bindscroll="scroll"
 			 style="width: 100%"
 			>
 				<block wx:for="{{blocks[2].creatives}}" wx:key="index">
@@ -177,7 +179,6 @@
 			<scroll-view
 			 class="scroll-view"
 			 scroll-x="true"
-			 bindscroll="scroll"
 			 style="width: 100%"
 			>
 				<block wx:for="{{blocks[7].creatives}}" wx:key="index">

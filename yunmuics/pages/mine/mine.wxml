@@ -1,10 +1,14 @@
-<nav-bar></nav-bar>
+<nav-bar
+ statusBarColor="#16151b"
+ navBarColor="#16151b"
+ titleColor="white"
+></nav-bar>
 <!-- pages/mine/mine.wxml -->
 <view class="wrapper">
 	<view class="main">
 		<view class="mine">
-			<image class="mine-pic" src="img/pic.jpg" />
-			<text class="mine-name">北秋丶柚</text>
+			<image class="mine-pic" src="{{userInfo.data.profile.avatarUrl}}" />
+			<text class="mine-name">{{userInfo.data.profile.nickname}}</text>
 			<text class="mine-vip">开通黑胶VIP</text>
 			<text class="mine-grade">Lv.0</text>
 		</view>
