@@ -22,7 +22,7 @@ Page({
       {
         img: 'https://p2.music.126.net/Zb8AL5xdl9-_7WIyAhRLbw==/109951164091690485.jpg',
         date: '每天更新',
-        listname: '云音乐都没新歌榜',
+        listname: '云音乐欧美新歌榜',
       }
     ],
     // officialrank: [
@@ -208,6 +208,17 @@ Page({
         this.setData({
           list: res.data.list
         })
+      }
+    }),
+    wx.request({
+      url: 'http://neteasecloudmusicapi.zhaoboy.com/search/suggest',
+      data: {
+      },
+      header: {
+        "Content-Type": "application/json"
+      },
+      success: (res) => {
+        console.log(res)
       }
     })
   },

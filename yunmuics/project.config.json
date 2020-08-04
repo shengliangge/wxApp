@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -70,6 +70,33 @@
 					"name": "pages/find/find",
 					"pathName": "pages/find/find",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/find/find-page/rankingList/rankingList",
+					"pathName": "pages/find/find-page/rankingList/rankingList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/find/find-page/recommended-daily/recommended-daily",
+					"pathName": "pages/find/find-page/recommended-daily/recommended-daily",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/songlist/songlist",
+					"pathName": "pages/songlist/songlist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/search/search",
+					"pathName": "pages/search/search",
 					"scene": null
 				}
 			]

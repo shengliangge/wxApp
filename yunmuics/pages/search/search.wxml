@@ -1,0 +1,56 @@
+<!-- pages/search/search.wxml -->
+<nav-bar></nav-bar>
+<view class="wrapper">
+    <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+    <view class="poster">
+        <text class="postername">广告</text>
+        <view class="poster-outside">
+            <view class="poster-box">
+                <image class="poster-pic0" src="https://pic.rmb.bdstatic.com/43ea8acf8c34e23716c4040eeb5041d9.jpeg" />
+                <text class="test-title">招募:</text>
+                <text class="test-age">18岁以上热爱</text>
+                <text class="test-red">游戏建模</text>
+                <text class="test-black">的小白</text>
+                <image class="poster-pic1" src="https://pic.rmb.bdstatic.com/07460089fae3d0c73bf11582f69622bc.jpeg" />
+            </view>
+        </view>
+    </view>
+    <view class="history">
+        <view class="historybox">
+            <text class="history-name">历史记录</text>
+            <image class="history-delete" src="img/del.png" />
+        </view>
+        <view class="allhistory">
+            <view class="allhistorybox" wx:for="{{his}}" wx:key="index">
+                <text class="historyname">{{item.name}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="ranking">
+        <text class="ranking-name">热搜榜</text>
+    </view>
+    <view class="rankingList">
+        <view class="rankingList-box" wx:for="{{hots}}" wx:key="index">
+            <view wx:if="{{index <= 2}}">
+                <text class="rankingList-num" style="color:red">{{index+1}}</text>
+                <view class="song">
+                <text class="rankigList-songname" style="color:black;font-weight:600">{{item.first}}</text>
+                <block wx:for="{{detail}}" wx:key="index">
+                <text class="rankigList-hotsong" style="color:red">{{item.hot}}</text>
+                </block>
+                </view>
+                <text class="rankigList-hotnum">{{item.num}}</text>
+                <view class="rankingList-songdes">{{item.des}}</view>
+            </view>
+            <view wx:if="{{index > 2}}">
+                <text class="rankingList-num">{{index+1}}</text>
+                 <view class="song">
+                <text class="rankigList-songname">{{item.first}}</text>
+                <!-- <text class="rankigList-hotsong" style="color:red">{{item.hot}}</text> -->
+                </view>
+                <text class="rankigList-hotnum">{{item.num}}</text>
+                <view class="rankingList-songdes">{{item.des}}</view>
+            </view>
+        </view>
+    </view>
+</view>

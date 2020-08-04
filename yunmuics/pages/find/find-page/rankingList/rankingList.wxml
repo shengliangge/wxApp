@@ -37,10 +37,10 @@
     </view>
     <!-- 下部分：其他所有榜单容器循环 -->
     <view class="otherranking">
-        <text class="ranking-name">更多榜单</text>
+        <text class="otherranking-name">更多榜单</text>
         <view class="otherrankingbox">
             <block class="otherrankinglist" wx:for="{{list}}" wx:key="index">
-                <view wx:if="{{index > 3}}">
+                <view class="other" wx:if="{{index > 3}}">
                     <image class="ranking-img" src="{{item.coverImgUrl}}" />
                     <view class="updatetime">{{item.updateFrequency}}</view>
                     <view class="rankinglist-name">{{item.name}}</view>

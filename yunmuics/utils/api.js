@@ -74,5 +74,5 @@ module.exports ={
   },
   getSonger:(data)=>{
     return request('/toplist/artist',data)//歌手排行
-  }
+  },
 }
