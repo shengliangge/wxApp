@@ -1,15 +1,12 @@
 /* pages/songlist/songlist.wxss */
-
 .wrapper {
     width: 100%;
     height: 100%;
 }
-
 .block {
     width: 100%;
     height: 120rpx;
 }
-
 .top {
     width: 100%;
     height: 490rpx;
@@ -17,19 +14,17 @@
 }
 
 .title-name {
-    font-size: 80rpx;
+    font-size:80rpx;
     color: white;
-    margin-left: 40rpx;
+    margin-left: 40rpx; 
 }
-
-.title-pic {
+.title-pic{
     width: 40rpx;
     height: 40rpx;
     position: absolute;
     margin-left: 20rpx;
     margin-top: 52rpx;
 }
-
 .title-num {
     font-size: 20rpx;
     color: white;
@@ -40,22 +35,20 @@
     position: absolute;
     margin: 100rpx 0 0 65rpx;
 }
-
 .listbox {
     float: left;
     height: 100rpx;
 }
-
 .list-img {
     width: 40rpx;
     height: 40rpx;
     margin: 0 100rpx 0 0;
 }
-
 .list-name {
     font-size: 25rpx;
     margin: 0 120rpx 0 0;
 }
+
 
 .down {
     width: 100%;
@@ -68,46 +61,4 @@
     position: relative;
     top: -20px;
     background-color: white;
-}
-
-.buttonBox {
-    display: flex;
-    align-items: center;
-}
-
-.collectBox {
-    height: 90rpx;
-    background-color: rgb(254, 58, 59);
-    color: rgba(255, 255, 255, .8);
-    border-radius: 40rpx;
-    display: flex;
-    align-items: center;
-    font-size: 28rpx;
-}
-
-.broadcast {
-    width: 50rpx;
-    height: 50rpx;
-}
-.broadcast-name{
-    margin-left: 20rpx;
-    margin-right: -10rpx;
-}
-.broadcast-num{
-    font-size: 24rpx;
-    color: rgb(169,169,169);
-}
-.broadcast-pic {
-    width: 50rpx;
-    height: 50rpx;
-}
-
-.broadcast-img {
-    width: 50rpx;
-    height: 50rpx;
-}
-
-.songlist {
-    display: flex;
-    align-items: center;
 }

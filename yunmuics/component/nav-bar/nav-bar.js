@@ -34,7 +34,6 @@ Component({
   lifetimes: {
     attached: function () {
       // console.log(this.data.navBarColor)
-      console.log(123)
       let navBarStyle = `background-color:${this.data.navBarColor};
       height:${wx.db.navBarHeight}px;
       color:${this.data.titleColor};`
@@ -58,7 +57,7 @@ Component({
       wx: wx.navigateBack({
         delta: 1
       });
-    },
+    }
 
   }
 })

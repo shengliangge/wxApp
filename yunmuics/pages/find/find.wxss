@@ -9,12 +9,21 @@
 }
 
 .swiper-banners {
-  height: 230rpx;
+  height: 250rpx;
 }
 
 .banners-image {
   width: 100%;
   height: 100%;
+}
+.banners-typeTitle{
+position: absolute;
+right: 0;
+bottom: 0;
+font-size: 22rpx;
+padding:6rpx 10rpx;
+border-top-left-radius: 15rpx ;
+color: #ffffff;
 }
 
 .head-entrance {
@@ -113,7 +122,12 @@
   align-items: center;
   margin-bottom: 20rpx;
 }
-
+.box-text-bre{
+  max-width: 420rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .play-text-after {
   width: 150rpx;
 }

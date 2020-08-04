@@ -1,0 +1,38 @@
+.login-wrapper {
+  color: rgba(255,255,255,.5);
+  height: 100vh;
+  background-color: rgb(207, 47, 35);
+}
+
+.wrapper-bd {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-img {
+  width: 120rpx;
+  height: 120rpx;
+}
+.login-input{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.login-inp{
+  width: 70%;
+  height: 70rpx;
+  border-bottom: 1px solid rgba(255, 255, 255,.5);
+  margin-bottom: 20rpx;
+}
+.default {
+  margin-top: 30rpx;
+  color:rgb(221, 50, 38);
+  border-radius: 50rpx;
+  font-weight: 500;
+}
+.pla-class{
+  color: rgba(255,255,255,.5);
+}

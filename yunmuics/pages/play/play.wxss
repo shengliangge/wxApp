@@ -1,31 +1,138 @@
+.background_img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  /* css3滤镜属性，blur设置高斯模糊  brightness设置变暗*/
+  filter: blur(30px) brightness(50%);
+  z-index: -1;
+  /*和网易云音乐对比了一下，发现他们是也是放大1.5倍*/
+  transform: scale(1.5);
+}
+
 .play-wrapper {
   width: 100wh;
   height: 100vh;
-  background-color: rgb(90, 89, 89);
 }
 
 .play-title {
-  padding: 50rpx;
+  padding: 90rpx 30rpx;
   display: flex;
+  align-items: center;
 }
-.title-songName{
 
+/* 返回箭头 */
+
+.title-back {
+  width: 50rpx;
+  height: 50rpx;
 }
+
+.title-back image {
+  width: 100%;
+  height: 100%;
+}
+
+.play-body {
+  width: 750rpx;
+  height: 814rpx;
+  overflow: scroll;
+}
+
+.body-scroll {
+  height: 100%;
+}
+
+/* 歌手信息 */
+
+.singer-info {
+  color: #ffffff;
+  margin-left: 40rpx;
+  font-size: 36rpx;
+}
+
+/* 歌名 */
+
+.title-songName {
+  max-width: 400rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 歌手名 */
+
+.title-singer {
+  font-size: 24rpx;
+  margin-top: 10rpx;
+  color: rgba(255, 255, 255, 0.3)
+}
+
 .body-record {
   position: absolute;
   left: 42%;
-  /* transform: translateX(-50%); */
+  top: 18%;
   width: 250rpx;
   height: 250rpx;
+  z-index: 100;
+  background-size: contain;
+  /* 设置旋转基点 */
+  transform-origin: 4vw 4vw;
+  /* 控制任何一个样式的变化，添加一个延迟的时间效果 ，在这里监听transform的变化*/
+  transition: transform 1s ease 0s;
+}
 
+/* 定义转动动画 */
 
-    z-index: 100;
-    background-size: contain;
-    transform-origin: 4.5vw 4.5vw;
-    transform: rotate(0deg);
-    background-position: 50% center;
-    background-repeat: no-repeat;
-    transition: all 0.3s ease 0s;
+.turn {
+  animation: turn 5s linear;
+}
+
+/* 
+  rturnun : 定义的动画名称
+  5s : 动画时间
+  linear : 动画以何种运行轨迹完成一个周期
+  infinite :规定动画应该无限次播放
+ */
+
+@keyframes turn {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(-90deg);
+  }
+}
+
+.run {
+  animation: run 25s linear infinite;
+}
+
+/* 
+  run : 定义的动画名称
+  1s : 动画时间
+  linear : 动画以何种运行轨迹完成一个周期
+  infinite :规定动画应该无限次播放
+ */
+
+@keyframes run {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 .body-round {
@@ -33,11 +140,78 @@
   justify-content: center;
   align-items: center;
   width: 100wh;
-  height: 830rpx;
+  height: 814rpx;
+}
+
+.round-container {
+  width: 630rpx;
+  height: 630rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.round-img {
+  position: absolute;
+  width: 630rpx;
+  height: 630rpx;
 }
 
 .singer-img {
-  width: 600rpx;
-  height: 600rpx;
+  width: 580rpx;
+  height: 580rpx;
+  border-radius: 50%;
 }
 
+.play-foot {
+  position: fixed;
+  width: 750rpx;
+  height: 250rpx;
+  bottom: 0;
+}
+
+/* 音乐进度条 */
+
+.page-slider {
+  display: flex;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28rpx;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.slider_middle {
+  width: 65%;
+}
+
+.play_suspend {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icon_play {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.img_play {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.currentTime {
+  color: rgba(255, 255, 255, 1);
+}
+
+.lyric {
+  display: flex;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+}
+.lyric-text{
+  text-align: center;
+}

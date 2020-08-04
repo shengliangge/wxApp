@@ -1,4 +1,4 @@
-// pages/songlist/songlist.js
+
 const app = getApp();
 Page({
 
@@ -26,16 +26,33 @@ Page({
     ],
     list: [
       {
-        name: '天外来物',
         author: '薛之谦',
-        name: '天外来物'
+        name: '天外来我记那地方离开骄傲了会啊地方iOS阿Uio垃圾啊看到'
       }
     ],
     userInfo: {},
     login_token: '',
     songs: []
   },
-
+  //播放音乐
+  playMusic: function (e) {
+    console.log(e)
+    // 获取音乐id
+    let musicId = e.currentTarget.dataset.in.id
+    // 跳转到播放页面
+    wx.navigateTo({
+      url: `../../../play/play?musicId=${musicId}`,
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
