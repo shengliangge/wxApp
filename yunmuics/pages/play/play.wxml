@@ -1,3 +1,8 @@
+<view class="body-view">
+	<loading hidden="{{hidden}}">
+		加载中...
+	</loading>
+</view>
 <!-- 音乐播放背景图片 -->
 <image class="background_img" src="{{song.al.picUrl}}"></image>
 <view class="play-wrapper">
@@ -7,28 +12,80 @@
 		</view>
 		<view class="singer-info">
 			<view class="title-songName">{{song.name}}</view>
-			<view class="title-singer">薛之谦</view>
+			<view class="title-singer">
+				<text wx:for="{{song.ar}}" wx:key="index" class="singer-name-text">{{item.name}}</text>
+			</view>
+			<!-- <view class="title-singer">薛之谦</view> -->
 		</view>
 	</view>
-	<view class="play-body">
+	<view class="play-body" bindtap="showLyric">
+		<!-- 歌词 -->
+		<!-- 需要设置高度，否则scroll-top可能失效 -->
+		<scroll-view
+		 hidden="{{showLyric}}"
+		 scroll-y="true"
+		 scroll-with-animation='true'
+		 scroll-top='{{marginTop}}'
+		 class="body-scroll"
+		>
+			<view class='contentText'>
+				<block wx:for='{{storyContent}}' wx:key="index">
+					<view class="lyric">
+						<view class="lyric-text {{currentIndex == index ? 'currentTime' : ''}}">{{item[1]}}</view>
+					</view>
 
+				</block>
+			</view>
+		</scroll-view>
 		<!-- 添加转动动画 -->
-		<image
-		 class="body-record"
-		 style="{{isPlay?'':'transform:rotate(-40deg)'}}"
-		 mode="aspectFit"
-		 src="../../image/stick.png"
-		></image>
-		<view class="body-round  run" style="{{isPlay?'animation-play-state:running;':'animation-play-state:paused;'}}">
+		<view hidden="{{!showLyric}}">
+			<image
+			 class="body-record"
+			 style="{{isPlay?'':'transform:rotate(-40deg)'}}"
+			 mode="aspectFit"
+			 src="../../image/stick.png"
+			></image>
+			<view class="body-round  run" style="{{isPlay?'animation-play-state:running;':'animation-play-state:paused;'}}">
 
-			<view class="round-container">
-				<image class="round-img" src="https://s3.music.126.net/mobile-new/img/disc-ip6.png?69796123ad7cfe95781ea38aac8f2d48="></image>
-				<image class="singer-img" src="{{song.al.picUrl}}"></image>
+				<view class="round-container">
+					<image class="round-img" src="https://s3.music.126.net/mobile-new/img/disc-ip6.png?69796123ad7cfe95781ea38aac8f2d48="></image>
+					<image class="singer-img" src="{{song.al.picUrl}}"></image>
+				</view>
 			</view>
 		</view>
 	</view>
+	<view>
+	</view>
+
+	<!-- 一开始onload时,showLyric=true, 显示为转动的图标，点击图标，切换为歌词-->
+	<view class="sing-show">
+		<view class="moveCircle {{isPlay ? 'play' : ''}}" hidden="{{!showLyric}}">
+		</view>
+
+	</view>
 	<!-- 底部播放暂停图标 -->
 	<view class="play-foot">
+		<view class="page-slider">
+			<view>
+				{{currentTime}}
+			</view>
+			<slider
+			 class="slider_middle"
+			 bindchange="changeSlide"
+			 bindtouchstart="start"
+			 bindtouchend="end"
+			 max="{{totalProcessNum}}"
+			 min="0"
+			 backgroundColor="rgba(255,255,255,.3)"
+			 activeColor="rgba(255,255,255,.8)"
+			 value="{{currentProcessNum}}"
+			 disabled="{{item.canSlider}}"
+			 block-size="12"
+			></slider>
+			<view>
+				{{duration}}
+			</view>
+		</view>
 		<!-- 上一首歌 -->
 		<view class="play_suspend">
 			<view class="icon_playing ">
@@ -44,14 +101,14 @@
 				 bindtap="handleToggleBGAudio"
 				 src="../../image/suspend.png"
 				 hidden="{{!isPlay}}"
-				 class="{{'img_play_suspend'}}"
+				 class="img_play"
 				/>
 				<!--播放图标-->
 				<image
 				 bindtap="handleToggleBGAudio"
 				 src="../../image/play.png"
 				 hidden="{{isPlay}}"
-				 class="{{'img_play_suspend'}}"
+				 class="img_play"
 				/>
 			</view>
 			<!-- 下一首歌 -->
@@ -64,5 +121,6 @@
 			</view>
 		</view>
 	</view>
+
 </view>
 

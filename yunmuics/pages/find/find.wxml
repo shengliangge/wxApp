@@ -64,7 +64,6 @@
 			<scroll-view
 			 class="scroll-view"
 			 scroll-x="true"
-			 bindscroll="scroll"
 			 style="width: 100%"
 			>
 				<block wx:for="{{blocks[0].creatives}}" wx:key="index">
@@ -97,7 +96,6 @@
 				<scroll-view
 				 class="scroll-view"
 				 scroll-x="true"
-				 bindscroll="scroll"
 				 style="width: 100%"
 				>
 					<view
