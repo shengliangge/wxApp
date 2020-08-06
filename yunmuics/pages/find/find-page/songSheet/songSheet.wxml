@@ -20,7 +20,7 @@
 			<text>民谣</text>
 		</view>
 		<view>
-			<image class="recommend-head__more" src="../../image/more1.png"></image>
+			<image class="recommend-head__more" src="../../../../image/more1.png"></image>
 		</view>
 	</view>
 
@@ -37,7 +37,7 @@
 				<block wx:for="{{songsheet}}" wx:key="index">
 
 					<swiper-item wx:if="{{index<=2}}" class="page-swiper-item">
-						<view class="slide-item {{swiperIdx == index ? 'active' : 'quiet'}}">
+						<view bindtap="gotoSongList" class="slide-item {{swiperIdx == index ? 'active' : 'quiet'}}">
 							<image
 							 class="slide-item-img"
 							 src="{{item.coverImgUrl}}"
@@ -60,7 +60,11 @@
 		<view class="content-page-block">
 
 			<block wx:for="{{songsheet}}" wx:key="index">
-				<view class="content-block" wx:if='{{index >2}}'>
+				<view
+				 bindtap="gotoSongList"
+				 class="content-block"
+				 wx:if='{{index >2}}'
+				>
 					<view class="content-img">
 						<image lazy-load="true " src="{{item.coverImgUrl}}"></image>
 					</view>

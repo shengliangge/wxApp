@@ -73,11 +73,13 @@
 .buttonBox {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: 20rpx;
 }
 
 .collectBox {
+  height: 90rpx;
+  background-color: rgb(254, 58, 59);
+  color: rgba(255, 255, 255, .8);
+  border-radius: 40rpx;
   display: flex;
   align-items: center;
   font-size: 28rpx;
@@ -89,9 +91,12 @@
 }
 .broadcast-name{
   margin-left: 20rpx;
-  flex:70%;
+  margin-right: -10rpx;
 }
-
+.broadcast-num{
+  font-size: 24rpx;
+  color: rgb(169,169,169);
+}
 .broadcast-pic {
   width: 50rpx;
   height: 50rpx;
@@ -102,36 +107,7 @@
   height: 50rpx;
 }
 
-.song-list {
+.songlist {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-margin-bottom: 30rpx;
-}
-.song-img{
-  width: 80rpx;
-  height: 80rpx;
-}
-.song{
-  flex:70%;
-  padding-left: 20rpx;
-
-}
-.song-name{
-  max-width: 480rpx;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  padding-bottom: 10rpx;
-}
-.song-author{
-  color: #978e8e;
-  font-size: 22rpx;
-  max-width: 480rpx;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.broadcast-pic{
-padding-right: 15rpx;
 }

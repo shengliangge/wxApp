@@ -32,6 +32,8 @@ color: #ffffff;
 
 .scroll-view {
   white-space: nowrap;
+  width: 750rpx;
+  margin-right: -20rpx;
 }
 
 .scroll-view__X {

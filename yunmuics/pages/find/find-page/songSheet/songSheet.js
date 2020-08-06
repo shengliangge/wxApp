@@ -1,5 +1,5 @@
 // pages/songSeet/songSeet.js
-const API = require('../../utils/api')
+const API = require('../../../../utils/api')
 
 Page({
 

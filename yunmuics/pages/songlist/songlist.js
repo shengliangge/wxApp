@@ -33,22 +33,21 @@ Page({
     ],
     userInfo: {},
     login_token: '',
-    songs: []
+    songs: [],
+    playlist:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 从全局中取数据
-    this.setData({
-      userInfo: app.globalData.userInfo,
-      login_token: app.globalData.login_token
-    })
-    //获取推荐歌单
+    //接受其他页面传来的数据
+    let listId=options.listId
+    console.log(listId)
     wx.request({
-      url: 'http://neteasecloudmusicapi.zhaoboy.com/recommend/songs',
+      url: 'http://neteasecloudmusicapi.zhaoboy.com/playlist/detail',
       data: {
+        "id": listId,
         "cookie": this.data.login_token
       },
       header: {
@@ -60,12 +59,30 @@ Page({
         console.log(res)
         console.log("find第二个歌单登陆成功吗？", res.data)
         this.setData({
-          songs: res.data.recommend
+          playlist: res.data.playlist
         })
       }
     })
   },
-
+  //播放音乐
+  playMusic: function (e) {
+    console.log(e)
+    // 获取音乐id
+    let musicId = e.currentTarget.dataset.in.id
+    // 跳转到播放页面
+    wx.navigateTo({
+      url: `../play/play?musicId=${musicId}`,
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
