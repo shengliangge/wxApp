@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    autoFocus:true,
     username: '',
     pwd: '',
     userInfo: {}
@@ -35,19 +36,35 @@ Page({
       },
       //成功回调函数 成功 200
       success: (res) => {
-        // console.log(res)
-        app.globalData.userInfo = res;  //将用户信息传给全局用户信息中
-        // console.log(res.cookies)
-        // 保存cookie登陆信息到Storage
-        this.saveUserLoginInfo(res.cookies)
-        // 跳转页面
-        wx.navigateTo({
-          url: `../find/find`
-        })
+        console.log(res)
+        let code = res.data.code   //状态码
+        let msg=res.data.msg   //登陆信息
+        console.log(code)
+        //登陆成功
+        if (code === 200) {    //如果登陆
+          app.globalData.userInfo = res;  //将用户信息传给全局用户信息中
+          // console.log(res.cookies)
+          // 保存cookie登陆信息到Storage
+          this.saveUserLoginInfo(res.cookies) // 跳转到首页
+          wx.navigateTo({
+            url: `../find/find`
+          })
+        } else {   //出错，打印错误信息
+          wx.showToast({
+            title: msg,
+            icon: 'none',
+            mask: true,
+            duration: 2000
+          })
+          //输入框获得焦点
+          this.setData({
+           pwdAutoFocus:true
+          })
+        } 
       }
     })
   },
-  // 保存用户登陆凭证
+  // 保存用户登陆凭证方法
   saveUserLoginInfo: function (cookies) {
     // console.log(cookies)
     for (let i = 0; i < cookies.length; i++) {
@@ -59,7 +76,7 @@ Page({
           key: "login_token",
           data: cookies[i]
         })
-        app.globalData.login_token =cookies[i];
+        app.globalData.login_token = cookies[i];
       }
     }
   },

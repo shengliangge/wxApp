@@ -67,8 +67,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/find/find",
-					"pathName": "pages/find/find",
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
 					"query": "",
 					"scene": null
 				},
@@ -88,15 +88,22 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/login/login",
-					"pathName": "pages/login/login",
-					"query": "",
+					"name": "pages/songList/songList",
+					"pathName": "pages/songList/songList",
+					"query": "listId= 5137419858",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/search/search",
 					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/find/find",
+					"pathName": "pages/find/find",
 					"query": "",
 					"scene": null
 				}

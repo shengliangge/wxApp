@@ -103,6 +103,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData.login_token)
+    if(app.globalData.login_token==''){
+      wx.showToast({
+        title: '未登录,请登陆后尝试！',
+        icon: 'none',
+        mask:true,
+        duration: 2500
+       
+      })
+    }else{
     // 从全局中取数据
     this.setData({
       userInfo: app.globalData.userInfo,
@@ -145,6 +155,7 @@ Page({
             // console.log(res)
           }
         })
+      }
   },
 
   /**

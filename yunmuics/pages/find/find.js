@@ -14,7 +14,7 @@ Page({
       {
         title: "歌单",
         imgUrl: "./img/歌单.png",
-        gotoUrl: "../songSeet/songSeet"
+        gotoUrl: "./find-page/songSheet/songSheet"
       },
       {
         title: "排行榜",
@@ -68,7 +68,33 @@ Page({
       url: e.currentTarget.dataset.url
     })
   },
-
+  findMore: function (e) {
+    let index = e.currentTarget.dataset.index
+    let urlStr = ''
+    if (index == 0) {
+      urlStr = './find-page/songSheet/songSheet'
+    }
+    wx.navigateTo({
+      url: urlStr
+    })
+  },
+  gotoSongList(e) {
+    //获取页面传递的歌单id
+    let listId = e.currentTarget.dataset.id
+    // console.log(listId)
+    wx.navigateTo({
+      url: `../songList/songList?listId=${listId}`,
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
   //获取轮播图
   getBanner: function () {
     API.getBanner({
@@ -144,7 +170,7 @@ Page({
     })
     console.log("输出的token")
     console.log(this.data.login_token)
-  
+
   },
 
   /**

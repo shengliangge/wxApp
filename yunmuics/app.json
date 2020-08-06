@@ -1,13 +1,14 @@
 {
   "pages": [
     "pages/find/find",
-    "pages/songSeet/songSeet",
     "pages/mine/mine",
     "pages/cloud/cloud",
     "custom-tab-bar/index",
     "pages/play/play",
     "pages/login/login",
-    "pages/find/find-page/recommend/recommend",
+    "pages/find/find-page/songSheet/songSheet",
+    "pages/find/find-page/rankingList/rankingList",
+    "pages/songList/songList",
     "pages/search/search"
   ],
   "window": {

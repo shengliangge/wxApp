@@ -12,7 +12,8 @@
 				 type="text"
 				 placeholder="手机号"
 				 placeholder-class="pla-class"
-				 name='username'
+				 name="username"
+				 focus="{{autoFocus}}"
 				>
 				</input>
 				<input

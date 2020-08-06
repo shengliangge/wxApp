@@ -52,9 +52,7 @@ Page({
     // 将当前音乐id传到全局
     app.globalData.songId = musicId
     // console.log(app.globalData.songId)
-    const innerAudioContext = wx.createInnerAudioContext()
     this.setData({
-      innerAudioContext,
       isPlay: true
     })
 
@@ -186,7 +184,7 @@ Page({
         that.setData({
           marginTop: (that.data.currentIndex - 3) * 39
         })
-        console.log(this.data.marginTop)
+        // console.log(this.data.marginTop)
       }
       // 当前歌词对应行颜色改变
       if (that.data.currentIndex != that.data.storyContent.length - 1) {//
