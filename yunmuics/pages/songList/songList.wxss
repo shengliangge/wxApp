@@ -1,0 +1,186 @@
+/* pages/songlist/songlist.wxss */
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.background_img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    /* css3滤镜属性，blur设置高斯模糊  brightness设置变暗*/
+    filter: blur(20px) brightness(80%);
+    z-index: -1;
+    /*和网易云音乐对比了一下，发现他们是也是放大1.5倍*/
+    transform: scale(1.8);
+    
+}
+
+.top {
+    width: 100%;
+    height: 490rpx;
+}
+
+.top-desc {
+    width: 100%;
+    height: 350rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.desc-img {
+    width: 250rpx;
+    height: 250rpx;
+    border-radius: 10rpx;
+    margin-right: 40rpx;
+}
+.desc-right{
+    width: 410rpx;
+    display: flex;
+    flex-wrap: wrap;
+  
+}
+.user-info{
+    width: 100%;
+    margin: 20rpx 0;
+    display: flex;
+    align-items: center;
+}
+.info-pic{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    margin-right: 10rpx;
+}
+.user-nickname{
+    color: rgba(255,255,255,.8);
+}
+.desc-name{
+    color: #ffffff;
+    font-size: 34rpx;
+    font-weight: 500;
+}
+.desc-description{
+    color:rgba(255,255,255,.5);
+    font-size: 26rpx;
+    max-height: 68rpx;
+    overflow: hidden;
+}
+.list {
+    height: 100rpx;
+    display: flex;
+    justify-content: space-around;
+    color: rgba(255, 255, 255, .7);
+    margin-bottom: 20rpx;
+}
+
+.list-img {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.list-name {
+    font-size: 25rpx;
+}
+
+.down {
+    width: 100%;
+    height: 100%;
+    padding: 20rpx;
+    border-top-left-radius: 50rpx;
+    border-top-right-radius: 50rpx;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    top: -20px;
+    background-color: white;
+}
+
+.buttonBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.collectBox {
+    height: 65rpx;
+    background-color: rgb(254, 58, 59);
+    color: rgba(255, 255, 255, .8);
+    padding: 10rpx;
+    border-radius: 40rpx;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.broadcast {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.broadcast-name {
+    margin-left: 20rpx;
+    margin-right: -10rpx;
+}
+
+.broadcast-desc {
+    flex: 50%;
+}
+
+.broadcast-num {
+    font-size: 24rpx;
+    color: rgb(169, 169, 169);
+}
+
+.broadcast-pic {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.broadcast-img {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.song-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30rpx;
+}
+
+.song-index {
+    color: #978e8e;
+}
+
+.song {
+    flex: 70%;
+    padding-left: 30rpx;
+}
+
+.song-name {
+    max-width: 500rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-bottom: 10rpx;
+}
+
+.song-author {
+    color: #978e8e;
+    font-size: 22rpx;
+    max-width: 500rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.broadcast-pic {
+    padding-right: 15rpx;
+}
