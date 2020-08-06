@@ -9,17 +9,17 @@ Page({
       {
         title: "每日推荐",
         imgUrl: "./img/每日推荐.png",
-        gotoUrl: "./find-page/recommend/recommend"
+        gotoUrl: "../recommend/recommend"
       },
       {
         title: "歌单",
         imgUrl: "./img/歌单.png",
-        gotoUrl: "./find-page/songSheet/songSheet"
+        gotoUrl: "../songSheet/songSheet"
       },
       {
         title: "排行榜",
         imgUrl: "./img/排行榜.png",
-        gotoUrl: "./find-page/rankingList/rankingList"
+        gotoUrl: "../rankingList/rankingList"
       },
       {
         title: "电台",
@@ -72,7 +72,7 @@ Page({
     let index = e.currentTarget.dataset.index
     let urlStr = ''
     if (index == 0) {
-      urlStr = './find-page/songSheet/songSheet'
+      urlStr = '../songSheet/songSheet'
     }
     wx.navigateTo({
       url: urlStr

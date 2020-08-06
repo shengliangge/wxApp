@@ -1,5 +1,4 @@
-// pages/songSeet/songSeet.js
-const API = require('../../../../utils/api')
+const API = require('../../utils/api')
 
 Page({
 
@@ -7,25 +6,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-    songsheet: [],
+    songSheet: [],
     swiperIdx: 0
   },
-  bindchange(e) {
+  bindChange(e) {
     this.setData({
       swiperIdx: e.detail.current
     })
   },
   //获取歌单信息
-  getsongsheet: function () {
-    API.getsongsheet({
+  getSongSheet: function () {
+    API.getSongSheet({
       type: 2
     }).then(res => {
       if (res.code === 200) { //更加严谨
         console.log(res)
         this.setData({
-          songsheet: res.playlists
+          songSheet: res.playlists
         })
 
+      }
+    })
+  },
+  gotoSongList(e) {
+    //获取页面传递的歌单id
+    let listId = e.currentTarget.dataset.id
+    // console.log(listId)
+    wx.navigateTo({
+      url: `../songList/songList?listId=${listId}`,
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
       }
     })
   },
@@ -33,7 +49,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getsongsheet()
+    this.getSongSheet()
   },
 
   /**

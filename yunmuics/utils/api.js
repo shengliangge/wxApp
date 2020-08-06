@@ -39,7 +39,7 @@ module.exports ={
   getBanner:(data)=>{
     return request('/banner',data)//个性推荐轮播
   },
-  getsongsheet:(data)=>{//歌单
+  getSongSheet:(data)=>{//歌单
     return request('/top/playlist',data)//热门歌单接口
   },
   getNewSong:(data)=>{
