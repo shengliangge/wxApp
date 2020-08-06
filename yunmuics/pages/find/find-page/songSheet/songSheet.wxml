@@ -37,7 +37,11 @@
 				<block wx:for="{{songsheet}}" wx:key="index">
 
 					<swiper-item wx:if="{{index<=2}}" class="page-swiper-item">
-						<view bindtap="gotoSongList" class="slide-item {{swiperIdx == index ? 'active' : 'quiet'}}">
+						<view
+						 bindtap="gotoSongList"
+						 data-id="{{item.id}}"
+						 class="slide-item {{swiperIdx == index ? 'active' : 'quiet'}}"
+						>
 							<image
 							 class="slide-item-img"
 							 src="{{item.coverImgUrl}}"
