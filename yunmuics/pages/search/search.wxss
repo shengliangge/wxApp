@@ -1,4 +1,70 @@
 /* pages/search/search.wxss */
+.weui-search-bar{
+    position:relative;
+    /* padding:8px; */
+    display:flex;
+    box-sizing:border-box;
+    /* background-color:#EDEDED; */
+    -webkit-text-size-adjust:100%;
+    align-items:center
+}
+.weui-icon-search{
+    margin-right:8px;font-size:14px;vertical-align:top;margin-top:.64em;
+    height:1em;line-height:1em
+}
+.weui-icon-search_in-box{
+    position:absolute;left:12px;top:50%;margin-top:-8px
+}
+.weui-search-bar__text{
+    display:inline-block;font-size:14px;vertical-align:top
+}
+.weui-search-bar__form{
+    position:relative;
+    /* flex:auto;
+    border-radius:4px;
+    background:#FFFFFF */
+    border-bottom: 1px solid #000;
+    margin-left: 30rpx;
+    width: 480rpx;
+
+}
+.weui-search-bar__box{
+    position:relative;padding-left:32px;
+    /* padding-right:32px;
+    width:100%; */
+    box-sizing:border-box;z-index:1
+}
+.weui-search-bar__input{
+    height:32px;line-height:32px;font-size:14px;caret-color:#07C160
+}
+.weui-icon-clear{
+    position:absolute;top:0;right:0;bottom:0;padding:0 12px;font-size:0
+}
+.weui-icon-clear:after{
+    content:"";height:100%;vertical-align:middle;display:inline-block;width:0;overflow:hidden
+}
+.weui-search-bar__label{
+    position:absolute;top:0;right:0;bottom:0;left:0;z-index:2;border-radius:4px;
+    text-align:center;color:rgba(0,0,0,0.5);background:#FFFFFF;line-height:32px
+}
+.weui-search-bar__cancel-btn{
+    margin-left:8px;line-height:32px;color:#576B95;white-space:nowrap
+}
+
+.return-pic {
+    width: 60rpx;
+    height: 60rpx;
+    margin-left: 20rpx;
+}
+.songer-pic{
+    width: 60rpx;
+    height: 60rpx;
+    margin-left: 40rpx;
+}
+
+
+
+
 .wrapper {
     width: 100%;
     height: 100%;
@@ -113,19 +179,19 @@
     align-content: center;
 }
 .song {
-    margin-top:-80rpx;
+    margin: -120rpx 0 0 30rpx;
+    display: flex;
+    flex-wrap: wrap;
 }
 .rankigList-songname {
     font-size: 30rpx;
-    /* position: absolute; */
     margin-left: 40rpx;
 }
 .rankigList-hotsong {
     font-size: 25rpx;
-    position: absolute;
-    margin-left: 20rpx;
-    margin-top: 6rpx;
     font-weight: 550;
+    margin-top: 45rpx;
+    margin-left: 20rpx;
 }
 .rankigList-hotnum {
     float: right;
@@ -142,3 +208,65 @@
     margin-left: 60rpx;
     margin-top: -30rpx;
 }
+
+
+
+
+
+
+.search_suggest{
+    width:560rpx;
+    height:100%;
+    margin-left: 30rpx;
+  }
+  .search-pic {
+      width: 50rpx;
+      height: 50rpx;
+     margin-top: 25rpx;
+  }
+  .search_result{
+    /* display: block;
+    font-size: 14px;
+    color: #000000;
+    padding: 15rpx;
+    margin: 15rpx; */
+    /* border-bottom: 1px solid #eaeaea; */
+    /* float: right; */
+    /* margin-left: -450rpx; */
+    width: 100%;
+    height: 100rpx;
+    border-bottom: 1px solid #eaeaea;
+  }
+  .search_suggest_name {
+    display: block;
+    float: right;
+    position: absolute;
+    margin-left: 60rpx;
+    margin-top: -36rpx;
+    font-size: 14px;
+    color: darkgrey;
+    /* padding: 15rpx;
+    margin: 15rpx; */
+    
+  }
+  .search_result_songs{
+    margin-top: 100rpx;
+    width: 100%;
+    height: 100%;
+  }
+  .search_result_song_item{
+     display: block;
+     margin: 15rpx;
+     border-bottom: 1px solid #EDEEF0;
+  }
+  .search_result_song_song_name{
+    font-size: 15px;
+    color: #000000;
+    margin-bottom: 15rpx;
+  }
+  .search_result_song_song_art-album{
+    font-size: 11px;
+    color: #000000;
+    font-weight:lighter;
+    margin-bottom: 5rpx;
+  }

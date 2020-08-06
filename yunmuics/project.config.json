@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -87,9 +87,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/songlist/songlist",
-					"pathName": "pages/songlist/songlist",
+					"id": 3,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
 					"query": "",
 					"scene": null
 				},
@@ -97,6 +97,7 @@
 					"id": -1,
 					"name": "pages/search/search",
 					"pathName": "pages/search/search",
+					"query": "",
 					"scene": null
 				}
 			]

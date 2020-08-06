@@ -6,15 +6,9 @@
     "pages/cloud/cloud",
     "custom-tab-bar/index",
     "pages/play/play",
-<<<<<<< HEAD
-    "pages/find/find-page/rankingList/rankingList",
-    "pages/songlist/songlist",
-    "pages/search/search"
-=======
     "pages/login/login",
-    "pages/songList/songList",
-    "pages/find/find-page/recommend/recommend"
->>>>>>> 90b47fc26ce8b69705231be97e9749fd6f10e7fe
+    "pages/find/find-page/recommend/recommend",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
