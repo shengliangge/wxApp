@@ -211,7 +211,7 @@ Page({
           }
         }
       }
-      console.log(backgroundAudioManager.currentTime)
+      // console.log(backgroundAudioManager.currentTime)
     })
     // const history_songId = this.data.history_songId
     // console.log(this.data.history_songId)
@@ -267,10 +267,9 @@ Page({
     this.setData({
       showLyric: !this.data.showLyric
     })
+    console.log(this.data.storyContent)
     if (this.data.lrcDir == "纯音乐，无歌词") {
-      this.setData({
-        storyContent:"纯音乐，无歌词"
-      })
+    
      } else {
       this.setData({
         storyContent: this.sliceNull(this.parseLyric(this.data.lrcDir))

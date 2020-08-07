@@ -31,8 +31,8 @@
 				<block wx:for='{{storyContent}}' wx:key="index">
 					<view class="lyric">
 						<view class="lyric-text {{currentIndex == index ? 'currentTime' : ''}}">{{item[1]}}</view>
+						<!-- <view class="lyric-text" wx:else>纯音乐，无歌词 </view> -->
 					</view>
-
 				</block>
 			</view>
 		</scroll-view>
