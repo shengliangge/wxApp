@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hidden: true,
+    hidden: true,  //歌词是否隐藏
     innerAudioContext: {},  //小程序音乐播放api对象
     isPlay: true,   //是否播放
     song: [],    //歌曲信息
@@ -17,10 +17,10 @@ Page({
     songId: [],     //播放列表id
     history_songId: [],  //历史记录
     backgroundAudioManager: {},  //背景音频
-    duration: '',
-    currentTime: '00:00',
-    totalProcessNum: 0,
-    currentProcessNum: 0,
+    duration: '',             //总音乐时间（00:00格式）
+    currentTime: '00:00',      //当前音乐时间（00:00格式）
+    totalProcessNum: 0,         //总音乐时间 （秒）
+    currentProcessNum: 0,       //当前音乐时间（秒）
     //歌词文稿内容
     lrcDir: '纯音乐，无歌词',
     //文稿数组，转化完成用来在wxml中使用
@@ -40,7 +40,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     //获取到其他页面传来的musicId
     console.log(options)
     const musicId = options.musicId
@@ -52,9 +51,6 @@ Page({
     // 将当前音乐id传到全局
     app.globalData.songId = musicId
     // console.log(app.globalData.songId)
-    this.setData({
-      isPlay: true
-    })
 
     //获取到歌曲音频，则显示出歌曲的名字，歌手的信息，即获取歌曲详情；如果失败，则播放出错。
     wx.request({
@@ -109,7 +105,12 @@ Page({
                     })
                   }
                 })
-              } else {
+              } else if (res.data.nolyric) {
+                this.setData({
+                  lrcDir: "纯音乐，无歌词"
+                })
+              }
+              else {
                 this.setData({
                   lrcDir: res.data.lrc.lyric
                 })
@@ -157,22 +158,23 @@ Page({
 
   createBackgroundAudioManager(res) {
     // console.log(res)
-    // //  后台音乐
+    //   后台音乐
     const backgroundAudioManager = wx.getBackgroundAudioManager(); //获取全局唯一的背景音频管理器。并把它给实例backgroundAudioManager 
     app.globalData.backgroundAudioManager = backgroundAudioManager;         //把实例backgroundAudioManager (背景音频管理器) 给 全局
     // console.log(this.data.song.name)
     backgroundAudioManager.title = this.data.song.name;                        //把title 音频标题 给实例
-    // console.log(this.data.song)
     backgroundAudioManager.singer = this.data.song.ar[0].name;                 //音频歌手给实例
     backgroundAudioManager.coverImgUrl = this.data.song.al.picUrl;             //音频图片 给实例
     // 设置src立即播放
     backgroundAudioManager.src = res.url;      // res.url 在createBgAudio 为 mp3音频  url为空，播放出错
     // console.log(backgroundAudioManager)
     this.setData({
+      isPlay: true,
       backgroundAudioManager
     })
+    //监听背景音乐进度更新事件
     backgroundAudioManager.onTimeUpdate(() => {
-      let that = this
+      // let that = this
       this.setData({
         totalProcessNum: backgroundAudioManager.duration,
         currentProcessNum: backgroundAudioManager.currentTime,
@@ -180,28 +182,28 @@ Page({
         duration: this.formatSecond(backgroundAudioManager.duration)
       })
       // 歌词滚动
-      if (this.data.currentIndex >= 3) {//超过6行开始滚动
-        that.setData({
-          marginTop: (that.data.currentIndex - 3) * 39
+      if (this.data.currentIndex >= 3) {//超过3行开始滚动
+        this.setData({
+          marginTop: (this.data.currentIndex - 3) * 39
         })
         // console.log(this.data.marginTop)
       }
       // 当前歌词对应行颜色改变
-      if (that.data.currentIndex != that.data.storyContent.length - 1) {//
+      if (this.data.currentIndex != this.data.storyContent.length - 1) {//
         var j = 0;
-        for (var j = that.data.currentIndex; j < that.data.storyContent.length; j++) {
+        for (var j = this.data.currentIndex; j < this.data.storyContent.length; j++) {
           // 当前时间与前一行，后一行时间作比较， j:代表当前行数
-          if (that.data.currentIndex == that.data.storyContent.length - 2) {
+          if (this.data.currentIndex == this.data.storyContent.length - 2) {
             //最后一行只能与前一行时间比较
-            if (parseFloat(backgroundAudioManager.currentTime) > parseFloat(that.data.storyContent[that.data.storyContent.length - 1][0])) {
-              that.setData({
-                currentIndex: that.data.storyContent.length - 1
+            if (parseFloat(backgroundAudioManager.currentTime) > parseFloat(this.data.storyContent[this.data.storyContent.length - 1][0])) {
+              this.setData({
+                currentIndex: this.data.storyContent.length - 1
               })
               return;
             }
           } else {
-            if (parseFloat(backgroundAudioManager.currentTime) > parseFloat(that.data.storyContent[j][0]) && parseFloat(backgroundAudioManager.currentTime) < parseFloat(that.data.storyContent[j + 1][0])) {
-              that.setData({
+            if (parseFloat(backgroundAudioManager.currentTime) > parseFloat(this.data.storyContent[j][0]) && parseFloat(backgroundAudioManager.currentTime) < parseFloat(this.data.storyContent[j + 1][0])) {
+              this.setData({
                 currentIndex: j
               })
               return;
@@ -209,7 +211,7 @@ Page({
           }
         }
       }
-      // console.log(backgroundAudioManager.currentTime)
+      console.log(backgroundAudioManager.currentTime)
     })
     // const history_songId = this.data.history_songId
     // console.log(this.data.history_songId)
@@ -228,7 +230,6 @@ Page({
 
     // backgroundAudioManager .onEnded(() => {                  //监听背景音乐自然结束事件，结束后自动播放下一首。自然结束，调用go_lastSong()函数，即歌曲结束自动播放下一首歌
     //   this.go_lastSong();
-
     // })
     // wx.setStorageSync('historyId', history_songId); //把historyId存入缓存
   },
@@ -238,9 +239,9 @@ Page({
     var secondType = typeof second;
     if (secondType === "number" || secondType === "string") {
       second = parseInt(second);
-      var mimute = Math.floor(second / 60);
-      second = second - mimute * 60;
-      return ("0" + mimute).slice(-2) + ":" + ("0" + second).slice(-2);
+      var minute = Math.floor(second / 60);
+      second = second - minute * 60;
+      return ("0" + minute).slice(-2) + ":" + ("0" + second).slice(-2);
     } else {
       return "00:00";
     }
@@ -266,16 +267,27 @@ Page({
     this.setData({
       showLyric: !this.data.showLyric
     })
-    console.log('歌词')
-    this.setData({
-      storyContent: this.sliceNull(this.parseLyric(this.data.lrcDir))
-    })
+    if (this.data.lrcDir == "纯音乐，无歌词") {
+      this.setData({
+        storyContent:"纯音乐，无歌词"
+      })
+     } else {
+      this.setData({
+        storyContent: this.sliceNull(this.parseLyric(this.data.lrcDir))
+      })
+    }
+    // console.log('歌词')
+    // console.log(this.data.lrcDir)
+    //  let parseLyric= this.parseLyric(this.data.lrcDir)
+    //  console.log(parseLyric)
+
   },
   //格式化歌词
   parseLyric: function (text) {
     var result = [];
     var lines = text.split('\n'), //切割每一行
-      pattern = /\[\d{2}:\d{2}.\d{2}\]/g //用于匹配时间的正则表达式，匹配的结果类似[xx:xx.xx]
+      pattern = /\[\d{2}:\d{2}.\d{3}\]/g;//用于匹配时间的正则表达式，匹配的结果类似[xx:xx.xx]
+    console.log(lines);
     //去掉不含时间的行
     while (!pattern.test(lines[0])) {
       lines = lines.slice(1);
@@ -295,7 +307,7 @@ Page({
         result.push([parseInt(t[0], 10) * 60 + parseFloat(t[1]), value]);
       });
     });
-    //最后将结果数组中的元素按时间大小排序，以便保存之后正常显示歌词
+    // 最后将结果数组中的元素按时间大小排序，以便保存之后正常显示歌词
     result.sort(function (a, b) {
       return a[0] - b[0];
     });
