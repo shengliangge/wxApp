@@ -7,7 +7,7 @@
 		<view class="nav-bar" style="{{navBarStyle}}">
 			<view class="nav">
 				<view class="nav-back" bindtap="back">
-					<image class="nav-img back__img" src="../../image/back.png" />
+					<image class="nav-img back__img" src="../../image/nav_back.png" />
 				</view>
 				<view class="nav-change">
 					<view class="nav-text nav-mine">
@@ -33,7 +33,7 @@
 				</view>
 				<view class="nav-serach">
 					<navigator url="../../pages/mine/mine">
-						<image class="nav-img serach__img" src="../../image/seach.png"></image>
+						<image class="nav-img serach__img" src="../../image/nav_seach.png"></image>
 					</navigator>
 				</view>
 			</view>

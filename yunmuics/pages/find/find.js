@@ -8,42 +8,42 @@ Page({
     entryIcon: [
       {
         title: "每日推荐",
-        imgUrl: "./img/每日推荐.png",
+        imgUrl: "../../image/find_recommend.png",
         gotoUrl: "../recommend/recommend"
       },
       {
         title: "歌单",
-        imgUrl: "./img/歌单.png",
+        imgUrl: "../../image/find_songSheet.png",
         gotoUrl: "../songSheet/songSheet"
       },
       {
         title: "排行榜",
-        imgUrl: "./img/排行榜.png",
+        imgUrl: "../../image/find_rankingList.png",
         gotoUrl: "../rankingList/rankingList"
       },
       {
         title: "电台",
-        imgUrl: "./img/电台.png"
+        imgUrl: "../../image/find_radio.png"
       },
       {
         title: "直播",
-        imgUrl: "./img/直播.png"
+        imgUrl: "../../image/find_broadcast.png"
       },
       {
         title: "火前留名",
-        imgUrl: "./img/火前留名.png"
+        imgUrl: "../../image/find_fire.png"
       },
       {
         title: "数字专辑",
-        imgUrl: "./img/数字专辑.png"
+        imgUrl: "../../image/find_album.png"
       },
       {
         title: "唱聊",
-        imgUrl: "./img/唱聊.png"
+        imgUrl: "../../image/find_sing.png"
       },
       {
         title: "线上演出",
-        imgUrl: "./img/线上演出.png"
+        imgUrl: "../../image/find_show.png"
       },
     ],
     indicatorDots: "true",
@@ -56,17 +56,27 @@ Page({
     banners: [],
     recommendList: [],
     blocks: [],
-    songsheet: [],
+    songSheet: [],
     boll: [],
     userInfo: {},
     login_token: ""
   },
   //首页跳转到相应的入口页面
   toSongSheet: function (e) {
-    // console.log(e)
-    wx.navigateTo({
-      url: e.currentTarget.dataset.url
-    })
+    let url = e.currentTarget.dataset.url//获取页面传来的url
+    if (url == "../recommend/recommend" && app.globalData.login_token === '') { //每日推荐需要登陆才能使用
+      wx.showToast({
+        title: '未登录,请登陆后尝试！',
+        icon: 'none',
+        mask: true,
+        duration: 2500
+      })
+    } else {
+      wx.navigateTo({
+        url: e.currentTarget.dataset.url
+      })
+    }
+
   },
   findMore: function (e) {
     let index = e.currentTarget.dataset.index

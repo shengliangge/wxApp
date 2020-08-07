@@ -20,7 +20,7 @@
 			<text>民谣</text>
 		</view>
 		<view>
-			<image class="recommend-head__more" src="../../image/more1.png"></image>
+			<image class="recommend-head__more" src="../../image/songSheet_more.png"></image>
 		</view>
 	</view>
 
@@ -48,7 +48,7 @@
 							 mode='aspectFill'
 							></image>
 							<view class="play-count">
-								<image class="play" src="./img/play.png"></image>
+								<image class="play" src="../../image/songSheet_play.png"></image>
 								{{item.playCount}}
 							</view>
 							<view class="content-swiper-text">

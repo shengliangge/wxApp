@@ -94,7 +94,7 @@
 				{{blocks[1].uiElement.subTitle.title}}
 			</view>
 			<view class="play-text-after">
-				<image class="play-text-img" src="./img/播放.png"></image>
+				<image class="play-text-img" src="../../image/find_play_pic.png"></image>
 				{{blocks[1].uiElement.button.text}}
 			</view>
 		</view>
@@ -133,7 +133,7 @@
 								 bindtap="playMusic"
 								 data-in="{{item.resourceExtInfo.songData}}"
 								>
-									<image class="play-img-aft" src="./img/play.png"></image>
+									<image class="play-img-aft" src="../../image/find_play.png"></image>
 								</view>
 							</view>
 						</block>
@@ -234,7 +234,7 @@
 				新歌|新碟
 			</view>
 			<view class="play-text-after">
-				<image class="play-text-img" src="./img/播放.png"></image>
+				<image class="play-text-img" src="../../image/find_play_pic.png"></image>
 				更多新歌
 			</view>
 		</view>
@@ -273,7 +273,7 @@
 								 bindtap="playMusic"
 								 data-in="{{item.resourceExtInfo.songData}}"
 								>
-									<image class="play-img-aft" src="./img/play.png"></image>
+									<image class="play-img-aft" src="../../image/find_play.png"></image>
 								</view>
 							</view>
 						</block>
@@ -290,7 +290,7 @@
 				{{blocks[6].uiElement.subTitle.title}}
 			</view>
 			<view class="play-text-after">
-				<image class="play-text-img" src="./img/播放.png"></image>
+				<image class="play-text-img" src="../../image/find_play_pic.png"></image>
 				{{blocks[6].uiElement.button.text}}
 			</view>
 		</view>
@@ -329,7 +329,7 @@
 								 bindtap="playMusic"
 								 data-in="{{item.resourceExtInfo.songData}}"
 								>
-									<image class="play-img-aft" src="./img/play.png"></image>
+									<image class="play-img-aft" src="../../image/find_play.png"></image>
 								</view>
 							</view>
 						</block>
