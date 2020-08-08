@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hidden: true,  //歌词是否隐藏
+    hidden: false,  //加载是否隐藏
     innerAudioContext: {},  //小程序音乐播放api对象
     isPlay: true,   //是否播放
     song: [],    //歌曲信息
@@ -78,11 +78,7 @@ Page({
           this.setData({
             song: res.data.songs[0],  //获取到歌曲的详细内容，传给song
           })
-          if (!this.setData.song == []) {
-            this.setData({
-              hidden: true
-            });
-          }
+         
           // 获取歌词
           wx.request({
             url: 'http://47.98.159.95/m-api/lyric',
@@ -166,12 +162,15 @@ Page({
     backgroundAudioManager.singer = this.data.song.ar[0].name;                 //音频歌手给实例
     backgroundAudioManager.coverImgUrl = this.data.song.al.picUrl;             //音频图片 给实例
     // 设置src立即播放
+    if(res.url!=null){
     backgroundAudioManager.src = res.url;      // res.url 在createBgAudio 为 mp3音频  url为空，播放出错
     // console.log(backgroundAudioManager)
     this.setData({
       isPlay: true,
+      hidden:true,
       backgroundAudioManager
     })
+  }
     //监听背景音乐进度更新事件
     backgroundAudioManager.onTimeUpdate(() => {
       // let that = this

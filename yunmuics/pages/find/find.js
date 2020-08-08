@@ -4,6 +4,7 @@ const app = getApp();
 Page({
   // 页面的初始数据
   data: {
+    hidden: false,  //加载是否隐藏
     //入口图标
     entryIcon: [
       {
@@ -174,12 +175,13 @@ Page({
       success: (res) => {
         // console.log(res)
         this.setData({
-          blocks: res.data.data.blocks
+          blocks: res.data.data.blocks,
+          hidden:true
         })
       }
     })
-    console.log("输出的token")
-    console.log(this.data.login_token)
+    // console.log("输出的token")
+    // console.log(this.data.login_token)
 
   },
 

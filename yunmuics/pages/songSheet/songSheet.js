@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hidden: false,  //加载是否隐藏
     songSheet: [],
     swiperIdx: 0
   },
@@ -22,7 +23,8 @@ Page({
       if (res.code === 200) { //更加严谨
         console.log(res)
         this.setData({
-          songSheet: res.playlists
+          songSheet: res.playlists,
+          hidden:true
         })
 
       }

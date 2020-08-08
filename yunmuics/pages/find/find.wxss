@@ -38,8 +38,8 @@ color: #ffffff;
 
 .scroll-view__X {
   display: inline-block;
-  width: 80rpx;
-  padding-right: 50rpx;
+  width: 85rpx;
+  margin-right: 45rpx;
   height: 130rpx;
   text-align: center;
 }

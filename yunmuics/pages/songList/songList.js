@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hidden: false,  //加载是否隐藏
     detail: [
       {
         img: 'img/message.png',
@@ -56,10 +57,11 @@ Page({
       },
       //成功回调函数 成功 200
       success: (res) => {
-        console.log(res)
-        console.log("find第二个歌单登陆成功吗？", res.data)
+        // console.log(res)
+        // console.log("find第二个歌单登陆成功吗？", res.data)
         this.setData({
-          playlist: res.data.playlist
+          playlist: res.data.playlist,
+          hidden:true
         })
       }
     })
