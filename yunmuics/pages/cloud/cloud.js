@@ -8,44 +8,44 @@ Page({
     isLeft: true,
     detail: [
       {
-        videopict: 'https://p1.music.126.net/NvNqY6FKWvI0QPLdfL7uOA==/109951164583067600.jpg?param=300x300" alt="music',
+        videoPict: 'https://p1.music.126.net/NvNqY6FKWvI0QPLdfL7uOA==/109951164583067600.jpg?param=300x300" alt="music',
         desc: '最棒的抖腿车载',
-        headpic: 'img/t1.jpg',
+        headPic: '../../image/cloud_t1.jpg',
         writer: 'RM-Music',
         good: '3268赞',
-        navigation: 'img/daohang.png'
+        navigation: '../../image/cloud_dao.png'
       },
       {
-        videopict: 'https://p1.music.126.net/5qehxWSSDYYmhfRc9BHcxQ==/109951165125269160.jpg?param=300x300" alt="music',
+        videoPict: 'https://p1.music.126.net/5qehxWSSDYYmhfRc9BHcxQ==/109951165125269160.jpg?param=300x300" alt="music',
         desc: '好听到可以单曲循环鸭',
-        headpic: 'img/t2.jpg',
+        headPic: '../../image/cloud_t2.jpg',
         writer: 'THE上官李昂LYON3',
         good: '4960赞',
-        navigation: 'img/daohang.png'
+        navigation: '../../image/cloud_dao.png'
       },
       {
-        videopict: 'https://p1.music.126.net/fNadutk_u3NAaxsNhCjUCA==/109951164890583661.jpg?param=300x300" alt="music',
+        videoPict: 'https://p1.music.126.net/fNadutk_u3NAaxsNhCjUCA==/109951164890583661.jpg?param=300x300" alt="music',
         desc: '网易云音乐过10w+评论的中文歌曲',
-        headpic: 'img/t3.jpg',
+        headPic: '../../image/cloud_t3.jpg',
         writer: 'Rangsiz',
         good: '5858赞',
-        navigation: 'img/daohang.png'
+        navigation: '../../image/cloud_dao.png'
       },
       {
-        videopict: 'https://p1.music.126.net/5OEBqDp1aSVGktt-OxpsCg==/109951164978811959.jpg?param=300x300" alt="music',
+        videoPict: 'https://p1.music.126.net/5OEBqDp1aSVGktt-OxpsCg==/109951164978811959.jpg?param=300x300" alt="music',
         desc: '情迷春日|山花开满遍地，正式心动时分',
-        headpic: 'img/t4.jpg',
+        headPic: '../../image/cloud_t4.jpg',
         writer: 'Z在此婷留',
         good: '980赞',
-        navigation: 'img/daohang.png'
+        navigation: '../../image/cloud_dao.png'
       },
       {
-        videopict: 'https://p1.music.126.net/uvJnSVQUWU6VM_F9bxWFHw==/109951165145592233.jpg?param=300x300" alt="music',
+        videoPict: 'https://p1.music.126.net/uvJnSVQUWU6VM_F9bxWFHw==/109951165145592233.jpg?param=300x300" alt="music',
         desc: '你有时差症，总以为他还爱你',
-        headpic: 'img/t5.jpg',
+        headPic: '../../image/cloud_t5.jpg',
         writer: 'QC队长',
         good: '6580赞',
-        navigation: 'img/daohang.png'
+        navigation: '../../image/cloud_dao.png'
       }
     ]
   },

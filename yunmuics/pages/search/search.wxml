@@ -3,14 +3,13 @@
     <!-- 上部整个搜索框 -->
     <view class="weui-search-bar">
         <!-- 返回箭头按钮 -->
-         <view class="weui-search-bar__cancel-btn {{isCancel?'':'hide'}}" bindtap="cancel">
-            <image class="return-pic" src="img/return.png" />
+        <view class="weui-search-bar__cancel-btn {{isCancel?'':'hide'}}" bindtap="cancel">
+            <image class="return-pic" src="../../image/search_return.png" />
         </view>
         <!-- 搜索栏 -->
         <view class="weui-search-bar__form">
             <view class="weui-search-bar__box">
-                <icon class="weui-icon-search_in-box" type="search" size="14" color='#EDA8A3'></icon>
-                <input focus='true' type="text" class="weui-search-bar__input" placeholder="请输入歌手或歌曲名" placeholder-style="color:#EDA8A3" value='{{inputValue}}' bindinput="getsearchKey" bindblur="routeSearchResPage" bindconfirm="searchover" />
+                <input focus='true' type="text" class="weui-search-bar__input" placeholder="大家都在搜 " placeholder-style="color:#eaeaea" value='{{inputValue}}' bindinput="getsearchKey" bindblur=" routeSearchResPage" bindconfirm="searchover" />
                 <!-- 点击×可以清空正在输入 -->
                 <view class="weui-icon-clear">
                     <icon type="clear" size="14" color='#EDA8A3' bindtap="clearInput"></icon>
@@ -19,16 +18,35 @@
         </view>
         <!-- 跳转歌手分类界面 -->
         <view class="songer">
-            <image class="songer-pic" src="img/songner.png" />
+            <image class="songer-pic" src="../../image/search_songner.png" />
         </view>
     </view>
+    <!-- 搜索历史 -->
+    <!-- <view class="{{showView?'option':'header_view_hide'}}">
+        <text class="title history">搜索历史</text>
+        <icon type='clear' bindtap="clearHistory" class="title record" color="#DE655C"></icon>
+        <view class="hot_key_box">
+            <text class="hot_keys_box_item" wx:for="{{history}}" wx:key="" data-value='{{item}}' data-index="{{index}}" bindtap="fill_value">
+                {{item}}
+            </text>
+        </view>
+    </view> -->
     <!-- 搜索建议 -->
-    <cover-view class="{{showsongresult?'search_suggest':'header_view_hide'}}">
-        <cover-view wx:for="{{searchsuggest}}" wx:key="" class='search_result' data-value='{{item.keyword}}' bindtap='fill_value'>
-            <cover-image class="search-pic" src="img/search.png"></cover-image>
+    <cover-view class="{{showSongResult?'search_suggest':'header_view_hide'}}">
+        <cover-view wx:for="{{searchSuggest}}" wx:key="" class='search_result' data-value='{{item.keyword}} 'bindtap='fill_value'>
+            <cover-image class="search-pic" src="../../image/search_search.png"></cover-image>
             <cover-view class="search_suggest_name">{{item.keyword}}</cover-view>
         </cover-view>
     </cover-view>
+    <!-- 搜索结果 -->
+    <view class='search_result_songs'>
+        <view wx:for="{{searchresult}}" wx:key="index" class='search_result_song_item' data-id="{{item.id}}" bindtap='handlePlayAudio'>
+            <view class='search_result_song_song_name'>{{item.name}}</view>
+            <view class='search_result_song_song_art-album'>
+                {{item.artists[0].name}} - {{item.album.name}}
+            </view>
+        </view>
+    </view>
     <view class="poster">
         <text class="postername">广告</text>
         <view class="poster-outside">
@@ -42,17 +60,19 @@
             </view>
         </view>
     </view>
+    <!-- 搜索历史 -->
     <view class="history">
-        <view class="historybox">
+        <view class="{{showView?'option':'historybox'}}">
             <text class="history-name">历史记录</text>
-            <image class="history-delete" src="img/del.png" />
+            <image type='clear' bindtap="clearHistory" class="history-delete" src="../../image/search_del.png" />
         </view>
         <view class="allhistory">
-            <view class="allhistorybox" wx:for="{{his}}" wx:key="index">
-                <text class="historyname">{{item.name}}</text>
+            <view class="allhistorybox" wx:for="{{history}}" wx:key="" data-value='{{item}}' data-index="{{index}}" bindtap="fill_value">
+                <text class="historyname">{{item}}</text>
             </view>
         </view>
     </view>
+    <!-- 热搜榜 -->
     <view class="ranking">
         <text class="ranking-name">热搜榜</text>
     </view>

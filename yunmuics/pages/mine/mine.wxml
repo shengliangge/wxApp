@@ -26,8 +26,8 @@
 	<view class="des">
 		<view class="my">
 			<text class="my-name">我的音乐</text>
-			<image class="my-pic0" src="img/li.png" />
-			<image class="my-pic1" src="img/rt.png" />
+			<image class="my-pic0" src="../../image/mine_li.png" />
+			<image class="my-pic1" src="../../image/mine_rt.png" />
 		</view>
 		<scroll-view class="scroll" scroll-x>
 			<block wx:for="{{describe}}" wx:key="index">
@@ -54,7 +54,7 @@
 				<text class="listname-collect-name">收藏歌单</text>
 				<text class="listname-collect-num">0</text>
 			</view>
-			<image class="listname-pic" src="img/lan.png" />
+			<image class="listname-pic" src="../../image/mine_lan.png" />
 		</view>
 		<view class="add">
 			<text class="add-sign">+</text>

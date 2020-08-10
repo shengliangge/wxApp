@@ -25,20 +25,20 @@
                     <text>[中文咚鼓] 热播上头曲</text>
                 </view>
                 <view class="writer">
-                    <image class="writer-pic" src="img/t0.jpg" />
+                    <image class="writer-pic" src="../../image/cloud_t0.jpg" />
                     <text class="writer-name">不吃香菜-菜菜</text>
                     <text class="writer-num">4140赞</text>
-                    <image class="writer-daohanglan" src="img/daohang.png" />
+                    <image class="writer-daohanglan" src="../../image/cloud_dao.png" />
                 </view>
             </view>
             <block wx:for="{{detail}}" wx:key="index">
                 <view class="otherbox">
-                    <image class="videoimage" src="{{item.videopict}}" />
+                    <image class="videoimage" src="{{item.videoPict}}" />
                     <view class="describe">
                         <text>{{item. desc}}</text>
                     </view>
                     <view class="writer">
-                        <image class="writer-pic" src="{{item.headpic}}" />
+                        <image class="writer-pic" src="{{item.headPic}}" />
                         <text class="writer-name">{{item.writer}}</text>
                         <text class="writer-num">{{item.good}}</text>
                         <image class="writer-daohanglan" src="{{item.navigation}}" />

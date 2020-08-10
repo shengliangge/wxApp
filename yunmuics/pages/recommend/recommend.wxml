@@ -5,7 +5,7 @@
 		<view class="block"></view>
 		<view class="title">
 			<text class="title-name">飙升榜</text>
-			<image class="title-pic" src="img/i .png" />
+			<image class="title-pic" src="../../image/recommend_i .png" />
 			<view class="title-num">最近更新：8月1日</view>
 		</view>
 		<view class="list">
@@ -21,7 +21,7 @@
 	</view>
 	<view class="down">
 		<view class="buttonBox">
-			<image class="broadcast" src="img/cicle.png" />
+			<image class="broadcast" src="../../image/recommend_cicle.png" />
 			<text class="broadcast-name">播放全部</text>
 			<view class="collectBox">
 				<text class="collect-add">多选</text>
@@ -42,9 +42,9 @@
 				 class="broadcast-pic"
 				 bindtap="playMusic"
 				 data-in="{{item}}"
-				 src="img/rectangle.png"
+				 src="../../image/recommend_rectangle.png"
 				/>
-				<image class="broadcast-img" src="img/daohang.png" />
+				<image class="broadcast-img" src="../../image/recommend_daohang.png" />
 			</view>
 		</view>
 	</view>

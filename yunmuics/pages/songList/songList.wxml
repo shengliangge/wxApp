@@ -37,7 +37,7 @@
 	</view>
 	<view class="down">
 		<view class="buttonBox">
-			<image class="broadcast" src="img/cicle.png" />
+			<image class="broadcast" src="../../image/songList_cicle.png" />
 			<view class="broadcast-desc">
 				<text class="broadcast-name">播放全部</text>
 				<text class="broadcast-num">（共100首）</text>
@@ -63,9 +63,9 @@
 				 class="broadcast-pic"
 				 bindtap="playMusic"
 				 data-in="{{item}}"
-				 src="img/rectangle.png"
+				 src="../../image/songList_rectangle.png"
 				/>
-				<image class="broadcast-img" src="img/daohang.png" />
+				<image class="broadcast-img" src="../../image/songList_daohang.png" />
 			</view>
 		</view>
 	</view>
