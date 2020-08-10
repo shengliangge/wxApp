@@ -1,4 +1,4 @@
-// pages/songlist/songlist.js
+// pages/songList/songList.js
 const app = getApp();
 Page({
 
@@ -9,19 +9,19 @@ Page({
     hidden: false,  //加载是否隐藏
     detail: [
       {
-        img: 'img/message.png',
+        img: '../../image/songList_message.png',
         name: '19万',
       },
       {
-        img: 'img/share.png',
+        img: '../../image/songList_share.png',
         name: '8870',
       },
       {
-        img: 'img/download.png',
+        img: '../../image/songList_download.png',
         name: '下载',
       },
       {
-        img: 'img/choose.png',
+        img: '../../image/songList_choose.png',
         name: '多选',
       }
     ],

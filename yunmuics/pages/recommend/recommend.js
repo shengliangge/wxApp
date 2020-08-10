@@ -8,19 +8,19 @@ Page({
   data: {
     detail: [
       {
-        img: 'img/message.png',
+        img: '../../image/recommend_message.png',
         name: '19万',
       },
       {
-        img: 'img/share.png',
+        img: '../../image/recommend_share.png',
         name: '8870',
       },
       {
-        img: 'img/download.png',
+        img: '../../image/recommend_download.png',
         name: '下载',
       },
       {
-        img: 'img/choose.png',
+        img: '../../image/recommend_choose.png',
         name: '多选',
       }
     ],
