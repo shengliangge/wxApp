@@ -4,6 +4,7 @@
     width: 100%;
     height: 100%;
     display: block;
+    /* overflow:hidden */
 }
 
 .background_img {
@@ -14,11 +15,11 @@
     width: 100%;
     height: 100%;
     /* css3滤镜属性，blur设置高斯模糊  brightness设置变暗*/
-    filter: blur(20px) brightness(80%);
+    filter: blur(50px) brightness(80%);
+    /* filter: blur(80px); */
     z-index: -1;
     /*和网易云音乐对比了一下，发现他们是也是放大1.5倍*/
-    transform: scale(1.8);
-    
+    transform: scale(1.5);
 }
 
 .top {

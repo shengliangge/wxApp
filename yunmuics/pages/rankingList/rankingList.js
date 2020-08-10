@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hidden: false,  //加载是否隐藏
     list: [],
     rank: [
       {
@@ -44,6 +45,11 @@ Page({
         this.setData({
           list: res.data.list
         })
+        if(this.data.list.length>0){
+          this.setData({
+            hidden: true
+          })
+        }
       }
     })
     // wx.request({

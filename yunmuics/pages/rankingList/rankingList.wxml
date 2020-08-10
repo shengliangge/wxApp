@@ -1,51 +1,69 @@
 <!-- pages/find/find-page/rankingList/rankingList.wxml -->
 <nav-bar></nav-bar>
 <!-- 总体容器 -->
-<view class="wrapper">
-    <!-- 上部分：榜单推荐容器 -->
-    <view class="ranking">
-        <text class="ranking-name">榜单推荐</text>
-        <view class="rankingbox">
-            <view class="rankinglist" wx:for="{{rank}}" wx:key="index">
-                <image class="ranking-img" src="{{item.img}}" />
-                <view class="updatetime">{{item.date}}</view>
-                <view class="rankinglist-name">{{item.listname}}</view>
-            </view>
-        </view>
-    </view>
-    <!-- 中间部分：官方榜容器 -->
-    <view class="officiallist">
-        <text class="ranking-name">官方榜</text>
-        <view class="officiallistbox">
-            <view class="official-list" wx:for="{{list}}" wx:key="index">
-                <view wx:if="{{index <= 3}}">
-                    <image class="ranking-img" src="{{item.coverImgUrl}}" />
-                    <view class="updatetime">{{item.updateFrequency}}</view>
-                    <view class="ranking-des">
-                        <block wx:for="{{item.tracks}}" wx:key="index">
-                            <view class="songlist">
-                                <text class="songname">{{index+1}}.</text>
-                                <text class="songname">{{item.first}}</text>
-                                -
-                                <text class="songname">{{item.second}}</text>
-                            </view>
-                        </block>
-                    </view>
-                </view>
-            </view>
-        </view>
-    </view>
-    <!-- 下部分：其他所有榜单容器循环 -->
-    <view class="otherranking">
-        <text class="otherranking-name">更多榜单</text>
-        <view class="otherrankingbox">
-            <block class="otherrankinglist" wx:for="{{list}}" wx:key="index">
-                <view class="other" wx:if="{{index > 3}}">
-                    <image class="ranking-img" src="{{item.coverImgUrl}}" />
-                    <view class="updatetime">{{item.updateFrequency}}</view>
-                    <view class="rankinglist-name">{{item.name}}</view>
-                </view>
-            </block>
-        </view>
-    </view>
+<view class="body-view">
+	<loading hidden="{{hidden}}">
+		加载中...
+	</loading>
 </view>
+<view class="wrapper">
+	<!-- 上部分：榜单推荐容器 -->
+	<view class="ranking">
+		<text class="ranking-name">榜单推荐</text>
+		<view class="rankingbox">
+			<view
+			 class="rankinglist"
+			 wx:for="{{rank}}"
+			 wx:key="index"
+			>
+				<image class="ranking-img" src="{{item.img}}" />
+				<view class="updatetime">{{item.date}}</view>
+				<view class="rankinglist-name">{{item.listname}}</view>
+			</view>
+		</view>
+	</view>
+	<!-- 中间部分：官方榜容器 -->
+	<view class="officiallist">
+		<text class="ranking-name">官方榜</text>
+		<view class="officiallistbox">
+			<view
+			 class="official-list"
+			 wx:for="{{list}}"
+			 wx:key="index"
+			>
+				<view wx:if="{{index <= 3}}">
+					<image class="ranking-img" src="{{item.coverImgUrl}}" />
+					<view class="updatetime">{{item.updateFrequency}}</view>
+					<view class="ranking-des">
+						<block wx:for="{{item.tracks}}" wx:key="index">
+							<view class="songlist">
+								<text class="songname">{{index+1}}.</text>
+								<text class="songname">{{item.first}}</text>
+								-
+								<text class="songname">{{item.second}}</text>
+							</view>
+						</block>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 下部分：其他所有榜单容器循环 -->
+	<view class="otherranking">
+		<text class="otherranking-name">更多榜单</text>
+		<view class="otherrankingbox">
+			<block
+			 class="otherrankinglist"
+			 wx:for="{{list}}"
+			 wx:key="index"
+			>
+				<view class="other" wx:if="{{index > 3}}">
+					<image class="ranking-img" src="{{item.coverImgUrl}}" />
+					<view class="updatetime">{{item.updateFrequency}}</view>
+					<view class="rankinglist-name">{{item.name}}</view>
+				</view>
+			</block>
+		</view>
+	</view>
+</view>
+

@@ -3,6 +3,7 @@
 <!-- 音乐播放背景图片 -->
 <image class="background_img" src="{{playlist.coverImgUrl}}"></image>
 <view class="wrapper">
+
 	<view class="top">
 		<view class="top-desc">
 			<image class="desc-img" src="{{playlist.coverImgUrl}}"></image>
@@ -35,30 +36,66 @@
 			</view>
 		</view>
 	</view>
-	<view class="down">
-		<view class="buttonBox">
-			<image class="broadcast" src="../../image/songList_cicle.png" />
-			<view class="broadcast-desc">
-				<text class="broadcast-name">播放全部</text>
-				<text class="broadcast-num">（共100首）</text>
+	<scroll-view class="down" scroll-y>
+		<view class="">
+			<view class="buttonBox">
+				<image class="broadcast" src="img/cicle.png" />
+				<view class="broadcast-desc">
+					<text class="broadcast-name">播放全部</text>
+					<text class="broadcast-num">（共100首）</text>
+				</view>
+
+				<view class="collectBox">
+					<text class="collect-add">+ 收藏（322.8万）</text>
+				</view>
 			</view>
 
-			<view class="collectBox">
-				<text class="collect-add">+ 收藏（322.8万）</text>
+			<view class="body-view">
+				<loading hidden="{{hidden}}">
+					拼命加载中...
+				</loading>
 			</view>
-		</view>
-		<view class="songlistbox">
-			<view
-			 class="song-list"
-			 wx:for="{{playlist.tracks}}"
-			 wx:key="index"
-			>
-				<!-- <image class="song-img" src="{{item.album.blurPicUrl}}"></image> -->
-				<view class="song-index">{{index+1}}</view>
-				<view class="song">
-					<view class="song-name">{{item.name}}</view>
-					<view class="song-author">{{item.ar[0].name}} - {{item.al.name}}</view>
+			<view class="songlistbox">
+				<view
+				 class="song-list"
+				 wx:for="{{playlist.tracks}}"
+				 wx:key="index"
+				>
+					<view class="song-index">{{index+1}}</view>
+					<view class="song">
+						<view class="song-name">{{item.name}}</view>
+						<view class="song-author">{{item.ar[0].name}} - {{item.al.name}}</view>
+					</view>
+					<image
+					 class="broadcast-pic"
+					 bindtap="playMusic"
+					 data-in="{{item}}"
+					 src="img/rectangle.png"
+					/>
+					<image class="broadcast-img" src="img/daohang.png" />
 				</view>
+			</view>
+
+			<view class="songlistbox">
+				<view
+				 class="song-list"
+				 wx:for="{{playlist.tracks}}"
+				 wx:key="index"
+				>
+					<view class="song-index">{{index+1}}</view>
+					<view class="song">
+						<view class="song-name">{{item.name}}</view>
+						<view class="song-author">{{item.ar[0].name}} - {{item.al.name}}</view>
+					</view>
+					<image
+					 class="broadcast-pic"
+					 bindtap="playMusic"
+					 data-in="{{item}}"
+					 src="img/rectangle.png"
+					/>
+					<image class="broadcast-img" src="img/daohang.png" />
+				</view>
+<<<<<<< HEAD
 				<image
 				 class="broadcast-pic"
 				 bindtap="playMusic"
@@ -66,8 +103,10 @@
 				 src="../../image/songList_rectangle.png"
 				/>
 				<image class="broadcast-img" src="../../image/songList_daohang.png" />
+=======
+>>>>>>> f7917688f0d571c9f74675b01d812ecb4f91bcad
 			</view>
 		</view>
-	</view>
+	</scroll-view>
 </view>
 

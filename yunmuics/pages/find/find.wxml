@@ -1,5 +1,9 @@
 <nav-bar></nav-bar>
-
+<view class="body-view">
+	<loading hidden="{{hidden}}">
+		拼命加载中...
+	</loading>
+</view>
 <!-- 引入头部导航栏 -->
 <view class="container">
 
