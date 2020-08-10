@@ -25,13 +25,6 @@ Page({
         name: '多选',
       }
     ],
-    list: [
-      {
-        name: '天外来物',
-        author: '薛之谦',
-        name: '天外来物'
-      }
-    ],
     userInfo: {},
     login_token: '',
     songs: [],

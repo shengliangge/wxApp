@@ -1,5 +1,10 @@
 <!-- pages/songlist/songlist.wxml -->
 <nav-bar></nav-bar>
+<view class="body-view">
+	<loading hidden="{{hidden}}">
+		拼命加载中...
+	</loading>
+</view>
 <!-- 音乐播放背景图片 -->
 <image class="background_img" src="{{playlist.coverImgUrl}}"></image>
 <view class="wrapper">
@@ -50,11 +55,6 @@
 				</view>
 			</view>
 
-			<view class="body-view">
-				<loading hidden="{{hidden}}">
-					拼命加载中...
-				</loading>
-			</view>
 			<view class="songlistbox">
 				<view
 				 class="song-list"

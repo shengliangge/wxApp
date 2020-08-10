@@ -78,7 +78,7 @@ Page({
           this.setData({
             song: res.data.songs[0],  //获取到歌曲的详细内容，传给song
           })
-         
+
           // 获取歌词
           wx.request({
             url: 'http://47.98.159.95/m-api/lyric',
@@ -162,15 +162,15 @@ Page({
     backgroundAudioManager.singer = this.data.song.ar[0].name;                 //音频歌手给实例
     backgroundAudioManager.coverImgUrl = this.data.song.al.picUrl;             //音频图片 给实例
     // 设置src立即播放
-    if(res.url!=null){
-    backgroundAudioManager.src = res.url;      // res.url 在createBgAudio 为 mp3音频  url为空，播放出错
-    // console.log(backgroundAudioManager)
-    this.setData({
-      isPlay: true,
-      hidden:true,
-      backgroundAudioManager
-    })
-  }
+    if (res.url != null) {
+      backgroundAudioManager.src = res.url;      // res.url 在createBgAudio 为 mp3音频  url为空，播放出错
+      // console.log(backgroundAudioManager)
+      this.setData({
+        isPlay: true,
+        hidden: true,
+        backgroundAudioManager
+      })
+    }
     //监听背景音乐进度更新事件
     backgroundAudioManager.onTimeUpdate(() => {
       // let that = this
@@ -268,8 +268,8 @@ Page({
     })
     console.log(this.data.storyContent)
     if (this.data.lrcDir == "纯音乐，无歌词") {
-    
-     } else {
+
+    } else {
       this.setData({
         storyContent: this.sliceNull(this.parseLyric(this.data.lrcDir))
       })

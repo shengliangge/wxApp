@@ -164,7 +164,11 @@
 			 style="width: 100%"
 			>
 				<block wx:for="{{blocks[2].creatives}}" wx:key="index">
-					<view class="select-box">
+					<view
+					 class="select-box"
+					 bindtap="gotoSongList"
+					 data-id="{{item.creativeId}}"
+					>
 						<image class="select-img" src="{{item.uiElement.image.imageUrl}}"></image>
 						<text class="select-text" >
           {{item.uiElement.mainTitle.title}}

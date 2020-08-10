@@ -1,6 +1,6 @@
 <view class="body-view">
 	<loading hidden="{{hidden}}">
-		加载中...
+		拼命加载中...
 	</loading>
 </view>
 <!-- 音乐播放背景图片 -->
