@@ -20,6 +20,7 @@
 	<view class="play-body" bindtap="showLyric">
 		<!-- 歌词 -->
 		<!-- 需要设置高度，否则scroll-top可能失效 -->
+
 		<scroll-view
 		 hidden="{{showLyric}}"
 		 scroll-y="true"
@@ -28,10 +29,10 @@
 		 class="body-scroll"
 		>
 			<view class='contentText'>
+				<view class="contentText-noLyric" wx:if="{{noLyric==true}}">纯音乐，无歌词 </view>
 				<block wx:for='{{storyContent}}' wx:key="index">
 					<view class="lyric">
 						<view class="lyric-text {{currentIndex == index ? 'currentTime' : ''}}">{{item[1]}}</view>
-						<!-- <view class="lyric-text" wx:else>纯音乐，无歌词 </view> -->
 					</view>
 				</block>
 			</view>
@@ -70,16 +71,17 @@
 			</view>
 			<slider
 			 class="slider_middle"
-			 bindchange="changeSlide"
+			 bindchange="end"
 			 bindtouchstart="start"
-			 bindtouchend="end"
+			 bindchanging="changeSlide"
 			 max="{{totalProcessNum}}"
 			 min="0"
 			 backgroundColor="rgba(255,255,255,.3)"
 			 activeColor="rgba(255,255,255,.8)"
 			 value="{{currentProcessNum}}"
-			 disabled="{{item.canSlider}}"
 			 block-size="12"
+			 show-value
+			 bindtap="click"
 			></slider>
 			<view>
 				{{duration}}

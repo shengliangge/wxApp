@@ -3,7 +3,6 @@ const API_BASE_URL = 'http://neteasecloudmusicapi.zhaoboy.com';
 const app = getApp();
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -28,7 +27,9 @@ Page({
     //文稿滚动距离
     marginTop: 0,
     //当前正在第几行
-    currentIndex: 0
+    currentIndex: 0,
+    noLyric: false,  //是否有歌词
+    slide: false
   },
   //返回上一页
   backPage: function () {
@@ -102,8 +103,9 @@ Page({
                   }
                 })
               } else if (res.data.nolyric) {
+                console.log("无歌词")
                 this.setData({
-                  lrcDir: "纯音乐，无歌词"
+                  noLyric: true
                 })
               }
               else {
@@ -176,41 +178,19 @@ Page({
       // let that = this
       this.setData({
         totalProcessNum: backgroundAudioManager.duration,
-        currentProcessNum: backgroundAudioManager.currentTime,
         currentTime: this.formatSecond(backgroundAudioManager.currentTime),
         duration: this.formatSecond(backgroundAudioManager.duration)
       })
-      // 歌词滚动
-      if (this.data.currentIndex >= 3) {//超过3行开始滚动
+      if (!this.data.slide) {
+        console.log("执行")
         this.setData({
-          marginTop: (this.data.currentIndex - 3) * 39
+          currentProcessNum: backgroundAudioManager.currentTime,
         })
-        // console.log(this.data.marginTop)
       }
-      // 当前歌词对应行颜色改变
-      if (this.data.currentIndex != this.data.storyContent.length - 1) {//
-        var j = 0;
-        for (var j = this.data.currentIndex; j < this.data.storyContent.length; j++) {
-          // 当前时间与前一行，后一行时间作比较， j:代表当前行数
-          if (this.data.currentIndex == this.data.storyContent.length - 2) {
-            //最后一行只能与前一行时间比较
-            if (parseFloat(backgroundAudioManager.currentTime) > parseFloat(this.data.storyContent[this.data.storyContent.length - 1][0])) {
-              this.setData({
-                currentIndex: this.data.storyContent.length - 1
-              })
-              return;
-            }
-          } else {
-            if (parseFloat(backgroundAudioManager.currentTime) > parseFloat(this.data.storyContent[j][0]) && parseFloat(backgroundAudioManager.currentTime) < parseFloat(this.data.storyContent[j + 1][0])) {
-              this.setData({
-                currentIndex: j
-              })
-              return;
-            }
-          }
-        }
+
+      if (!this.data.noLyric) {   //如果没有歌词，就不需要调整歌词位置
+        this.lyricsRolling(backgroundAudioManager)
       }
-      // console.log(backgroundAudioManager.currentTime)
     })
     // const history_songId = this.data.history_songId
     // console.log(this.data.history_songId)
@@ -232,7 +212,39 @@ Page({
     // })
     // wx.setStorageSync('historyId', history_songId); //把historyId存入缓存
   },
-
+  // 歌词滚动方法
+  lyricsRolling(backgroundAudioManager) {
+    // 歌词滚动
+    // if (this.data.currentIndex >= 3) {//超过3行开始滚动
+    // console.log('当前行数', this.data.currentIndex)
+    this.setData({
+      marginTop: (this.data.currentIndex - 3) * 39
+    })
+    // }
+    // 当前歌词对应行颜色改变
+    if (this.data.currentIndex != this.data.storyContent.length - 1) {//不是最后一行
+      // var j = 0;
+      for (let j = this.data.currentIndex; j < this.data.storyContent.length; j++) {
+        // 当前时间与前一行，后一行时间作比较， j:代表当前行数
+        if (this.data.currentIndex == this.data.storyContent.length - 2) {  //倒数第二行
+          //最后一行只能与前一行时间比较
+          if (parseFloat(backgroundAudioManager.currentTime) > parseFloat(this.data.storyContent[this.data.storyContent.length - 1][0])) {
+            this.setData({
+              currentIndex: this.data.storyContent.length - 1
+            })
+            return;
+          }
+        } else {
+          if (parseFloat(backgroundAudioManager.currentTime) > parseFloat(this.data.storyContent[j][0]) && parseFloat(backgroundAudioManager.currentTime) < parseFloat(this.data.storyContent[j + 1][0])) {
+            this.setData({
+              currentIndex: j
+            })
+            return;
+          }
+        }
+      }
+    }
+  },
   // 格式化时间
   formatSecond(second) {
     var secondType = typeof second;
@@ -260,32 +272,25 @@ Page({
       isPlay: !this.data.isPlay
     })
   },
-
   // 点击切换歌词和封面
   showLyric() {
     this.setData({
       showLyric: !this.data.showLyric
     })
-    console.log(this.data.storyContent)
-    if (this.data.lrcDir == "纯音乐，无歌词") {
-
-    } else {
+    // console.log(this.data.storyContent)
+    if (!this.data.noLyric) {
+      console.log("有歌词")
       this.setData({
         storyContent: this.sliceNull(this.parseLyric(this.data.lrcDir))
       })
     }
-    // console.log('歌词')
-    // console.log(this.data.lrcDir)
-    //  let parseLyric= this.parseLyric(this.data.lrcDir)
-    //  console.log(parseLyric)
-
   },
   //格式化歌词
   parseLyric: function (text) {
-    var result = [];
-    var lines = text.split('\n'), //切割每一行
-      pattern = /\[\d{2}:\d{2}.\d{3}\]/g;//用于匹配时间的正则表达式，匹配的结果类似[xx:xx.xx]
-    console.log(lines);
+    let result = [];
+    let lines = text.split('\n'), //切割每一行
+      pattern = /\[\d{2}:\d{2}.\d+\]/g;//用于匹配时间的正则表达式，匹配的结果类似[xx:xx.xx]
+    // console.log(lines);
     //去掉不含时间的行
     while (!pattern.test(lines[0])) {
       lines = lines.slice(1);
@@ -311,7 +316,6 @@ Page({
     });
     return result;
   },
-
   //去除空白
   sliceNull: function (lrc) {
     var result = []
@@ -325,31 +329,54 @@ Page({
   },
   //开始滑动触发
   start: function (e) {
+
     console.log("开始")
+    // console.log(e)
+    this.setData({
+      slide: true
+    })
   },
   //触发滑动条
   changeSlide: function (e) {
     let backgroundAudioManager = this.data.backgroundAudioManager
     console.log("滑动")
     const position = e.detail.value
-    console.log(position)
-    backgroundAudioManager.seek(position)
-    // seek = position
-    // if (seek != -1) {
-    //  wx.seekBackgroundAudio({
-    //   position: Math.floor(position),
-    //  })
-    //  seek = -1
-    // }
-    // that.setCurrent(index,that.time_to_sec(position), position)
-    // that.seek(index,seek)
+    // console.log(position)
+    // backgroundAudioManager.seek(position)
+
   },
   //结束滑动触发
   end: function (e) {
+    const position = e.detail.value
+    let backgroundAudioManager = this.data.backgroundAudioManager
+    console.log(position)
+    backgroundAudioManager.seek(position)
     console.log(e)
     console.log("结束")
-  },
+    this.setData({
+      currentProcessNum: position,
+    })
+    this.setData({
+      slide: false
+    })
+    // 判断当前是多少行
+    for (let j = 0; j < this.data.storyContent.length; j++) {
+      console.log('当前行数', this.data.currentIndex)
+      console.log(parseFloat(backgroundAudioManager.currentTime))
+      console.log(parseFloat(this.data.storyContent[j][0]))
+      // 当前时间与前一行，后一行时间作比较， j:代表当前行数
+      if (position < parseFloat(this.data.storyContent[j][0])) {
+        this.setData({
+          currentIndex: j - 1
+        })
+        return;
+      }
+    }
 
+  },
+  click() {
+    console.log('点击')
+  },
   //设置音频图片状态以及滚动条可播放状态函数
   setAudioType: function () {
 

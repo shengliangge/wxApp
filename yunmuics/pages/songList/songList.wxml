@@ -44,7 +44,7 @@
 	<scroll-view class="down" scroll-y>
 		<view class="">
 			<view class="buttonBox">
-				<image class="broadcast" src="img/cicle.png" />
+				<image class="broadcast" src="../../image/control_play.png" />
 				<view class="broadcast-desc">
 					<text class="broadcast-name">播放全部</text>
 					<text class="broadcast-num">（共100首）</text>
@@ -70,32 +70,12 @@
 					 class="broadcast-pic"
 					 bindtap="playMusic"
 					 data-in="{{item}}"
-					 src="img/rectangle.png"
+					 src="../../image/control_play.png"
 					/>
-					<image class="broadcast-img" src="img/daohang.png" />
+					<image class="broadcast-img" src="../../image/songList_daohang.png" />
 				</view>
 			</view>
 
-			<view class="songlistbox">
-				<view
-				 class="song-list"
-				 wx:for="{{playlist.tracks}}"
-				 wx:key="index"
-				>
-					<view class="song-index">{{index+1}}</view>
-					<view class="song">
-						<view class="song-name">{{item.name}}</view>
-						<view class="song-author">{{item.ar[0].name}} - {{item.al.name}}</view>
-					</view>
-					<image
-					 class="broadcast-pic"
-					 bindtap="playMusic"
-					 data-in="{{item}}"
-					 src="img/rectangle.png"
-					/>
-					<image class="broadcast-img" src="img/daohang.png" />
-				</view>
-			</view>
 		</view>
 	</scroll-view>
 </view>
