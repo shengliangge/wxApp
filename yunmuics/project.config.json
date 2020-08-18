@@ -27,12 +27,12 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.0",
-	"appid": "wx1a515f9a5eaafd27",
+	"appid": "wx8f25667256296406",
 	"projectname": "yunmuics",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -125,6 +125,13 @@
 					"id": -1,
 					"name": "pages/recommend/recommend",
 					"pathName": "pages/recommend/recommend",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/rankingList/rankingList",
+					"pathName": "pages/rankingList/rankingList",
 					"scene": null
 				}
 			]

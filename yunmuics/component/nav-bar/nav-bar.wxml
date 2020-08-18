@@ -15,8 +15,8 @@
 							我的
 						</navigator>
 					</view>
-					<view class="nav-text nav-find">
-						<navigator url="../../pages/find/find">
+					<view class="nav-text nav-find " >
+						<navigator class="findWord" url="../../pages/find/find" hover-class="other-findWord">
 							发现
 						</navigator>
 					</view>

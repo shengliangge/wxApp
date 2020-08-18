@@ -95,16 +95,6 @@
 					/>
 					<image class="broadcast-img" src="img/daohang.png" />
 				</view>
-<<<<<<< HEAD
-				<image
-				 class="broadcast-pic"
-				 bindtap="playMusic"
-				 data-in="{{item}}"
-				 src="../../image/songList_rectangle.png"
-				/>
-				<image class="broadcast-img" src="../../image/songList_daohang.png" />
-=======
->>>>>>> f7917688f0d571c9f74675b01d812ecb4f91bcad
 			</view>
 		</view>
 	</scroll-view>

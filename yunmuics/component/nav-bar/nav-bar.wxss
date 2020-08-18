@@ -29,4 +29,13 @@
 }
 .nav-text{
   margin: 0 16rpx;
-  }
+}
+
+/* .findWord {
+  color:rgb(159,159,159);
+} */
+.other-findWord{
+  color: #000;
+  font-weight: 550;
+  font-size: 38rpx;
+}

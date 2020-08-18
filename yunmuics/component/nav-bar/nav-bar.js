@@ -58,6 +58,5 @@ Component({
         delta: 1
       });
     }
-
   }
 })

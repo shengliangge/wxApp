@@ -183,6 +183,10 @@
     display: flex;
     flex-wrap: wrap;
 }
+.othersong {
+    margin-top: -80rpx;
+    margin-left: 30rpx;
+}
 .rankigList-songname {
     font-size: 30rpx;
     margin-left: 40rpx;
