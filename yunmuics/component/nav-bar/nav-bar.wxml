@@ -32,7 +32,7 @@
 					</view>
 				</view>
 				<view class="nav-serach">
-					<navigator url="../../pages/mine/mine">
+					<navigator url="../../pages/search/search">
 						<image class="nav-img serach__img" src="../../image/nav_seach.png"></image>
 					</navigator>
 				</view>
