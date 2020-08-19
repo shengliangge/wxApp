@@ -10,23 +10,23 @@
 					<image class="nav-img back__img" src="../../image/nav_back.png" />
 				</view>
 				<view class="nav-change">
-					<view class="nav-text nav-mine">
-						<navigator url="../../pages/mine/mine">
+					<view class="nav-text nav-mine"  bindtap="changeMine">
+						<navigator class="{{navId == 1 ? 'mineActive' : ''}}" url="../../pages/mine/mine">
 							我的
 						</navigator>
 					</view>
-					<view class="nav-text nav-find " >
-						<navigator class="findWord" url="../../pages/find/find" hover-class="other-findWord">
+					<view class="nav-text nav-find" bindtap="changeFind">
+						<navigator class="findWord" class="{{navId == 2 ? 'active' : ''}}" url="../../pages/find/find">
 							发现
 						</navigator>
 					</view>
-					<view class="nav-text nav-cloud">
-						<navigator url="../../pages/cloud/cloud">
+					<view class="nav-text nav-cloud"  bindtap="changeCloud" >
+						<navigator class="{{navId == 3 ? 'active' : ''}}" url="../../pages/cloud/cloud">
 							云村
 						</navigator>
 					</view>
-					<view class="nav-text nav-video">
-						<navigator url="../../pages/video/video">
+					<view class="nav-text nav-video" bindtap="changeVideo">
+						<navigator class="{{navId == 4 ? 'active' : ''}}" url="../../pages/video/video">
 							视频
 						</navigator>
 					</view>

@@ -1,4 +1,8 @@
 // component/nav-bar/nav-bar.js
+const app =  getApp();
+
+  
+
 Component({
   /**
    * 组件的属性列表
@@ -28,12 +32,17 @@ Component({
   data: {
     statusBarStyle: "",
     navBarStyle: "",
-    topHeight: 50
+    topHeight: 50,
+    change: true,
+    navId: ""
   },
 
   lifetimes: {
     attached: function () {
-      // console.log(this.data.navBarColor)
+      this.setData({
+        navId: app.globalData.navId
+      })
+      console.log(app.globalData.navId)
       let navBarStyle = `background-color:${this.data.navBarColor};
       height:${wx.db.navBarHeight}px;
       color:${this.data.titleColor};`
@@ -47,7 +56,7 @@ Component({
         statusBarStyle,
         topHeight
       })
-    }
+    },
   },
   /**
    * 组件的方法列表
@@ -57,6 +66,22 @@ Component({
       wx: wx.navigateBack({
         delta: 1
       });
+    },
+    changeMine: function() {
+      console.log('a')
+      app.globalData.navId = 1
+    },
+    changeFind: function() {
+      console.log('b')
+      app.globalData.navId = 2
+    },
+    changeCloud: function() {
+      console.log('c')
+      app.globalData.navId = 3
+    },
+    changeVideo: function() {
+      console.log('d')
+      app.globalData.navId = 4
     }
   }
 })
