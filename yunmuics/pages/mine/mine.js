@@ -105,12 +105,23 @@ Page({
   onLoad: function (options) {
     console.log(app.globalData.login_token)
     if(app.globalData.login_token==''){
-      wx.showToast({
-        title: '未登录,请登陆后尝试！',
-        icon: 'none',
-        mask:true,
-        duration: 2500
-       
+      // wx.showToast({
+      //   title: '未登录,请登陆后尝试！',
+      //   icon: 'none',
+      //   mask:true,
+      //   duration: 2500
+      // })
+      wx.showModal({
+        content: '未登录,请登陆后尝试！',
+        cancelColor: '#DE655C',
+        confirmColor: '#DE655C',
+        showCancel: false,
+        confirmText: '登陆',
+        complete() {
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
+        }
       })
     }else{
     // 从全局中取数据

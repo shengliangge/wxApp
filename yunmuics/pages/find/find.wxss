@@ -164,9 +164,3 @@ color: #ffffff;
   width: 50rpx;
   height: 50rpx;
 }
-
-.other-findWord{
-  color: #000;
-  font-weight: 550;
-  font-size: 38rpx;
-}

@@ -7,27 +7,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hidden: false,  //加载是否隐藏
-    innerAudioContext: {},  //小程序音乐播放api对象
-    isPlay: true,   //是否播放
+    hidden: false,  //加载动画是否隐藏
+    isPlay: true,   //歌曲是否播放
     song: [],    //歌曲信息
-    show: true,
     showLyric: true,    //显示歌词
-    songId: [],     //播放列表id
+    songId: [],     //待播放列表id
     history_songId: [],  //历史记录
     backgroundAudioManager: {},  //背景音频
     duration: '',             //总音乐时间（00:00格式）
     currentTime: '00:00',      //当前音乐时间（00:00格式）
     totalProcessNum: 0,         //总音乐时间 （秒）
     currentProcessNum: 0,       //当前音乐时间（秒）
-    //歌词文稿内容
-    lrcDir: '纯音乐，无歌词',
-    //文稿数组，转化完成用来在wxml中使用
-    storyContent: [],
-    //文稿滚动距离
-    marginTop: 0,
-    //当前正在第几行
-    currentIndex: 0,
+    lrcDir: '', //歌词文稿内容
+    storyContent: [],   //文稿数组，转化完成用来在页面中使用
+    marginTop: 0,    //文稿滚动距离
+    currentIndex: 0,    //当前正在第几行
     noLyric: false,  //是否有歌词
     slide: false
   },
@@ -42,17 +36,16 @@ Page({
    */
   onLoad: function (options) {
     //获取到其他页面传来的musicId
-    console.log(options)
+    // console.log(options)
     const musicId = options.musicId
-    this.play(musicId)//调用play方法将id传给全局变量
+    this.play(musicId)//调用play方法
   },
-  play: function (id) {
+  //播放音乐方法
+  play(id) {
     const musicId = id
-    // console.log(app.globalData.songId)
     // 将当前音乐id传到全局
     app.globalData.songId = musicId
-    // console.log(app.globalData.songId)
-
+    // 通过musicId发起接口请求，请求歌曲详细信息
     //获取到歌曲音频，则显示出歌曲的名字，歌手的信息，即获取歌曲详情；如果失败，则播放出错。
     wx.request({
       url: API_BASE_URL + '/song/detail',
@@ -64,18 +57,18 @@ Page({
         if (res.data.songs.length === 0) {
           // console.log('无法获取到资源')
           wx.showModal({
-            content: '服务器开了点小差~~',
+            content: '服务器正忙~~',
             cancelColor: '#DE655C',
             confirmColor: '#DE655C',
             showCancel: false,
             confirmText: '返回',
             complete() {
               wx.switchTab({
-                url: '/pages/index/index'
+                url: '/pages/find/find'
               })
             }
           })
-        } else {
+        } else {   //获取成功
           this.setData({
             song: res.data.songs[0],  //获取到歌曲的详细内容，传给song
           })
@@ -88,8 +81,8 @@ Page({
             },
             success: res => {
               console.log('歌词:', res)
-              if (res === null) {
-                // console.log('播放出错')
+              if (res == null) {
+                // console.log('歌词出错')
                 wx.showModal({
                   content: '服务器开了点小差~~',
                   cancelColor: '#DE655C',
@@ -102,13 +95,13 @@ Page({
                     })
                   }
                 })
-              } else if (res.data.nolyric) {
+              } else if (res.data.nolyric) { //该歌无歌词
                 console.log("无歌词")
                 this.setData({
                   noLyric: true
                 })
               }
-              else {
+              else {  //有歌词
                 this.setData({
                   lrcDir: res.data.lrc.lyric
                 })
@@ -116,19 +109,17 @@ Page({
             }
           })
           // 例子：http://neteasecloudmusicapi.zhaoboy.com/song/url?455653437
-          // 通过音乐id获取音乐的地址
-          // 请求歌曲音频的地址，失败则播放出错，成功则传值给createBackgroundAudioManager(后台播放管理器，让其后台播放)
+          // 通过音乐id获取音乐的地址，请求歌曲音频的地址，失败则播放出错，成功则传值给createBackgroundAudioManager(后台播放管理器，让其后台播放)
           wx.request({
             url: API_BASE_URL + '/song/url',
             data: {
               id: musicId
             },
             success: res => {
-              // console.log('歌曲音频url:', res)
-              if (res.data.data[0].url === null) {  //如果是MV 电台 广告 之类的就提示播放出错，并返回首页
+              if (res.data.data[0].url === null) {  //获取出现错误出错
                 // console.log('播放出错')
                 wx.showModal({
-                  content: '服务器开了点小差~~',
+                  content: '服务器出了点状况~~',
                   cancelColor: '#DE655C',
                   confirmColor: '#DE655C',
                   showCancel: false,
@@ -140,33 +131,30 @@ Page({
                   }
                 })
               } else {
-                // 调用方法将歌曲url传入backgroundAudioManager
+                // 调用createBackgroundAudioManager方法将歌曲url传入backgroundAudioManager
                 this.createBackgroundAudioManager(res.data.data[0]);
-                // this.frontAudio(res.data.data[0])
               }
             }
           })
-          console.log(res.data.songs[0].name)
+          // console.log(res.data.songs[0].name)
           // 歌名传给全局变量
           app.globalData.songName = res.data.songs[0].name;
         }
       },
     })
   },
-
+  // 背景音频播放方法
   createBackgroundAudioManager(res) {
-    // console.log(res)
-    //   后台音乐
-    const backgroundAudioManager = wx.getBackgroundAudioManager(); //获取全局唯一的背景音频管理器。并把它给实例backgroundAudioManager 
-    app.globalData.backgroundAudioManager = backgroundAudioManager;         //把实例backgroundAudioManager (背景音频管理器) 给 全局
+
+    const backgroundAudioManager = wx.getBackgroundAudioManager(); //调用官方API获取全局唯一的背景音频管理器。并把它给实例backgroundAudioManager 
+    // app.globalData.backgroundAudioManager = backgroundAudioManager; //把实例backgroundAudioManager (背景音频管理器) 给全局
     // console.log(this.data.song.name)
-    backgroundAudioManager.title = this.data.song.name;                        //把title 音频标题 给实例
+    backgroundAudioManager.title = this.data.song.name;                        //把title音频标题给实例
     backgroundAudioManager.singer = this.data.song.ar[0].name;                 //音频歌手给实例
     backgroundAudioManager.coverImgUrl = this.data.song.al.picUrl;             //音频图片 给实例
-    // 设置src立即播放
+    // 设置backgroundAudioManager的src属性，音频会立即播放
     if (res.url != null) {
       backgroundAudioManager.src = res.url;      // res.url 在createBgAudio 为 mp3音频  url为空，播放出错
-      // console.log(backgroundAudioManager)
       this.setData({
         isPlay: true,
         hidden: true,
@@ -175,22 +163,19 @@ Page({
     }
     //监听背景音乐进度更新事件
     backgroundAudioManager.onTimeUpdate(() => {
-      // let that = this
       this.setData({
         totalProcessNum: backgroundAudioManager.duration,
         currentTime: this.formatSecond(backgroundAudioManager.currentTime),
         duration: this.formatSecond(backgroundAudioManager.duration)
       })
       if (!this.data.slide) {
-        console.log("执行")
         this.setData({
           currentProcessNum: backgroundAudioManager.currentTime,
         })
       }
-
       if (!this.data.noLyric) {   //如果没有歌词，就不需要调整歌词位置
         this.lyricsRolling(backgroundAudioManager)
-      }
+      } 
     })
     // const history_songId = this.data.history_songId
     // console.log(this.data.history_songId)
@@ -212,6 +197,8 @@ Page({
     // })
     // wx.setStorageSync('historyId', history_songId); //把historyId存入缓存
   },
+
+
   // 歌词滚动方法
   lyricsRolling(backgroundAudioManager) {
     // 歌词滚动
@@ -260,11 +247,14 @@ Page({
   // 播放和暂停
   handleToggleBGAudio() {
     // console.log(this.data.isPlay)
-    let backgroundAudioManager = app.globalData.backgroundAudioManager
+    // let backgroundAudioManager = app.globalData.backgroundAudioManager
+    const backgroundAudioManager = this.data.backgroundAudioManager
+    console.log(backgroundAudioManager)
+    //如果当前在播放的话
     if (this.data.isPlay) {
       backgroundAudioManager.pause();//暂停
       console.log("暂停")
-    } else {
+    } else {      //如果当前处于暂停状态
       backgroundAudioManager.play();//播放
       console.log("播放")
     }
@@ -277,9 +267,7 @@ Page({
     this.setData({
       showLyric: !this.data.showLyric
     })
-    // console.log(this.data.storyContent)
     if (!this.data.noLyric) {
-      console.log("有歌词")
       this.setData({
         storyContent: this.sliceNull(this.parseLyric(this.data.lrcDir))
       })
@@ -327,9 +315,8 @@ Page({
     }
     return result
   },
-  //开始滑动触发
+  //进度条开始滑动触发
   start: function (e) {
-
     console.log("开始")
     // console.log(e)
     this.setData({
@@ -372,7 +359,6 @@ Page({
         return;
       }
     }
-
   },
   click() {
     console.log('点击')

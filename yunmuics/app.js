@@ -20,6 +20,7 @@ App({
     waitForPlaying:[],
     songName:[],
     backgroundAudioManager:{},
-    login_token:''
+    login_token:'',
+    navId: 2
   }
 })

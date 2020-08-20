@@ -7,7 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hotSongs: [],//获取热门搜索
     inputValue: null,//输入框输入的值
     history:[], //搜索历史存放数组
     searchSuggest:[], //搜索建议
@@ -27,7 +26,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     wx.request({
       url: 'http://neteasecloudmusicapi.zhaoboy.com/search/hot/detail',
       data: {
@@ -42,8 +40,8 @@ Page({
         })
       }
     })
-
   },
+
 
  
   
@@ -61,18 +59,6 @@ searchSuggest(){
     }
   })
 },
-// searchResult(keyWord){
-//   API.searchResult({
-//     keywords: keyword,type: 1
-//   }).then(res=>{
-//     if(res.code === 200){
-//       console.log(res)
-//       // this.setData({
-//       //   searchSuggest:res.result.allMatch
-//       // })
-//     }
-//   })
-// },
 
 
   //获取input文本并且实时搜索
@@ -108,11 +94,10 @@ searchSuggest(){
   
   
   //实现直接返回返回上一页的功能，退出搜索界面
-  cancel: function () {
-    // console.log('a')
-    wx.switchTab({
-      url: '/pages/find/find'
-    })
+  back: function () {
+    wx: wx.navigateBack({
+      delta: 1
+    });
   },
 
 
@@ -137,6 +122,21 @@ searchSuggest(){
     that.searchResult();
   },
 
+   // input失去焦点函数
+   routeSearchResPage: function(e) {
+    console.log(e.detail.value)
+    let history = wx.getStorageSync("history") || [];
+    history.push(this.data.searchKey)
+    wx.setStorageSync("history", history);
+  },
+
+  //每次显示变动就去获取缓存，给history，并for出来。
+  onShow: function () {
+    console.log('a')
+    this.setData({
+      history: wx.getStorageSync("history") || []
+    })
+  },
 
   // 清空page对象data的history数组 重置缓存为[]
   clearHistory: function() {
@@ -157,20 +157,7 @@ searchSuggest(){
     })
   },
 
-  // input失去焦点函数
-  routeSearchResPage: function(e) {
-    console.log(e.detail.value)
-    let history = wx.getStorageSync("history") || [];
-    history.push(this.data.searchKey)
-    wx.setStorageSync("history", history);
-  },
-
-  //每次显示变动就去获取缓存，给history，并for出来。
-  onShow: function () {
-    this.setData({
-      history: wx.getStorageSync("history") || []
-    })
-  },
+ 
 
 
   handlePlayAudio: function (event) { //event 对象，自带，点击事件后触发，event有type,target，timeStamp，currentTarget属性
@@ -182,7 +169,7 @@ searchSuggest(){
 
 
   // 点击热门搜索值或搜索历史，填入搜索框
-  fill_value:function(e){
+  fill_value: function(e){
     let that = this;
     // console.log(this.data.history)
     console.log(e.currentTarget.dataset.value)

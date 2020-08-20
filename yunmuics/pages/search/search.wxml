@@ -3,7 +3,7 @@
     <!-- 上部整个搜索框 -->
     <view class="weui-search-bar">
         <!-- 返回箭头按钮 -->
-        <view class="weui-search-bar__cancel-btn {{isCancel?'':'hide'}}">
+        <view class="weui-search-bar__cancel-btn" bindtap="back">
             <image class="return-pic" src="../../image/search_return.png" bindtap="cancel" />
         </view>
         <!-- 搜索栏 -->
@@ -54,7 +54,9 @@
             <image type='clear' bindtap="clearHistory" class="history-delete" src="../../image/search_del.png" />
         </view>
         <view class="allhistory">
-            <text class="hot_keys_box_item" wx:for="{{history}}" wx:key="" data-value='{{item}}' data-index="{{index}}" bindtap="fill_value">{{item}}</text>
+            <view class="allhistorybox" wx:for="{{history}}" wx:key="" data-value='{{item}}' data-index="{{index}}" bindtap="fill_value">
+                <text class="historyname">{{item}}</text>
+            </view>
         </view>
     </view>
     <!-- 热搜榜 -->
@@ -66,7 +68,7 @@
             <view wx:if="{{index <= 2}}">
                 <text class="rankingList-num" style="color:red">{{index+1}}</text>
                 <view class="song">
-                    <text class="rankigList-songname" style="color:black;font-weight:600">
+                    <text class="rankigList-songname" style="color:black;font-weight:600" bindtap='fill_value'>
                         {{item.first}}
                     </text>
                     <block wx:for="{{detail}}" wx:key="index">
@@ -77,7 +79,7 @@
             <view wx:if="{{index > 2}}">
                 <text class="rankingList-num">{{index+1}}</text>
                 <view class="othersong">
-                    <text class="rankigList-songname">{{item.first}}</text>
+                    <text class="rankigList-songname" bindtap='fill_value'>{{item.first}}</text>
                 </view>
             </view>
         </view>
