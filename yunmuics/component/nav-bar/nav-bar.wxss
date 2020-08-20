@@ -4,13 +4,13 @@
   width: 100%;
   z-index:99;
 }
-.nav-bar{
-  /* display: flex;
+/* .nav-bar{
+   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  font-size: 34rpx; */
-}
+  font-size: 34rpx; 
+} */
 .nav-img {
   width: 45rpx;
   height: 45rpx;
@@ -29,4 +29,17 @@
 }
 .nav-text{
   margin: 0 16rpx;
-  }
+}
+.mineActive {
+  color:white;
+  font-weight: 550;
+  font-size: 36rpx;
+  margin-top: -4rpx;
+}
+.active {
+  color: #000;
+  font-weight: 550;
+  font-size: 36rpx;
+  margin-top: -4rpx;
+}
+

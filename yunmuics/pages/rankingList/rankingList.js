@@ -1,13 +1,15 @@
 // pages/find/find-page/rankingList/rankingList.js
 // const API = require('../../toplist/detail')
- const app = getApp();
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    hidden: false,  //加载是否隐藏
+    officialList: [],
+    moreList: [],
+
     list: [],
     rank: [
       {
@@ -25,7 +27,8 @@ Page({
         date: '每天更新',
         listname: '云音乐欧美新歌榜',
       }
-    ]
+    ],
+
   },
 
   /**
@@ -41,28 +44,21 @@ Page({
         "Content-Type": "application/json"
       },
       success: (res) => {
-        console.log(res)
+        const oList = res.data.list.filter(item => item.tracks.length
+        )
+        console.log(oList)
+        const mList =  res.data.list.filter( item => !item.tracks.length
+        )
+
+        
+
         this.setData({
+          officialList:oList,
+          moreList:mList,
           list: res.data.list
         })
-        if(this.data.list.length>0){
-          this.setData({
-            hidden: true
-          })
-        }
       }
     })
-    // wx.request({
-    //   url: 'http://neteasecloudmusicapi.zhaoboy.com/search/suggest',
-    //   data: {
-    //   },
-    //   header: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   success: (res) => {
-    //     console.log(res)
-    //   }
-    // })
   },
 
   /**

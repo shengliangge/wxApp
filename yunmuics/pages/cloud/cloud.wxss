@@ -151,3 +151,9 @@
   height: 30rpx;
   margin-left: 250rpx;
 }
+
+
+.nav-text .nav-mine .navigator{
+  color: red;
+  font-weight: 600;
+}

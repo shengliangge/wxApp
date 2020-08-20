@@ -21,25 +21,6 @@ Page({
         hot: 'HOT'
       }
     ],
-    // list: [
-    //   {
-    //     name: '爸爸妈妈',
-    //     hot: 'HOT',
-    //     num: '2258',
-    //     des: '别忘了把爱留给爸妈一份'
-    //   }
-    // ],
-    // his: [
-    //   {
-    //     name:'del'
-    //   },
-    //   {
-    //     name:'周杰伦'
-    //   },
-    //   {
-    //     name:'天外来物'
-    //   }
-    // ]
   },
 
   /**
@@ -94,8 +75,8 @@ searchSuggest(){
 // },
 
 
-  //获取input文本并且实时搜索,动态隐藏组件
-  getsearchKey:function(e){
+  //获取input文本并且实时搜索
+  getSearchKey:function(e){
     console.log(e.detail.value) //打印出输入框的值
     let that = this;
     if(e.detail.cursor != that.data.cursor){ //实时获取输入框的值
@@ -118,8 +99,8 @@ searchSuggest(){
   },
  
   // 实现点击输入框的×把输入的内容清空
-  clearInput:function(res){
-    console.log('sada')
+  clearInput: function(res){
+    console.log('啊')
     this.setData({
       inputValue: ''
     })
@@ -128,29 +109,30 @@ searchSuggest(){
   
   //实现直接返回返回上一页的功能，退出搜索界面
   cancel: function () {
+    // console.log('a')
     wx.switchTab({
-      url: ''
+      url: '/pages/find/find'
     })
   },
 
 
   // 搜索结果
-  searchResult(){
+  searchResult: function(e) {
     console.log(this.data.searchKey)
     API.searchResult({ keywords: this.data.searchKey, type: 1, limit: 100, offset:2 }).then(res => {
       if (res.code === 200) {
         this.setData({
-          searchresult: res.result.songs
+          searchResult: res.result.songs
         })
       }
     })
   },
 
-// 搜索完成点击确认
-  searchover:function(){
+// 输入后确定进行搜索（回车或点击需要的那个搜索结果）
+  searchOver:function(){
     let that = this;
     that.setData({
-      showsongresult: false
+      showSongResult: false
     })
     that.searchResult();
   },
@@ -192,7 +174,7 @@ searchSuggest(){
 
 
   handlePlayAudio: function (event) { //event 对象，自带，点击事件后触发，event有type,target，timeStamp，currentTarget属性
-    const musicId = event.currentTarget.dataset.id; //获取到event里面的歌曲id赋值给audioId
+    const musicId = event.currentTarget.dataset.id; //获取到event里面的歌曲id赋值给musicId
     wx.navigateTo({                                 //获取到id带着完整url后跳转到play页面
       url: `../play/play?musicId=${musicId}`
     })
