@@ -144,7 +144,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.getsongsheet()//查看数据使用
     wx.getStorage({
       key: 'login_token',
       success: (result) => {
@@ -176,7 +175,7 @@ Page({
         // console.log(res)
         this.setData({
           blocks: res.data.data.blocks,
-          hidden:true
+          hidden: true
         })
       }
     })
@@ -196,7 +195,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

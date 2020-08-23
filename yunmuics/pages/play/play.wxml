@@ -80,7 +80,6 @@
 			 activeColor="rgba(255,255,255,.8)"
 			 value="{{currentProcessNum}}"
 			 block-size="12"
-			 show-value
 			 bindtap="click"
 			></slider>
 			<view>
@@ -93,7 +92,7 @@
 				<image
 				 src="../../image/play_lastSong.png"
 				 class=" icon_play"
-				 bindtap="go_lastSong"
+				 bindtap="beforeSong"
 				/>
 			</view>
 			<!-- 暂停图标-->
@@ -117,7 +116,7 @@
 				<image
 				 src="../../image/play_nextSong.png"
 				 class="icon_play"
-				 bindtap="go_lastSong"
+				 bindtap="nextSong"
 				/>
 			</view>
 		</view>

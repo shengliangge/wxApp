@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    musicId: -1,//音乐id
     hidden: false,  //加载动画是否隐藏
     isPlay: true,   //歌曲是否播放
     song: [],    //歌曲信息
@@ -35,16 +36,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取到其他页面传来的musicId
-    // console.log(options)
-    const musicId = options.musicId
-    this.play(musicId)//调用play方法
+    console.log(options)
+    const musicId = options.musicId    //获取到其他页面传来的musicId
+    this.play(musicId, true)//调用play方法
   },
   //播放音乐方法
-  play(id) {
-    const musicId = id
+  play(musicId, flag) {
+    this.setData({
+      musicId
+    })
     // 将当前音乐id传到全局
-    app.globalData.songId = musicId
+    app.globalData.musicId = musicId
     // 通过musicId发起接口请求，请求歌曲详细信息
     //获取到歌曲音频，则显示出歌曲的名字，歌手的信息，即获取歌曲详情；如果失败，则播放出错。
     wx.request({
@@ -54,6 +56,8 @@ Page({
       },
       success: res => {
         console.log('歌曲详情', res);
+        app.globalData.songName = res.data.songs[0].name
+        console.log(app.globalData.songName)
         if (res.data.songs.length === 0) {
           // console.log('无法获取到资源')
           wx.showModal({
@@ -80,7 +84,7 @@ Page({
               id: musicId
             },
             success: res => {
-              console.log('歌词:', res)
+              // console.log('歌词:', res)
               if (res == null) {
                 // console.log('歌词出错')
                 wx.showModal({
@@ -132,21 +136,19 @@ Page({
                 })
               } else {
                 // 调用createBackgroundAudioManager方法将歌曲url传入backgroundAudioManager
-                this.createBackgroundAudioManager(res.data.data[0]);
+                this.createBackgroundAudioManager(res.data.data[0], flag);
               }
             }
           })
-          // console.log(res.data.songs[0].name)
-          // 歌名传给全局变量
-          app.globalData.songName = res.data.songs[0].name;
         }
       },
     })
   },
   // 背景音频播放方法
-  createBackgroundAudioManager(res) {
-
+  createBackgroundAudioManager(res, flag) {
     const backgroundAudioManager = wx.getBackgroundAudioManager(); //调用官方API获取全局唯一的背景音频管理器。并把它给实例backgroundAudioManager 
+    console.log(backgroundAudioManager.src);
+
     // app.globalData.backgroundAudioManager = backgroundAudioManager; //把实例backgroundAudioManager (背景音频管理器) 给全局
     // console.log(this.data.song.name)
     backgroundAudioManager.title = this.data.song.name;                        //把title音频标题给实例
@@ -154,7 +156,15 @@ Page({
     backgroundAudioManager.coverImgUrl = this.data.song.al.picUrl;             //音频图片 给实例
     // 设置backgroundAudioManager的src属性，音频会立即播放
     if (res.url != null) {
-      backgroundAudioManager.src = res.url;      // res.url 在createBgAudio 为 mp3音频  url为空，播放出错
+      if (flag && backgroundAudioManager.src != res.url) {    //首次放歌或者切歌
+        let musicId = this.data.musicId
+        console.log('切歌', musicId);
+        // app.globalData.history_songId.push(musicId)
+        app.globalData.history_songId = this.unique(app.globalData.history_songId, musicId) //去除重复历史
+        // console.log(app.globalData.history_songId);
+        // console.log('换歌')
+      }
+      backgroundAudioManager.src = res.url;
       this.setData({
         isPlay: true,
         hidden: true,
@@ -175,7 +185,7 @@ Page({
       }
       if (!this.data.noLyric) {   //如果没有歌词，就不需要调整歌词位置
         this.lyricsRolling(backgroundAudioManager)
-      } 
+      }
     })
     // const history_songId = this.data.history_songId
     // console.log(this.data.history_songId)
@@ -192,12 +202,26 @@ Page({
     //   })
     // });
 
-    // backgroundAudioManager .onEnded(() => {                  //监听背景音乐自然结束事件，结束后自动播放下一首。自然结束，调用go_lastSong()函数，即歌曲结束自动播放下一首歌
-    //   this.go_lastSong();
-    // })
+    backgroundAudioManager.onEnded(() => {                  //监听背景音乐自然结束事件，结束后自动播放下一首。自然结束，调用go_lastSong()函数，即歌曲结束自动播放下一首歌
+      this.nextSong();
+    })
+    console.log('待放', app.globalData.waitForPlaying)
+    console.log('历史', app.globalData.history_songId)
     // wx.setStorageSync('historyId', history_songId); //把historyId存入缓存
   },
 
+  // 历史歌单去重
+  unique(arr, musicId) {
+    let index = arr.indexOf(musicId)  //使用indexOf方法，判断当前musicId是否已经存在，如果存在，得到其下标
+    console.log(index);
+    if (index != -1) {          //如果已经存在在历史播放中，则删除老记录，存入新记录
+      arr.splice(index, 1)
+      arr.push(musicId)
+    } else {
+      arr.push(musicId)       //如果不存在，则直接存入历史歌单
+    }
+    return arr  //返回新的数组
+  },
 
   // 歌词滚动方法
   lyricsRolling(backgroundAudioManager) {
@@ -232,6 +256,7 @@ Page({
       }
     }
   },
+
   // 格式化时间
   formatSecond(second) {
     var secondType = typeof second;
@@ -244,10 +269,38 @@ Page({
       return "00:00";
     }
   },
+  // 播放上一首歌曲
+  beforeSong() {
+    // let len = app.globalData.history_songId.length
+    if (app.globalData.history_songId.length > 1) {
+      app.globalData.waitForPlaying.unshift(app.globalData.history_songId.pop())//将当前播放歌曲从前插入待放列表
+      // console.log(app.globalData.history_songId.pop)
+      // console.log(app.globalData.history_songId)
+      this.play(app.globalData.history_songId[app.globalData.history_songId.length - 1], false)  //播放历史歌单歌曲
+    } else {
+      wx.showModal({
+        content: '前面没有歌曲了哦',
+        confirmColor: '#DE655C',
+        confirmText: '确定'
+      })
+    }
+  },
+  // 下一首歌曲
+  nextSong() {
+    if (app.globalData.waitForPlaying.length > 0) {
+      let musicId = app.globalData.waitForPlaying.shift()
+      console.log(musicId)
+      this.play(musicId, true)//删除待放列表第一个元素并返回播放
+    } else {
+      wx.showModal({
+        content: '后面没有歌曲了哦',
+        confirmColor: '#DE655C',
+        confirmText: '确定'
+      })
+    }
+  },
   // 播放和暂停
   handleToggleBGAudio() {
-    // console.log(this.data.isPlay)
-    // let backgroundAudioManager = app.globalData.backgroundAudioManager
     const backgroundAudioManager = this.data.backgroundAudioManager
     console.log(backgroundAudioManager)
     //如果当前在播放的话

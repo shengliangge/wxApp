@@ -4,9 +4,11 @@
 	<view class="top">
 		<view class="block"></view>
 		<view class="title">
-			<text class="title-name">飙升榜</text>
+			<text class="title-name">每日推荐</text>
 			<image class="title-pic" src="../../image/recommend_i .png" />
+			!--
 			<view class="title-num">最近更新：8月1日</view>
+			-->
 		</view>
 		<view class="list">
 			<view

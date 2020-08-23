@@ -1,11 +1,16 @@
-<cover-view class="tab-bar">
+<cover-view class="tab-bar" hidden="{{songName==''}}">
 	<cover-image class="tab-bar__pic" src="../../image/control_music.png"></cover-image>
 	<cover-view class="tab-bar__text">
-		<cover-view class="text__name">丢了你</cover-view>
+		<cover-view class="text__name">{{songName}}</cover-view>
 		<cover-view class="text__change">滑动可以切换上下首哦</cover-view>
 	</cover-view>
 	<cover-view class="tab-bar-icon">
-		<cover-image class="icon icon__play" src="../../image/control_play.png"></cover-image>
+		<cover-image
+		 class="icon icon__play"
+		 bindtap="goPlay"
+		 src="../../image/control_play.png"
+		></cover-image>
 		<cover-image class="icon icon__more" src="../../image/control_more.png"></cover-image>
 	</cover-view>
 </cover-view>
+
