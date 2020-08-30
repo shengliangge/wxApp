@@ -1,5 +1,5 @@
 //find页面
-const API = require('../../utils/api')
+const API = require('../../utils/req')
 const app = getApp();
 Page({
   // 页面的初始数据
