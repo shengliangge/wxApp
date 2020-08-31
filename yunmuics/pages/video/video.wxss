@@ -35,7 +35,7 @@
 .message-pic {
     border-radius: 15rpx;
     width: 680rpx;
-    height: 400rpx;
+    height: 550rpx;
 }
 /* 视频描述栏 */
 .message-desc {

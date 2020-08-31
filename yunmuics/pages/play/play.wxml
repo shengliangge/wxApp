@@ -80,7 +80,6 @@
 			 activeColor="rgba(255,255,255,.8)"
 			 value="{{currentProcessNum}}"
 			 block-size="12"
-			 show-value
 			 bindtap="click"
 			></slider>
 			<view>
