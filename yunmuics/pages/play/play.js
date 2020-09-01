@@ -46,7 +46,6 @@ Page({
     // 通过musicId发起接口请求，请求歌曲详细信息
     //获取到歌曲音频，则显示出歌曲的名字，歌手的信息，即获取歌曲详情；如果失败，则播放出错。
     $api.getSongDetail({ ids: musicId }).then(res => {
-      // console.log('api获取成功，歌曲详情：', res);
       if (res.data.songs.length === 0) {
         that.tips('服务器正忙~~', '确定', false)
       } else {   //获取成功
@@ -60,9 +59,7 @@ Page({
             id: musicId
           },
           success: res => {
-            // console.log('歌词', res);
             if (res.data.nolyric || res.data.uncollected) { //该歌无歌词,或者歌词未收集
-              // console.log("无歌词")
               that.setData({
                 noLyric: true
               })
@@ -99,21 +96,19 @@ Page({
   createBackgroundAudioManager(res) {
     const that = this;//将this对象复制给that
     const backgroundAudioManager = wx.getBackgroundAudioManager(); //调用官方API获取全局唯一的背景音频管理器。
-    console.log(backgroundAudioManager.src);
     if (res.url != null) {
-      that.setData({
-        currentTime: '00:00',      //当前音乐时间（00:00格式）
-        currentProcessNum: 0,       //当前音乐时间（秒）
-        marginTop: 0,    //文稿滚动距离
-        currentIndex: 0,    //当前正在第几行
-      })
       if (backgroundAudioManager.src != res.url) {    //首次放歌或者切歌
+        that.setData({     //重设一下进度，避免切歌部分数据更新过慢
+          currentTime: '00:00',      //当前音乐时间（00:00格式）
+          currentProcessNum: 0,       //当前音乐时间（秒）
+          marginTop: 0,    //文稿滚动距离
+          currentIndex: 0,    //当前正在第几行
+        })
         backgroundAudioManager.title = that.data.song.name;                //把title音频标题给实例
         backgroundAudioManager.singer = that.data.song.ar[0].name;             //音频歌手给实例
         backgroundAudioManager.coverImgUrl = that.data.song.al.picUrl;         //音频图片 给实例
         backgroundAudioManager.src = res.url;        // 设置backgroundAudioManager的src属性，音频会立即播放
         let musicId = that.data.musicId
-        // console.log('切歌', musicId);
         app.globalData.history_songId = that.unique(app.globalData.history_songId, musicId) //去除重复历史
       }
       that.setData({
@@ -140,11 +135,11 @@ Page({
         that.lyricsRolling(backgroundAudioManager)
       }
     })
-    backgroundAudioManager.onEnded(() => {         //监听背景音乐自然结束事件，结束后自动播放下一首。自然结束，调用go_lastSong()函数，即歌曲结束自动播放下一首歌
+    backgroundAudioManager.onEnded(() => {  //监听背景音乐自然结束事件，结束后自动播放下一首。自然结束，调用go_lastSong()函数，即歌曲结束自动播放下一首歌
       that.nextSong();
     })
-    console.log('待放', app.globalData.waitForPlaying)
-    console.log('历史', app.globalData.history_songId)
+    // console.log('待放', app.globalData.waitForPlaying)
+    // console.log('历史', app.globalData.history_songId)
   },
 
   // 提醒
@@ -304,7 +299,6 @@ Page({
 
   //进度条开始滑动触发
   start: function (e) {
-    // console.log("开始滑动")
     // 控制进度条停，防止出现进度条抖动
     this.setData({
       slide: true
@@ -312,22 +306,15 @@ Page({
   },
   //结束滑动触发
   end: function (e) {
-    const position = e.detail.value
+    const position = e.detail.value   //移动值
     let backgroundAudioManager = this.data.backgroundAudioManager  //获取背景音频实例
-    // console.log(position)
-    backgroundAudioManager.seek(position) //改变歌曲进度
-    console.log("结束")
     this.setData({
       currentProcessNum: position,
-    })
-    this.setData({
       slide: false
     })
+    backgroundAudioManager.seek(position) //改变歌曲进度
     // 判断当前是多少行
     for (let j = 0; j < this.data.storyContent.length; j++) {
-      // console.log('当前行数', this.data.currentIndex)
-      // console.log(parseFloat(backgroundAudioManager.currentTime))
-      // console.log(parseFloat(this.data.storyContent[j][0]))
       // 当前时间与前一行，后一行时间作比较， j:代表当前行数
       if (position < parseFloat(this.data.storyContent[j][0])) {
         this.setData({

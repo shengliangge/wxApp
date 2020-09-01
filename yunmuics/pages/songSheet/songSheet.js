@@ -1,4 +1,4 @@
-const API = require('../../utils/api')
+const API = require('../../utils/req')
 
 Page({
 

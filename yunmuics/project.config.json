@@ -27,12 +27,12 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.0",
-	"appid": "wx8f25667256296406",
+	"appid": "wx898a434f97175f95",
 	"projectname": "yunmuics",
 	"debugOptions": {
 		"hidedInDevtools": []

@@ -42,6 +42,9 @@ Component({
           // complete
         }
       })
+    },
+    songList(){
+      console.log('点击')
     }
   }
 })

@@ -5,12 +5,7 @@
 		<cover-view class="text__change">滑动可以切换上下首哦</cover-view>
 	</cover-view>
 	<cover-view class="tab-bar-icon">
-		<cover-image
-		 class="icon icon__play"
-		 bindtap="goPlay"
-		 src="../../image/control_play.png"
-		></cover-image>
-		<cover-image class="icon icon__more" src="../../image/control_more.png"></cover-image>
+		<cover-image class="icon icon__play" bindtap="goPlay" src="../../image/control_play.png"></cover-image>
+		<cover-image bindtap="songList" class=" icon icon__more" src="../../image/control_more.png"></cover-image>
 	</cover-view>
 </cover-view>
-

@@ -121,21 +121,10 @@ Page({
   },
   //播放音乐
   playMusic: function (e) {
-    // console.log(e.currentTarget.dataset.in.id)
-    // 获取音乐id
-    let musicId = e.currentTarget.dataset.in.id
+    let musicId = e.currentTarget.dataset.in.id    // 获取音乐id
     // 跳转到播放页面
     wx.navigateTo({
-      url: `../play/play?musicId=${musicId}`,
-      success: function (res) {
-        // success
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
+      url: `../play/play?musicId=${musicId}`
     })
   },
 

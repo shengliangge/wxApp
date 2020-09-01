@@ -20,7 +20,6 @@
 	<view class="play-body" bindtap="showLyric">
 		<!-- 歌词 -->
 		<!-- 需要设置高度，否则scroll-top可能失效 -->
-
 		<scroll-view
 		 hidden="{{hiddenLyric}}"
 		 scroll-y="true"
