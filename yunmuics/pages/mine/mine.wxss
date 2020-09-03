@@ -1,23 +1,28 @@
 /* pages/mine/mine.wxss */
+
 .wrapper {
     width: 100%;
     height: 100%;
 }
+
 .maintop {
     width: 100%;
     height: 60rpx;
     background-color: #16151b;
 }
+
 .main {
     width: 100%;
     height: 390rpx;
     background-color: #16151b;
 }
+
 .mine {
     width: 750rpx;
     height: 200rpx;
     background-color: #16151b;
 }
+
 .mine-pic {
     border-radius: 50%;
     width: 108rpx;
@@ -25,6 +30,7 @@
     margin-top: 46rpx;
     margin-left: 35rpx;
 }
+
 .mine-name {
     float: right 10rpx;
     position: absolute;
@@ -32,7 +38,8 @@
     margin-top: 60rpx;
     color: white;
     font-size: 30rpx;
-} 
+}
+
 .mine-grade {
     position: absolute;
     margin-left: 40rpx;
@@ -40,7 +47,8 @@
     color: white;
     font-size: 20rpx;
 }
- .mine-vip {
+
+.mine-vip {
     float: right;
     color: #515154;
     font-size: 22rpx;
@@ -49,35 +57,11 @@
     margin-left: 420rpx;
 }
 
-.title {
-    width: 750rpx;
-    height: 130rpx;
-    background-color: #16151b;
-}
-.local {
-    height: 60rpx;
-    width: 80rpx;
-    float: left;
-    margin: 20rpx 0 0 60rpx;
-    text-align: center;
-}
-.local-pic {
-    width: 50rpx;
-    height: 50rpx;
-}
-.local text {
-    margin-top: 5rpx;
-    font-size: 20rpx;
-    color: white;
-    position: absolute;
-    margin-left: -40rpx;
-}
-
 .des {
     background-color: #fff;
     width: 100%;
     height: 100%;
-    padding:20rpx;
+    padding: 20rpx;
     border-top-left-radius: 50rpx;
     border-top-right-radius: 50rpx;
     overflow: hidden;
@@ -85,56 +69,60 @@
     position: relative;
     top: -20px;
 }
+
 .my {
     width: 100%;
     height: 80rpx;
 }
+
 .my-name {
     line-height: 80rpx;
     font-size: 28rpx;
     font-weight: 600;
     color: #000000;
 }
-.my-pic0 {
-    line-height: 80rpx;
-    width: 30rpx;
-    height: 30rpx;
-    margin-left: 550rpx;
-}
-.my-pic1 {
-    line-height: 80rpx;
-    width: 30rpx;
-    height: 30rpx;
-}
-
 
 .scroll {
     height: 320rpx;
     white-space: nowrap;
 }
-.scroll-box{
-    
+
+.scroll-box {
     display: inline-block;
     height: 280rpx;
     width: 218rpx;
     margin: 0 0 0 20rpx;
     text-align: center;
     background-color: #e4e4e4;
+    position: relative;
 }
-.scroll-box-top {
+
+/* .scroll-box-top {
     font-size: 24rpx;
     color: #515154;
+} */
+
+.scroll-box-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -100;
 }
+
 .scroll-box-pic {
     width: 48rpx;
     height: 48rpx;
     margin-top: 60rpx;
 }
+
 .scroll-box-mid {
     font-size: 28rpx;
     margin-top: 10rpx;
     color: white;
 }
+
 .scroll-box-down {
     font-size: 24rpx;
     color: #515154;
@@ -143,120 +131,44 @@
     margin-top: 25rpx;
 }
 
-.listname {
-    width: 100%;
-    height: 80rpx;
-}
- .listname-set {
-    height: 80rpx;
-    width: 150rpx;
-}
-.listname-set-name {
-    line-height: 80rpx;
-    font-size: 28rpx;
-    font-weight: 600;
-    color: #000000;
-}
-.listname-set-num {
-    font-weight: 400;
-    color: #000000;
-    font-size: 20rpx;
-    margin-left: 6rpx;
-}
-.listname-collect {
-    float: right;
-    height: 80rpx;
-    width: 130rpx;
-    position: absolute;
-    margin-left: 170rpx;
-    margin-top: -80rpx;
-   
-}
-.listname-collect-name {
-    line-height: 80rpx;
-    font-size: 28rpx;
-    font-weight: 600;
-    color: #515154;
-}
-.listname-collect-num {
-    font-weight: 400;
-    color: #515154;
-    font-size: 20rpx;
-    margin-left: 6rpx;
-} 
-.listname-pic {
-    width: 20.8px;
-    height: 20.8px;
-    float: right;
-    position: absolute;
-    margin-top: -60rpx;
-    margin-left: 690rpx;
-}
-
-.add {
-    width: 700rpx;
-    height: 80rpx;
-    border-top: 3rpx solid #cccccc;
-    border-right: 3rpx solid #cccccc;
-    border-bottom: 3rpx solid #cccccc;
-    border-left: 3rpx solid #cccccc;
-}
-.add-sign {
-    margin-left: 220rpx;
-    color: #515154;
-    font-size: 40rpx;
-    line-height: 80rpx;
-}
-.add-name {
-    margin-left: 15rpx;
-    font-size: 26rpx;
-    color: #515154;
-    line-height: 80rpx;
-}
-
 .recommed {
     width: 100%;
     height: 80rpx;
 }
+
 .recommed-name {
     line-height: 80rpx;
     font-size: 28rpx;
     font-weight: 550;
     color: #000000;
 }
+
 .recommen-delete {
     line-height: 80rpx;
     color: #515154;
     margin-left: 580rpx;
-
 }
 
 .musicsheet {
-
     width: 100%;
     height: 100%;
 }
+
 .musicsheet-box {
-    width:46%;
+    width: 46%;
     height: 200rpx;
     display: flex;
     float: left;
     align-items: center;
     margin-right: 20rpx;
 }
+
 .musicsheet-pic {
     width: 120rpx;
     height: 120rpx;
     border-radius: 10rpx;
     margin-right: 40rpx;
 }
-.my-pic0 {
-    line-height: 80rpx;
-    width: 30rpx;
-    height: 30rpx;
-    margin-left: 535rpx;
-}
-    
 
 .musicsheet-list {
     font-size: 25rpx;
@@ -265,11 +177,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-left: -20rpx;
-
 }
+
 .musicsheet-des {
     font-size: 20rpx;
     color: #515154;
     margin-left: -20rpx;
-
-} 
+}

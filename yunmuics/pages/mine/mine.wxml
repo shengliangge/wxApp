@@ -10,34 +10,31 @@
 			<image class="mine-pic" src="{{userInfo.data.profile.avatarUrl}}" />
 			<text class="mine-name">{{userInfo.data.profile.nickname}}</text>
 			<text class="mine-vip">开通黑胶VIP</text>
-			<text class="mine-grade">Lv.0</text>
+			<text class="mine-grade">Lv.{{user.level}}</text>
 		</view>
-		<view class="title">
-			<block wx:for="{{detail}}" wx:key="index">
-				<view class="local">
-					<image class="local-pic" src="{{item.thumb}}" />
-					<view>
-						<text>{{item.name}}</text>
-					</view>
-				</view>
-			</block>
-		</view>
+
 	</view>
 	<view class="des">
 		<view class="my">
 			<text class="my-name">我的音乐</text>
-			<image class="my-pic0" src="../../image/mine_li.png" />
-			<image class="my-pic1" src="../../image/mine_rt.png" />
+
 		</view>
 		<scroll-view class="scroll" scroll-x>
-			<block wx:for="{{describe}}" wx:key="index">
-				<view class="scroll-box">
-					<view>
+			<block wx:for="{{playlist}}" wx:key="index">
+				<view
+				 class="scroll-box"
+				 bindtap="gotosonglist"
+				 data-id="{{item.id}}"
+				>
+					<image class="scroll-box-img" src="{{item.coverImgUrl}}" />
+
+					<!-- <view>
 						<text class="scroll-box-top">{{item.mark}}</text>
-					</view>
+					</view> -->
+
 					<image class="scroll-box-pic" src="{{item.pict}}" />
 					<view>
-						<text class="scroll-box-mid">{{item.info}}</text>
+						<text class="scroll-box-mid">{{item.name}}</text>
 					</view>
 					<view>
 						<text class="scroll-box-down">{{item.deta}}</text>
@@ -45,21 +42,7 @@
 				</view>
 			</block>
 		</scroll-view>
-		<view class="listname">
-			<view class="listname-set">
-				<text class="listname-set-name">创建歌单</text>
-				<text class="listname-set-num">0</text>
-			</view>
-			<view class="listname-collect">
-				<text class="listname-collect-name">收藏歌单</text>
-				<text class="listname-collect-num">0</text>
-			</view>
-			<image class="listname-pic" src="../../image/mine_lan.png" />
-		</view>
-		<view class="add">
-			<text class="add-sign">+</text>
-			<text class="add-name">导入外部歌单</text>
-		</view>
+
 		<view class="recommed">
 			<text class="recommed-name">推荐歌单</text>
 			<text class="recommen-delete">x</text>

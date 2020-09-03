@@ -5,32 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detail: [
-      {
-        thumb: '../../image/mine_t1.png',
-        name: '本地音乐'
 
-      },
-      {
-        thumb: '../../image/mine_t2.png',
-        name: '下载管理'
-
-      },
-      {
-        thumb: '../../image/mine_t3.png',
-        name: '我的电台'
-
-      },
-      {
-        thumb: '../../image/mine_t4.png',
-        name: '我的收藏'
-
-      },
-      {
-        thumb: '../../image/mine_t5.png',
-        name: '关注新歌'
-      }
-    ],
     describe: [
       {
         mark: '推荐',
@@ -96,7 +71,10 @@ Page({
       }
     ],
     userInfo: {},
-    login_token: ''
+    login_token: '',
+    playlist: [],
+    user: {}
+
   },
 
   /**
@@ -104,13 +82,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(app.globalData.login_token)
-    if(app.globalData.login_token==''){
-      // wx.showToast({
-      //   title: '未登录,请登陆后尝试！',
-      //   icon: 'none',
-      //   mask:true,
-      //   duration: 2500
-      // })
+    if (app.globalData.login_token == '') {
       wx.showModal({
         content: '未登录,请登陆后尝试！',
         cancelColor: '#DE655C',
@@ -123,50 +95,54 @@ Page({
           })
         }
       })
-    }else{
-    // 从全局中取数据
-    this.setData({
-      userInfo: app.globalData.userInfo,
-      login_token: app.globalData.login_token
-    })
+    } else {
+      // 从全局中取数据
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        login_token: app.globalData.login_token
+      })
 
-    console.log(this.data.userInfo)
+      console.log(this.data.userInfo)
 
-    // console.log("输出的token")
-    console.log(this.data.login_token)
-    console.log(this.data.userInfo.data.account.id)
-    // 用户信息详情获取
-    wx.request({
-      url: 'http://neteasecloudmusicapi.zhaoboy.com/user/detail',
-      data: {
-        "uid": this.data.userInfo.data.account.id,
-      },
-      header: {
-        "Content-Type": "application/json",
-      },
-      //成功回调函数 成功 200
-      success: (res) => {
-        console.log("mine用户信息详情成功吗？", res.data)
-        // console.log(res)
-      }
-    })
-        
-        wx.request({
-          url: 'http://neteasecloudmusicapi.zhaoboy.com/user/subcount',
-          data: {
-            "cookie": this.data.login_token
-          },
-          header: {
-            "Content-Type": "application/json",
-            "cookie": this.data.login_token
-          },
-          //成功回调函数 成功 200
-          success: (res) => {
-            console.log("mine用户信息收藏成功吗？", res.data)
-            // console.log(res)
-          }
-        })
-      }
+      // console.log("输出的token")
+      console.log(this.data.login_token)
+      console.log(this.data.userInfo.data.account.id)
+      // 用户信息详情获取
+      wx.request({
+        url: 'http://neteasecloudmusicapi.zhaoboy.com/user/detail',
+        data: {
+          "uid": this.data.userInfo.data.account.id,
+        },
+        header: {
+          "Content-Type": "application/json",
+        },
+        //成功回调函数 成功 200
+        success: (res) => {
+          console.log("mine用户信息详情成功吗？", res.data)
+          this.setData({
+            user: res.data
+          })
+        }
+      })
+      wx.request({
+        url: 'http://neteasecloudmusicapi.zhaoboy.com/user/playlist',
+        data: {
+          "uid": this.data.userInfo.data.account.id,
+          "cookie": this.data.login_token
+        },
+        header: {
+          "Content-Type": "application/json",
+          // "cookie": this.data.login_token
+        },
+        success: (res) => {
+          console.log("mine用户歌单成功吗？", res.data)
+          console.log(res.data.playlist)
+          this.setData({
+            playlist: res.data.playlist
+          })
+        }
+      })
+    }
   },
 
   /**
