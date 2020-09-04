@@ -85,7 +85,7 @@ Page({
     console.log(app.globalData.login_token)
     this.verification()   //验证是否登陆
   },
-  verification() {
+  verification() {   //验证是否登陆
     if (app.globalData.login_token == '') {
       wx.showModal({
         content: '未登录,请登陆后尝试！',
@@ -105,42 +105,7 @@ Page({
         userInfo: app.globalData.userInfo,
         login_token: app.globalData.login_token
       })
-      // 用户信息详情获取
-      // wx.request({
-      //   url: 'http://neteasecloudmusicapi.zhaoboy.com/user/detail',
-      //   data: {
-      //     "uid": this.data.userInfo.data.account.id,
-      //   },
-      //   header: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   //成功回调函数 成功 200
-      //   success: (res) => {
-      //     console.log("mine用户信息详情成功吗？", res.data)
-      //     this.setData({
-      //       user: res.data
-      //     })
-      //   }
-      // })
       this.getUserDetail();
-      // wx.request({
-      //   url: 'http://neteasecloudmusicapi.zhaoboy.com/user/playlist',
-      //   data: {
-      //     "uid": this.data.userInfo.data.account.id,
-      //     "cookie": this.data.login_token
-      //   },
-      //   header: {
-      //     "Content-Type": "application/json",
-      //     // "cookie": this.data.login_token
-      //   },
-      //   success: (res) => {
-      //     console.log("mine用户歌单成功吗？", res.data)
-      //     console.log(res.data.playlist)
-      //     this.setData({
-      //       playlist: res.data.playlist
-      //     })
-      //   }
-      // })
       this.getUserPlaylist();
     }
 
@@ -159,7 +124,9 @@ Page({
       })
   },
   getUserPlaylist() {
-    $api.getUserDetail({
+    console.log('调用');
+    
+    $api.getUserPlaylist({
       uid: this.data.userInfo.data.account.id,
       cookie: this.data.login_token
     }).then(res => {
