@@ -23,22 +23,26 @@
 			<block wx:for="{{playlist}}" wx:key="index">
 				<view
 				 class="scroll-box"
-				 bindtap="gotosonglist"
+				 bindtap="gotoSongList"
 				 data-id="{{item.id}}"
 				>
-					<image class="scroll-box-img" src="{{item.coverImgUrl}}" />
 
 					<!-- <view>
 						<text class="scroll-box-top">{{item.mark}}</text>
 					</view> -->
 
-					<image class="scroll-box-pic" src="{{item.pict}}" />
-					<view>
-						<text class="scroll-box-mid">{{item.name}}</text>
+					<!-- <image class="scroll-box-pic" src="{{item.pict}}" /> -->
+
+					<view class="scroll-box-mid">
+						<text >{{item.name}}</text>
 					</view>
-					<view>
-						<text class="scroll-box-down">{{item.deta}}</text>
+					<view class="scroll-box-down">
+						<text >{{item.deta}}</text>
 					</view>
+					<view class="scroll-box-img">
+						<image src="{{item.coverImgUrl}}" />
+					</view>
+
 				</view>
 			</block>
 		</scroll-view>

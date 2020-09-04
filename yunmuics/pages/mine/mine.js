@@ -1,3 +1,4 @@
+const $api = require('../../utils/api.js').API;
 const app = getApp();
 Page({
 
@@ -82,6 +83,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(app.globalData.login_token)
+    this.verification()   //验证是否登陆
+  },
+  verification() {
     if (app.globalData.login_token == '') {
       wx.showModal({
         content: '未登录,请登陆后尝试！',
@@ -101,50 +105,92 @@ Page({
         userInfo: app.globalData.userInfo,
         login_token: app.globalData.login_token
       })
-
-      console.log(this.data.userInfo)
-
-      // console.log("输出的token")
-      console.log(this.data.login_token)
-      console.log(this.data.userInfo.data.account.id)
       // 用户信息详情获取
-      wx.request({
-        url: 'http://neteasecloudmusicapi.zhaoboy.com/user/detail',
-        data: {
-          "uid": this.data.userInfo.data.account.id,
-        },
-        header: {
-          "Content-Type": "application/json",
-        },
-        //成功回调函数 成功 200
-        success: (res) => {
-          console.log("mine用户信息详情成功吗？", res.data)
-          this.setData({
-            user: res.data
-          })
-        }
-      })
-      wx.request({
-        url: 'http://neteasecloudmusicapi.zhaoboy.com/user/playlist',
-        data: {
-          "uid": this.data.userInfo.data.account.id,
-          "cookie": this.data.login_token
-        },
-        header: {
-          "Content-Type": "application/json",
-          // "cookie": this.data.login_token
-        },
-        success: (res) => {
-          console.log("mine用户歌单成功吗？", res.data)
-          console.log(res.data.playlist)
-          this.setData({
-            playlist: res.data.playlist
-          })
-        }
-      })
+      // wx.request({
+      //   url: 'http://neteasecloudmusicapi.zhaoboy.com/user/detail',
+      //   data: {
+      //     "uid": this.data.userInfo.data.account.id,
+      //   },
+      //   header: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   //成功回调函数 成功 200
+      //   success: (res) => {
+      //     console.log("mine用户信息详情成功吗？", res.data)
+      //     this.setData({
+      //       user: res.data
+      //     })
+      //   }
+      // })
+      this.getUserDetail();
+      // wx.request({
+      //   url: 'http://neteasecloudmusicapi.zhaoboy.com/user/playlist',
+      //   data: {
+      //     "uid": this.data.userInfo.data.account.id,
+      //     "cookie": this.data.login_token
+      //   },
+      //   header: {
+      //     "Content-Type": "application/json",
+      //     // "cookie": this.data.login_token
+      //   },
+      //   success: (res) => {
+      //     console.log("mine用户歌单成功吗？", res.data)
+      //     console.log(res.data.playlist)
+      //     this.setData({
+      //       playlist: res.data.playlist
+      //     })
+      //   }
+      // })
+      this.getUserPlaylist();
     }
-  },
 
+  },
+  getUserDetail() {
+    $api.getUserDetail({ uid: this.data.userInfo.data.account.id }).then(res => {
+      //请求成功
+      console.log("新mine用户信息详情成功吗？", res.data)
+      this.setData({
+        user: res.data
+      })
+    })
+      .catch(err => {
+        //请求失败
+        // that.tips('服务器正忙~~', '确定', false)
+      })
+  },
+  getUserPlaylist() {
+    $api.getUserDetail({
+      uid: this.data.userInfo.data.account.id,
+      cookie: this.data.login_token
+    }).then(res => {
+      //请求成功
+      console.log("新mine用户歌单成功吗？", res.data)
+      console.log(res.data.playlist)
+      this.setData({
+        playlist: res.data.playlist
+      })
+    })
+      .catch(err => {
+        //请求失败
+        // that.tips('服务器正忙~~', '确定', false)
+      })
+  },
+  gotoSongList(e) {   //跳转歌单页面
+    let listId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `../songList/songList?listId=${listId}`,
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

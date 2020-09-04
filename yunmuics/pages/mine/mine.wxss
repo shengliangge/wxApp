@@ -92,35 +92,41 @@
     height: 280rpx;
     width: 218rpx;
     margin: 0 0 0 20rpx;
+    border-radius: 10px;
+    overflow: hidden;
     text-align: center;
-    background-color: #e4e4e4;
+    color: #000;
     position: relative;
 }
 
-/* .scroll-box-top {
-    font-size: 24rpx;
-    color: #515154;
-} */
-
 .scroll-box-img {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -100;
+    height: 280rpx;
+    width: 218rpx;
+}
+
+.scroll-box-img image {
+    width: 100%;
+    height: 100%;
 }
 
 .scroll-box-pic {
-    width: 48rpx;
+    /* width: 48rpx;
     height: 48rpx;
-    margin-top: 60rpx;
+    margin-top: 60rpx; */
 }
 
 .scroll-box-mid {
-    font-size: 28rpx;
+    background-color: rgba(65, 65, 65,.2);
+    padding: 10rpx;
+    z-index:  100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 20rpx;
     margin-top: 10rpx;
-    color: white;
+    color: #fff;
 }
 
 .scroll-box-down {
