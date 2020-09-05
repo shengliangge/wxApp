@@ -1,4 +1,5 @@
 // pages/login/login.js
+const $api = require('../../utils/api.js').API;
 const app = getApp();
 Page({
 
@@ -6,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    autoFocus:true,
+    autoFocus: true,
     username: '',
     pwd: '',
     userInfo: {}
@@ -25,44 +26,39 @@ Page({
       username: e.detail.value.username,
       pwd: e.detail.value.pwd
     })
-    wx.request({
-      url: 'http://musicapi.leanapp.cn/login/cellphone', //登陆接口
-      data: {
-        phone: this.data.username,
-        password: this.data.pwd
-      },
-      header: {
-        "Content-Type": "application/json"
-      },
-      //成功回调函数 成功 200
-      success: (res) => {
-        console.log(res)
-        let code = res.data.code   //状态码
-        let msg=res.data.msg   //登陆信息
-        console.log(code)
-        //登陆成功
-        if (code === 200) {    //如果登陆
-          app.globalData.userInfo = res;  //将用户信息传给全局用户信息中
-          // console.log(res.cookies)
-          // 保存cookie登陆信息到Storage
-          this.saveUserLoginInfo(res.cookies) // 跳转到首页
-          wx.navigateTo({
-            url: `../find/find`
-          })
-        } else {   //出错，打印错误信息
-          wx.showToast({
-            title: msg,
-            icon: 'none',
-            mask: true,
-            duration: 2000
-          })
-          //输入框获得焦点
-          this.setData({
-           pwdAutoFocus:true
-          })
-        } 
+    this.login()
+  },
+  login() {
+    let msg='登陆错误'
+    $api.login({
+      phone: this.data.username,
+      password: this.data.pwd
+    }).then(res => {
+      let code = res.data.code   //状态码
+      msg = res.data.msg   //登陆信息
+      if (code === 200) {    //如果登陆成功
+        app.globalData.userInfo = res;  //将用户信息传给全局用户信息中
+        // 保存cookie登陆信息到Storage
+        this.saveUserLoginInfo(res.cookies)
+        wx.navigateTo({ // 跳转到首页
+          url: `../mine/mine`
+        })
+      } else {   //出错，打印错误信息
+        wx.showToast({
+          title: msg,
+          icon: 'none',
+          mask: true,
+          duration: 2000
+        })
+        //输入框获得焦点
+        this.setData({
+          pwdAutoFocus: true
+        })
       }
     })
+      .catch(err => {
+        //请求失败
+      })
   },
   // 保存用户登陆凭证方法
   saveUserLoginInfo: function (cookies) {
