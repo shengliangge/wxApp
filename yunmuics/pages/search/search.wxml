@@ -11,47 +11,49 @@
             <view class="weui-search-bar__box">
                 <input focus='true' type="text" class="weui-search-bar__input" placeholder="大家都在搜 " placeholder-style="color:#eaeaea" value='{{inputValue}}' bindinput="getSearchKey" bindblur="routeSearchResPage" bindconfirm="searchOver" />
                 <!-- 点击×可以清空正在输入 -->
-                <view class="weui-icon-clear">
+                <!-- <view class="weui-icon-clear">
                     <icon type="clear" size="14" color='black' bindtap="clearInput"></icon>
-                </view>
+                </view> -->
             </view>
+            <view class="clean-bar">
+                    <image class="{{showClean ? 'header_view_hide' : 'clean-pic'}}" src="../../image/search_delete.png" bindtap="clearInput"/>
+                </view>
         </view>
         <!-- 跳转歌手分类界面 -->
         <view class="songer">
-            <image class="songer-pic" src="../../image/search_songner.png" />
+            <image class="songer-pic" src="../../image/search_songner.png" bindtap="singerPage"/>
         </view>
     </view>
-    <!-- 搜索历史 -->
-    <!-- <view class="{{showView?'option':'header_view_hide'}}">
-        <text class="title history">搜索历史</text>
-        <icon type='clear' bindtap="clearHistory" class="title record" color="#DE655C"></icon>
-        <view class="hot_key_box">
-            <text class="hot_keys_box_item" wx:for="{{history}}" wx:key="" data-value='{{item}}' data-index="{{index}}" bindtap="fill_value">
-                {{item}}
-            </text>
-        </view>
-    </view> -->
     <!-- 搜索建议 -->
-    <cover-view class="{{showSongResult?'search_suggest':'header_view_hide'}}">
-        <cover-view wx:for="{{searchSuggest}}" wx:key="" class='search_result' data-value='{{item.keyword}} 'bindtap='fill_value'>
-            <cover-image class="search-pic" src="../../image/search_search.png"></cover-image>
-            <cover-view class="search_suggest_name">{{item.keyword}}</cover-view>
-        </cover-view>
-    </cover-view>
+    <view class="{{showSongResult ? 'search_suggest' : 'header_view_hide'}}">
+        <view wx:for="{{searchSuggest}}" wx:key="" class='search_result' data-value='{{item.keyword}} 'bindtap='fill_value'>
+            <image class="search-pic" src="../../image/search_search.png"></image>
+            <view class="search_suggest_name">{{item.keyword}}</view>
+        </view>
+    </view>
     <!-- 搜索结果 -->
-    <view class='search_result_songs'>
+    <view class="{{showSearchResult ? 'header_view_hide' : 'search_result_songs'}}">
+        <view class="search-title">
+            <text class="songTitle">单曲</text>
+            <view class="openBox">
+                <image class="openTap" src="../../image/search_openTap.png"/>
+                <text class="openDes">播放全部</text>
+            </view>
+        </view>
         <view wx:for="{{searchResult}}" wx:key="index" class='search_result_song_item' data-id="{{item.id}}" bindtap='handlePlayAudio'>
             <view class='search_result_song_song_name'>{{item.name}}</view>
             <view class='search_result_song_song_art-album'>
                 {{item.artists[0].name}} - {{item.album.name}}
             </view>
+            <image class="broadcast" src="../../image/search_nav-open.png"/>
+            <image class="navigation" src="../../image/mine_lan.png"/>
         </view>
     </view>
     <!-- 搜索历史 -->
     <view class="history">
         <view class="{{showView?'option':'header_view_hide'}}">
             <text class="history-name">历史记录</text>
-            <image type='clear' bindtap="clearHistory" class="history-delete" src="../../image/search_del.png" />
+            <image  bindtap="clearHistory" class="history-delete" src="../../image/search_del.png" />
         </view>
         <view class="allhistory">
             <view class="allhistorybox" wx:for="{{history}}" wx:key="" data-value='{{item}}' data-index="{{index}}" bindtap="fill_value">

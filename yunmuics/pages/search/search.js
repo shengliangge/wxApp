@@ -14,6 +14,8 @@ Page({
     showSongResult:true,
     searchResult:[],//搜索结果
     searchKey:[],
+    showSearchResult: true,
+    showClean: true,
     hots: [],
     detail: [
       {
@@ -82,11 +84,14 @@ searchSuggest(){
     if(e.detail.value!=""){ //解决 如果输入框的值为空时，传值给搜索建议，会报错的bug
       that.searchSuggest();
     }  
+    if(e.detail.value) {
+      showClean: false
+    }
   },
  
   // 实现点击输入框的×把输入的内容清空
-  clearInput: function(res){
-    console.log('啊')
+  clearInput: function(e){
+    console.log('a')
     this.setData({
       inputValue: ''
     })
@@ -96,7 +101,7 @@ searchSuggest(){
   //实现直接返回返回上一页的功能，退出搜索界面
   back: function () {
     wx: wx.navigateBack({
-      delta: 1
+      delta: 0
     });
   },
 
@@ -107,7 +112,8 @@ searchSuggest(){
     API.searchResult({ keywords: this.data.searchKey, type: 1, limit: 100, offset:2 }).then(res => {
       if (res.code === 200) {
         this.setData({
-          searchResult: res.result.songs
+          searchResult: res.result.songs,
+          showSearchResult: false
         })
       }
     })
@@ -130,14 +136,6 @@ searchSuggest(){
     wx.setStorageSync("history", history);
   },
 
-  //每次显示变动就去获取缓存，给history，并for出来。
-  onShow: function () {
-    console.log('a')
-    this.setData({
-      history: wx.getStorageSync("history") || []
-    })
-  },
-
   // 清空page对象data的history数组 重置缓存为[]
   clearHistory: function() {
     const that = this;
@@ -157,12 +155,18 @@ searchSuggest(){
     })
   },
 
- 
+  singerPage: function() {
+    // console.log('a')
+    wx.navigateTo({
+      url: `../singer/singer`
+    })
+  },
 
 
   handlePlayAudio: function (event) { //event 对象，自带，点击事件后触发，event有type,target，timeStamp，currentTarget属性
+    console.log(event)
     const musicId = event.currentTarget.dataset.id; //获取到event里面的歌曲id赋值给musicId
-    wx.navigateTo({                                 //获取到id带着完整url后跳转到play页面
+    wx.navigateTo({                                 //获取到musicId带着完整url后跳转到play页面
       url: `../play/play?musicId=${musicId}`
     })
   },
@@ -170,8 +174,9 @@ searchSuggest(){
 
   // 点击热门搜索值或搜索历史，填入搜索框
   fill_value: function(e){
+    console.log(e)
     let that = this;
-    // console.log(this.data.history)
+    console.log(this.data.history)
     console.log(e.currentTarget.dataset.value)
     that.setData({
       searchKey: e.currentTarget.dataset.value,//点击吧=把值给searchKey,让他去搜索
@@ -192,8 +197,13 @@ searchSuggest(){
   /**
    * 生命周期函数--监听页面显示
    */
+  //每次显示变动就去获取缓存，给history，并for出来。
   onShow: function () {
-
+    console.log('a')
+    this.setData({
+      history: wx.getStorageSync("history") || [],
+      showClean: false
+    })
   },
 
   /**
