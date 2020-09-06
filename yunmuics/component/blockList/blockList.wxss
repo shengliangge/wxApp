@@ -1,0 +1,51 @@
+.scroll-view {
+  white-space: nowrap;
+  width: 750rpx;
+  margin-right: -20rpx;
+}
+.select-title, .play-title {
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  margin: 20rpx 0;
+}
+
+.select-text-front, .play-text-front {
+  width: 77%;
+  font-weight: 800;
+  display: inline-block;
+}
+
+.select-text-after, .play-text-after {
+  width: 140rpx;
+  height: 50rpx;
+  border: 1px solid rgb(210, 210, 2210);
+  border-radius: 27rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.select-box {
+  display: inline-block;
+  width: 200rpx;
+  height: 290 rpx 0rpx;
+  margin-right: 20rpx;
+  vertical-align: top;
+}
+
+.select-img {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+
+.select-text {
+  margin-top: -30rpx;
+  display: block;
+  width: 200rpx;
+  font-size: 24rpx;
+  color: rgb(128, 128, 128);
+  white-space: pre-line;
+  height: 100rpx;
+}

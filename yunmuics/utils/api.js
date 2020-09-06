@@ -1,3 +1,4 @@
+const app = getApp();
 // method(HTTP 请求方法)，网易云API提供get和post两种请求方式
 const GET = 'GET';
 const POST = 'POST';
@@ -8,6 +9,7 @@ function request(method, url, data) {
   return new Promise(function (resolve, reject) {
     let header = {
       'content-type': 'application/json',
+      'cookie': app.globalData.login_token
     };
     wx.request({
       url: baseURL + url,
@@ -33,8 +35,17 @@ function request(method, url, data) {
 }
 
 const API = {
+  login: (data) => request(GET, `/login/cellphone`, data),  //手机登录
   getSongDetail: (data) => request(GET, `/song/detail`, data),  //获取歌曲详情
-  getSongUrl:(data) => request(GET, `/song/url`, data),  //获取歌曲路径
+  getSongUrl: (data) => request(GET, `/song/url`, data),  //获取歌曲路径
+  getPlaylistAll: () => request(GET, `/playlist/catlist`),  //全部歌单分类,调用此接口,可获取歌单分类,包含 category 信息
+  getPlaylistHot: () => request(GET, `/playlist/hot`),  //信息热门歌单分类 ,调用此接口,可获取歌单分类,包含 category 
+  getPlaylist: (data) => request(GET, `/top/playlist`, data),  //信息热门歌单分类 ,调用此接口,可获取歌单分类,包含 category 
+  getBanner: (data) => request(GET, `/Banner`, data),  //个性推荐轮播
+  getUserDetail: (data) => request(GET, `/user/detail`, data),  //登陆后调用此接口 , 传入用户 id, 可以获取用户详情
+  getUserPlaylist: (data) => request(GET, `/user/playlist`, data),  // 登陆后调用此接口 , 传入用户 id, 可以获取用户歌单
+  getRecommendSongs: (data) => request(GET, `/recommend/songs`, data),  // 调用此接口 , 可获得每日推荐歌单 ( 需要登录 )
+  getPlaylistDetail: (data) => request(GET, `/playlist/detail`, data),  // 获取歌单详情
 };
 module.exports = {
   API: API

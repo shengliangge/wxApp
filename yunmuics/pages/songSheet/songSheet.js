@@ -19,9 +19,15 @@ Page({
  * 生命周期函数--监听页面加载
  */
   onLoad: function (options) {
-    this.getPlaylistAll()
-    this.getPlaylist()
-    this.getPlaylistHot()   //获取热门分类
+    if (this.data.PlaylistAll.length == 0) {
+      this.getPlaylistAll()
+    }
+    if (this.data.songSheet.length == 0||this.data.category.length==0) {
+      this.getPlaylist()
+    }
+    if (this.data.PlaylistHot.length == 0) {
+      this.getPlaylistHot()   //获取热门分类
+    }
   },
 
   bindChange(e) {
@@ -31,7 +37,6 @@ Page({
   },
 
   getPlaylist: function () {  //获取歌单信息
-
     $api.getPlaylist({ limit: 27, cat: this.data.categoryName, offset: this.data.offset }).then(res => {
       this.setData({
         songSheet: res.data.playlists,

@@ -1,65 +1,46 @@
-/* pages/songlist/songlist.wxss */
-
 .wrapper {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh
 }
 
-.block {
+.bg-pic {
   width: 100%;
-  height: 120rpx;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -100;
 }
 
 .top {
   width: 100%;
-  height: 490rpx;
-  background-color: pink;
+  height: 300rpx;
 }
 
-.title-name {
-  font-size: 80rpx;
+.title {
   color: white;
   margin-left: 40rpx;
 }
 
-.title-pic {
-  width: 40rpx;
-  height: 40rpx;
-  position: absolute;
-  margin-left: 20rpx;
-  margin-top: 52rpx;
+.title-day {
+  font-size: 60rpx;
 }
 
-.title-num {
+.title-month {
+  font-size: 30rpx;
+}
+
+.title-text {
+  padding: 5rpx 10rpx;
+  background-color: rgba(255, 255, 255, .6);
+  border-radius: 20rpx;
   font-size: 20rpx;
-  color: white;
-  margin-left: 40rpx;
-}
-
-.list {
-  position: absolute;
-  margin: 100rpx 0 0 65rpx;
-}
-
-.listbox {
-  float: left;
-  height: 100rpx;
-}
-
-.list-img {
-  width: 40rpx;
-  height: 40rpx;
-  margin: 0 100rpx 0 0;
-}
-
-.list-name {
-  font-size: 25rpx;
-  margin: 0 120rpx 0 0;
 }
 
 .down {
   width: 100%;
-  height: 100%;
   padding: 20rpx;
   border-top-left-radius: 50rpx;
   border-top-right-radius: 50rpx;
@@ -87,9 +68,10 @@
   width: 50rpx;
   height: 50rpx;
 }
-.broadcast-name{
+
+.broadcast-name {
   margin-left: 20rpx;
-  flex:70%;
+  flex: 70%;
 }
 
 .broadcast-pic {
@@ -106,25 +88,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-margin-bottom: 30rpx;
+  margin-bottom: 30rpx;
 }
-.song-img{
+
+.song-img {
   width: 80rpx;
   height: 80rpx;
 }
-.song{
-  flex:70%;
-  padding-left: 20rpx;
 
+.song {
+  flex: 70%;
+  padding-left: 20rpx;
 }
-.song-name{
+
+.song-name {
   max-width: 480rpx;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   padding-bottom: 10rpx;
 }
-.song-author{
+
+.song-author {
   color: #978e8e;
   font-size: 22rpx;
   max-width: 480rpx;
@@ -132,6 +117,7 @@ margin-bottom: 30rpx;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.broadcast-pic{
-padding-right: 15rpx;
+
+.broadcast-pic {
+  padding-right: 15rpx;
 }

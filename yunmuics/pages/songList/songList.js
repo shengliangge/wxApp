@@ -1,4 +1,4 @@
-// pages/songList/songList.js
+const $api = require('../../utils/api.js').API;
 const app = getApp();
 Page({
 
@@ -28,54 +28,45 @@ Page({
     userInfo: {},
     login_token: '',
     songs: [],
-    playlist:{}
+    playlist: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    //接受其他页面传来的数据
-    let listId=options.listId
-    console.log(listId)
-    wx.request({
-      url: 'http://neteasecloudmusicapi.zhaoboy.com/playlist/detail',
-      data: {
-        "id": listId,
-        "cookie": this.data.login_token
-      },
-      header: {
-        "Content-Type": "application/json",
-        "cookie": this.data.login_token
-      },
-      //成功回调函数 成功 200
-      success: (res) => {
-        // console.log(res)
-        // console.log("find第二个歌单登陆成功吗？", res.data)
-        this.setData({
-          playlist: res.data.playlist,
-          hidden:true
-        })
-      }
+  onLoad: function (options) {    //接受其他页面传来的数据
+    let listId = options.listId
+    if (Object.keys(this.data.playlist).length == 0)
+    this.getPlaylistDetail(listId)
+  },
+  getPlaylistDetail(listId) {
+    $api.getPlaylistDetail({ id: listId }).then(res => {
+      this.setData({
+        playlist: res.data.playlist,
+        hidden: true
+      })
     })
   },
   //播放音乐
-  playMusic: function (e) {
+  playMusic(e) {
     console.log(e)
     // 获取音乐id
     let musicId = e.currentTarget.dataset.in.id
     // 跳转到播放页面
     wx.navigateTo({
       url: `../play/play?musicId=${musicId}`,
-      success: function (res) {
-        // success
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
+    })
+  },
+  playAll() {
+    let playlist = this.data.playlist.tracks
+    console.log(playlist);
+    let musicId = playlist[0].id
+    for (let i = 1; i < playlist.length; i++) {
+      app.globalData.waitForPlaying.push(playlist[i].id)
+    }
+    // 跳转到播放页面
+    wx.navigateTo({
+      url: `../play/play?musicId=${musicId}`,
     })
   },
   /**

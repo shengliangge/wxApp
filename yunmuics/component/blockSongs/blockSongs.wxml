@@ -1,0 +1,55 @@
+<view class="page-play">
+	<view class="play-title">
+		<view class="play-text-front">
+			{{blocks.uiElement.subTitle.title}}
+		</view>
+		<view class="play-text-after" bindtap="playAll">
+			<image class="play-text-img" src="../../image/find_play_pic.png"></image>
+			{{blocks.uiElement.button.text}}
+		</view>
+	</view>
+
+	<view class="play-body">
+		<view>
+			<scroll-view
+			 class="scroll-view"
+			 scroll-x="true"
+			 style="width: 100%"
+			>
+				<view
+				 class="play-body-outside"
+				 wx:for="{{blocks.creatives}}"
+				 wx:key="index"
+				 wx:for-item="creatives"
+				>
+					<block wx:for="{{creatives.resources}}" wx:key="index">
+						<view class="play-box">
+							<image class="play-img-bef" src="{{item.uiElement.image.imageUrl}}"></image>
+							<view class="play-box-text">
+								<view class="box-text-bre">
+									<view class="text-bre-one">
+										{{item.uiElement.mainTitle.title}}
+									</view>
+									<view class="text-bre-two">
+										- {{item.resourceExtInfo.artists[0].name}}
+									</view>
+								</view>
+								<view class="box-text-aft">
+									{{item.uiElement.subTitle.title}}
+								</view>
+							</view>
+							<view
+							 class="play-box-img"
+							 bindtap="playMusic"
+							 data-in="{{item.resourceExtInfo.songData}}"
+							>
+								<image class="play-img-aft" src="../../image/find_play.png"></image>
+							</view>
+						</view>
+					</block>
+				</view>
+			</scroll-view>
+		</view>
+	</view>
+</view>
+

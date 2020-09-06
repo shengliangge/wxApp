@@ -33,7 +33,9 @@ Page({
    */
   onLoad: function (options) {
     const musicId = options.musicId    //获取到其他页面传来的musicId
-    this.play(musicId)    //调用play方法
+    if(this.data.musicId!=musicId){
+      this.play(musicId)    //调用play方法
+    }
   },
   //播放音乐方法
   play(musicId) {
@@ -138,8 +140,8 @@ Page({
     backgroundAudioManager.onEnded(() => {  //监听背景音乐自然结束事件，结束后自动播放下一首。自然结束，调用go_lastSong()函数，即歌曲结束自动播放下一首歌
       that.nextSong();
     })
-    // console.log('待放', app.globalData.waitForPlaying)
-    // console.log('历史', app.globalData.history_songId)
+    console.log('待放', app.globalData.waitForPlaying)
+    console.log('历史', app.globalData.history_songId)
   },
 
   // 提醒

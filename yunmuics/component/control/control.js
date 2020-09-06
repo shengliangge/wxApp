@@ -21,7 +21,6 @@ Component({
         songName: app.globalData.songName,
         musicId: app.globalData.musicId
       })
-      console.log('组件函数aaaaaaaaaaaaaa');
     }
   },
   /**
@@ -29,7 +28,6 @@ Component({
    */
   methods: {
     goPlay() {
-      console.log('点击');
       wx.navigateTo({
         url: `/pages/play/play?musicId=${this.data.musicId}`,
         success: function (res) {

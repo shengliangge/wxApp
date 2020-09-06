@@ -6,39 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-
-    describe: [
-      {
-        mark: '推荐',
-        pict: '../../image/mine_d1.png',
-        info: '我喜欢的音乐',
-        deta: '心动模式'
-      },
-      {
-        mark: '推荐',
-        pict: '../../image/mine_d2.png',
-        info: '私人FM',
-        deta: '超3亿人在听'
-      },
-      {
-        mark: '推荐',
-        pict: '../../image/mine_d3.png',
-        info: '推歌精选',
-        deta: '云贝助力好歌'
-      },
-      {
-        mark: '推荐',
-        pict: '../../image/mine_d4.png',
-        info: '最嗨电台',
-        deta: '专业电竞平台'
-      },
-      {
-        mark: '推荐',
-        pict: '../../image/mine_d5.png',
-        info: '古典专区',
-        deta: '专业古典大全'
-      }
-    ],
     sheet: [
       {
         picture: '../../image/mine_s1.png',
@@ -81,30 +48,20 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     console.log(app.globalData.login_token)
     this.verification()   //验证是否登陆
   },
   verification() {   //验证是否登陆
     if (app.globalData.login_token == '') {
-      wx.showModal({
-        content: '未登录,请登陆后尝试！',
-        cancelColor: '#DE655C',
-        confirmColor: '#DE655C',
-        showCancel: false,
-        confirmText: '登陆',
-        complete() {
-          wx.navigateTo({
-            url: '/pages/login/login'
-          })
-        }
-      })
+      this.tips('未登录,请登陆后尝试！', '去登陆', true, '/pages/login/login')
     } else {
       // 从全局中取数据
       this.setData({
         userInfo: app.globalData.userInfo,
         login_token: app.globalData.login_token
       })
+      
       this.getUserDetail();
       this.getUserPlaylist();
     }
@@ -113,33 +70,28 @@ Page({
   getUserDetail() {
     $api.getUserDetail({ uid: this.data.userInfo.data.account.id }).then(res => {
       //请求成功
-      console.log("新mine用户信息详情成功吗？", res.data)
+      // console.log("用户信息详情", res.data)
       this.setData({
         user: res.data
       })
-    })
-      .catch(err => {
+    }).catch(err => {
         //请求失败
-        // that.tips('服务器正忙~~', '确定', false)
+        that.tips('服务器正忙~~', '返回', false, '/pages/find/find')
       })
   },
   getUserPlaylist() {
-    console.log('调用');
-    
     $api.getUserPlaylist({
       uid: this.data.userInfo.data.account.id,
       cookie: this.data.login_token
     }).then(res => {
       //请求成功
-      console.log("新mine用户歌单成功吗？", res.data)
-      console.log(res.data.playlist)
+      // console.log("用户歌单？", res.data)
       this.setData({
         playlist: res.data.playlist
       })
-    })
-      .catch(err => {
+    }).catch(err => {
         //请求失败
-        // that.tips('服务器正忙~~', '确定', false)
+        that.tips('服务器正忙~~', '返回', false, '/pages/find/find')
       })
   },
   gotoSongList(e) {   //跳转歌单页面
@@ -156,7 +108,31 @@ Page({
         // complete
       }
     })
-
+  },
+  // 提醒
+  tips(content, confirmText, isShowCancel, url) {
+    wx.showModal({
+      content: content,
+      confirmText: confirmText,
+      cancelColor: '#DE655C',
+      confirmColor: '#DE655C',
+      showCancel: isShowCancel,
+      cancelText: '取消',
+      success(res) {
+        if (res.confirm) {
+          // console.log('用户点击确定')
+          wx.navigateTo({
+            url: url
+          })
+        } else if (res.cancel) {
+          // console.log('用户点击取消')
+          wx.navigateTo({
+            url: '/pages/find/find'
+          })
+          app.globalData.navId = 2;
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

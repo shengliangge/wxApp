@@ -1,0 +1,31 @@
+<view class="page-select">
+	<view class="select-title">
+		<view class="select-text-front">
+			{{blocks.uiElement.subTitle.title}}
+		</view>
+		<view class="select-text-after" bindtap="findMore">
+			{{blocks.uiElement.button.text}}
+		</view>
+	</view>
+	<view class="select-body">
+		<scroll-view
+		 class="scroll-view"
+		 scroll-x="true"
+		 style="width: 100%"
+		>
+			<block wx:for="{{blocks.creatives}}" wx:key="index">
+				<view
+				 class="select-box"
+				 bindtap="gotoSongList"
+				 data-id="{{item.creativeId}}"
+				>
+					<image class="select-img" src="{{item.uiElement.image.imageUrl}}"></image>
+					<text class="select-text" >
+          {{item.uiElement.mainTitle.title}}
+        </text>
+				</view>
+			</block>
+		</scroll-view>
+	</view>
+</view>
+

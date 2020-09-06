@@ -3,6 +3,8 @@
  "backgroundTextStyle":"dark",
   "usingComponents": {
     "nav-bar": "/component/nav-bar/nav-bar",
-    "control": "/component/control/control"
+    "control": "/component/control/control",
+    "blockList":"/component/blockList/blockList",
+    "blockSongs":"/component/blockSongs/blockSongs"
   }
 }

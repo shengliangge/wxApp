@@ -17,10 +17,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
   searchBox: function (e) {
-    // console.log(e)
     const that = this;
     that.setData({
       username: e.detail.value.username,
@@ -29,7 +27,7 @@ Page({
     this.login()
   },
   login() {
-    let msg='登陆错误'
+    let msg = '登陆错误'
     $api.login({
       phone: this.data.username,
       password: this.data.pwd
@@ -40,7 +38,8 @@ Page({
         app.globalData.userInfo = res;  //将用户信息传给全局用户信息中
         // 保存cookie登陆信息到Storage
         this.saveUserLoginInfo(res.cookies)
-        wx.navigateTo({ // 跳转到首页
+        app.globalData.navId = 1
+        wx.redirectTo({ // 跳转到首页
           url: `../mine/mine`
         })
       } else {   //出错，打印错误信息
@@ -67,11 +66,10 @@ Page({
       //判断当前项前缀是否是 "MUSIC_U="
       if (cookies[i].search("MUSIC_U=") != -1) {
         //找到了之后，将其wx.setStorage，保存到本地
-        // console.log(cookies[i])
-        wx.setStorage({//存储到本地
-          key: "login_token",
-          data: cookies[i]
-        })
+        // wx.setStorage({     //存储到本地
+        //   key: "login_token",
+        //   data: cookies[i]
+        // })
         app.globalData.login_token = cookies[i];
       }
     }

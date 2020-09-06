@@ -1,33 +1,31 @@
 <!-- pages/songlist/songlist.wxml -->
 <nav-bar></nav-bar>
+<view class="body-view">
+	<loading hidden="{{hidden}}">
+		拼命加载中...
+	</loading>
+</view>
+
 <view class="wrapper">
+
+	<image class="bg-pic" src="../../image/recommend_bg.jpg"></image>
 	<view class="top">
-		<view class="block"></view>
 		<view class="title">
-			<text class="title-name">每日推荐</text>
-			<image class="title-pic" src="../../image/recommend_i .png" />
-			!--
-			<view class="title-num">最近更新：8月1日</view>
-			-->
-		</view>
-		<view class="list">
-			<view
-			 class="listbox"
-			 wx:for="{{detail}}"
-			 wx:key="index"
-			>
-				<image class="list-img" src="{{item.img}}" />
-				<view class="list-name">{{item.name}}</view>
+			<text class="title-day">{{day}}</text>
+			<text class="title-month">/{{month}}</text>
+			<view>
+				<text class="title-text">每日推荐</text>
 			</view>
 		</view>
 	</view>
 	<view class="down">
 		<view class="buttonBox">
-			<image class="broadcast" src="../../image/recommend_cicle.png" />
+			<image
+			 class="broadcast"
+			 src="../../image/recommend_cicle.png"
+			 bindtap="playAll"
+			/>
 			<text class="broadcast-name">播放全部</text>
-			<view class="collectBox">
-				<text class="collect-add">多选</text>
-			</view>
 		</view>
 		<view class="songlistbox">
 			<view

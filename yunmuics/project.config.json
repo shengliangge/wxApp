@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -132,6 +132,20 @@
 					"id": -1,
 					"name": "pages/rankingList/rankingList",
 					"pathName": "pages/rankingList/rankingList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/songSheet/songSheet",
+					"pathName": "pages/songSheet/songSheet",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recommend/recommend",
+					"pathName": "pages/recommend/recommend",
 					"scene": null
 				}
 			]
