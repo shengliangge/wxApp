@@ -46,8 +46,6 @@ Component({
       let navBarStyle = `background-color:${this.data.navBarColor};
       height:${wx.db.navBarHeight}px;
       color:${this.data.titleColor};`
-
-
       let statusBarStyle = `background-color:${this.data.statusBarColor};
       height:${wx.db.statusBarHeight}px;`
       let topHeight = wx.db.navBarHeight + wx.db.statusBarHeight
@@ -68,19 +66,15 @@ Component({
       });
     },
     changeMine: function() {
-      console.log('a')
       app.globalData.navId = 1
     },
     changeFind: function() {
-      console.log('b')
       app.globalData.navId = 2
     },
     changeCloud: function() {
-      console.log('c')
       app.globalData.navId = 3
     },
     changeVideo: function() {
-      console.log('d')
       app.globalData.navId = 4
     }
   }

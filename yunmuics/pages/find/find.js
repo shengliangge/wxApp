@@ -1,5 +1,5 @@
 //find页面
-const API = require('../../utils/api')
+const $api = require('../../utils/api.js').API;
 const app = getApp();
 Page({
   // 页面的初始数据
@@ -55,29 +55,46 @@ Page({
     duration: "1000",
     circular: "true",
     banners: [],
-    recommendList: [],
     blocks: [],
-    songSheet: [],
-    boll: [],
-    userInfo: {},
     login_token: ""
+  },
+  
+  // 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      login_token: app.globalData.login_token
+    })
+    //获取轮播图
+    if(this.data.banners.length==0){      //节省资源
+      this.getBanner()
+    }
+    //获取首页数据
+    if(this.data.blocks.length==0){
+      wx.request({
+        url: 'https://music.163.com/api/homepage/block/page',
+        success: (res) => {
+          this.setData({
+            blocks: res.data.data.blocks,
+            hidden: true
+          })
+        }
+      })
+    }
+   
   },
   //首页跳转到相应的入口页面
   toSongSheet: function (e) {
     let url = e.currentTarget.dataset.url//获取页面传来的url
     if (url == "../recommend/recommend" && app.globalData.login_token === '') { //每日推荐需要登陆才能使用
-      wx.showToast({
-        title: '未登录,请登陆后尝试！',
-        icon: 'none',
-        mask: true,
-        duration: 2500
-      })
+      this.tips('未登录,请登陆后尝试！', '去登陆', true, '/pages/login/login')
     } else {
       wx.navigateTo({
         url: e.currentTarget.dataset.url
       })
     }
-
   },
   findMore: function (e) {
     let index = e.currentTarget.dataset.index
@@ -95,96 +112,64 @@ Page({
     // console.log(listId)
     wx.navigateTo({
       url: `../songList/songList?listId=${listId}`,
-      success: function (res) {
-        // success
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
     })
   },
   //获取轮播图
   getBanner: function () {
-    API.getBanner({
-      type: 2
-    }).then(res => {
-      if (res.code === 200) { //更加严谨
-        // console.log(res)
+    $api.getBanner({ type: 1}).then(res => {
+      console.log(res);
+      if (res.statusCode === 200) { 
         this.setData({
-          banners: res.banners
+          banners: res.data.banners
         })
       }
     })
   },
   //播放音乐
   playMusic: function (e) {
-    // console.log(e.currentTarget.dataset.in.id)
-    // 获取音乐id
-    let musicId = e.currentTarget.dataset.in.id
+    let musicId = e.currentTarget.dataset.in.id    // 获取音乐id
     // 跳转到播放页面
     wx.navigateTo({
-      url: `../play/play?musicId=${musicId}`,
-      success: function (res) {
-        // success
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
+      url: `../play/play?musicId=${musicId}`
+    })
+  },
+  playAll() {
+    let playlist = this.data.blocks.creatives
+    console.log(playlist);
+    let musicId = playlist[0].resources[0].resourceId
+    for (let i = 0; i < playlist.length; i++) {
+      for(let j=0;j<playlist[i].resources.length;j++){
+        app.globalData.waitForPlaying.push(playlist[i].resources[j].resourceId)
+      }
+    }
+   let index= app.globalData.waitForPlaying.indexOf(musicId)
+   app.globalData.waitForPlaying.splice(index,1)
+    // 跳转到播放页面
+    wx.navigateTo({
+      url: `../play/play?musicId=${musicId}`
+    })
+  },
+  // 提醒
+  tips(content, confirmText, isShowCancel, url) {
+    wx.showModal({
+      content: content,
+      confirmText: confirmText,
+      cancelColor: '#DE655C',
+      confirmColor: '#DE655C',
+      showCancel: isShowCancel,
+      cancelText: '取消',
+      success(res) {
+        if (res.confirm) {
+          // console.log('用户点击确定')
+          wx.navigateTo({
+            url: url
+          })
+        } else if (res.cancel) {
+          app.globalData.navId = 2;
+        }
       }
     })
   },
-
-  // 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    // this.getsongsheet()//查看数据使用
-    wx.getStorage({
-      key: 'login_token',
-      success: (result) => {
-        // console.log("获取的login",result)
-        this.setData({
-          login_token: result.data
-        })
-      },
-    });
-
-    this.setData({
-      userInfo: app.globalData.userInfo,
-      login_token: app.globalData.login_token
-    })
-    console.log(this.data.userInfo)
-    //获取轮播图
-    this.getBanner()
-    //获取首页数据
-    wx.request({
-      url: 'https://music.163.com/api/homepage/block/page',
-      data: {
-        refresh: true
-      },
-      header: {
-        "Content-Type": "application/json"
-      },
-      //成功回调函数 成功 200
-      success: (res) => {
-        // console.log(res)
-        this.setData({
-          blocks: res.data.data.blocks,
-          hidden:true
-        })
-      }
-    })
-    // console.log("输出的token")
-    // console.log(this.data.login_token)
-
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -196,7 +181,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

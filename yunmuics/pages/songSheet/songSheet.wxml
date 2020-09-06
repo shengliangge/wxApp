@@ -8,27 +8,32 @@
 <!-- 外层容器 -->
 <view class="container">
 	<!-- 导航栏 -->
-	<view class="recommend-head">
-		<view>
-			<text>推荐</text>
-		</view>
-		<view>
-			<text>官方</text>
-		</view>
-		<view>
-			<text>精品</text>
-		</view>
-		<view>
-			<text>欧美</text>
-		</view>
-		<view>
-			<text>民谣</text>
-		</view>
-		<view>
-			<image class="recommend-head__more" src="../../image/songSheet_more.png"></image>
-		</view>
-	</view>
 
+	<view class="head-scroll-view">
+		<scroll-view
+		 class="scroll-view"
+		 style="width: 90%"
+		 scroll-x="true"
+		>
+			<view class="recommend-head">
+				<block wx:for="{{PlaylistHot}}" wx:key="index">
+					<view
+					 bindtap="choice"
+					 class="recommend-head__item"
+					 data-index="{{index}}"
+					 data-category="{{item.name}}"
+					>
+						<!-- 设置选中样式 -->
+						<text  class="{{choiceIndex===index?'choice':''}}">{{item.name}}</text>
+					</view>
+				</block>
+			</view>
+		</scroll-view>
+		<view class="recommend-head__more">
+			<image class="recommend-head__img" src="../../image/songSheet_more.png"></image>
+		</view>
+		<view class="select"></view>
+	</view>
 	<view class="content-page">
 
 		<view class='page-swiper'>
@@ -40,7 +45,6 @@
 			 bindchange="bindChange"
 			>
 				<block wx:for="{{songSheet}}" wx:key="index">
-
 					<swiper-item wx:if="{{index<=2}}" class="page-swiper-item">
 						<view
 						 bindtap="gotoSongList"
@@ -64,10 +68,8 @@
 				</block>
 			</swiper>
 		</view>
-
 		<!-- //后面 -->
 		<view class="content-page-block">
-
 			<block wx:for="{{songSheet}}" wx:key="index">
 				<view
 				 bindtap="gotoSongList"

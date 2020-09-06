@@ -20,9 +20,8 @@
 	<view class="play-body" bindtap="showLyric">
 		<!-- 歌词 -->
 		<!-- 需要设置高度，否则scroll-top可能失效 -->
-
 		<scroll-view
-		 hidden="{{showLyric}}"
+		 hidden="{{hiddenLyric}}"
 		 scroll-y="true"
 		 scroll-with-animation='true'
 		 scroll-top='{{marginTop}}'
@@ -38,7 +37,7 @@
 			</view>
 		</scroll-view>
 		<!-- 添加转动动画 -->
-		<view hidden="{{!showLyric}}">
+		<view hidden="{{!hiddenLyric}}">
 			<image
 			 class="body-record"
 			 style="{{isPlay?'':'transform:rotate(-40deg)'}}"
@@ -57,9 +56,9 @@
 	<view>
 	</view>
 
-	<!-- 一开始onload时,showLyric=true, 显示为转动的图标，点击图标，切换为歌词-->
+	<!-- 一开始onload时,hiddenLyric=true, 显示为转动的图标，点击图标，切换为歌词-->
 	<view class="sing-show">
-		<view class="moveCircle {{isPlay ? 'play' : ''}}" hidden="{{!showLyric}}">
+		<view class="moveCircle {{isPlay ? 'play' : ''}}" hidden="{{!hiddenLyric}}">
 		</view>
 
 	</view>
@@ -73,14 +72,12 @@
 			 class="slider_middle"
 			 bindchange="end"
 			 bindtouchstart="start"
-			 bindchanging="changeSlide"
 			 max="{{totalProcessNum}}"
 			 min="0"
 			 backgroundColor="rgba(255,255,255,.3)"
 			 activeColor="rgba(255,255,255,.8)"
 			 value="{{currentProcessNum}}"
-			 block-size="12"
-			 bindtap="click"
+
 			></slider>
 			<view>
 				{{duration}}
@@ -92,7 +89,7 @@
 				<image
 				 src="../../image/play_lastSong.png"
 				 class=" icon_play"
-				 bindtap="go_lastSong"
+				 bindtap="beforeSong"
 				/>
 			</view>
 			<!-- 暂停图标-->
@@ -116,7 +113,7 @@
 				<image
 				 src="../../image/play_nextSong.png"
 				 class="icon_play"
-				 bindtap="go_lastSong"
+				 bindtap="nextSong"
 				/>
 			</view>
 		</view>

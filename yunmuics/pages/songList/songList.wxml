@@ -44,7 +44,12 @@
 	<scroll-view class="down" scroll-y>
 		<view class="">
 			<view class="buttonBox">
-				<image class="broadcast" src="../../image/control_play.png" />
+				<image
+				 class="broadcast"
+				 bindtap="playAll"
+				 src="../../image/control_play.png"
+				/>
+
 				<view class="broadcast-desc">
 					<text class="broadcast-name">播放全部</text>
 					<text class="broadcast-num">（共100首）</text>

@@ -54,132 +54,12 @@
 			</block>
 		</scroll-view>
 	</view>
-
 	<!-- 第一层精选 -->
-	<view class="page-select">
-		<view class="select-title">
-			<view class="select-text-front">
-				{{blocks[0].uiElement.subTitle.title}}
-			</view>
-			<view
-			 class="select-text-after"
-			 data-index="{{0}}"
-			 bindtap="findMore"
-			>
-				{{blocks[0].uiElement.button.text}}
-			</view>
-		</view>
-		<view class="select-body">
-			<scroll-view
-			 class="scroll-view"
-			 scroll-x="true"
-			 style="width: 100%"
-			>
-				<block wx:for="{{blocks[0].creatives}}" wx:key="index">
-					<view
-					 class="select-box"
-					 bindtap="gotoSongList"
-					 data-id="{{item.creativeId}}"
-					>
-						<image class="select-img" src="{{item.uiElement.image.imageUrl}}"></image>
-						<text class="select-text" >
-          {{item.uiElement.mainTitle.title}}
-        </text>
-					</view>
-				</block>
-			</scroll-view>
-
-		</view>
-	</view>
-
+	<blockList blocks="{{blocks[0]}}"></blockList>
 	<!-- 第二层推荐 -->
-	<view class="page-play">
-		<view class="play-title">
-			<view class="play-text-front">
-				{{blocks[1].uiElement.subTitle.title}}
-			</view>
-			<view class="play-text-after">
-				<image class="play-text-img" src="../../image/find_play_pic.png"></image>
-				{{blocks[1].uiElement.button.text}}
-			</view>
-		</view>
-
-		<view class="play-body">
-			<view>
-				<scroll-view
-				 class="scroll-view"
-				 scroll-x="true"
-				 style="width: 100%"
-				>
-					<view
-					 class="play-body-outside"
-					 wx:for="{{blocks[1].creatives}}"
-					 wx:key="index"
-					 wx:for-item="creatives"
-					>
-						<block wx:for="{{creatives.resources}}" wx:key="index">
-							<view class="play-box">
-								<image class="play-img-bef" src="{{item.uiElement.image.imageUrl}}"></image>
-								<view class="play-box-text">
-									<view class="box-text-bre">
-										<view class="text-bre-one">
-											{{item.uiElement.mainTitle.title}}
-										</view>
-										<view class="text-bre-two">
-											- {{item.resourceExtInfo.artists[0].name}}
-										</view>
-									</view>
-									<view class="box-text-aft">
-										{{item.uiElement.subTitle.title}}
-									</view>
-								</view>
-								<view
-								 class="play-box-img"
-								 bindtap="playMusic"
-								 data-in="{{item.resourceExtInfo.songData}}"
-								>
-									<image class="play-img-aft" src="../../image/find_play.png"></image>
-								</view>
-							</view>
-						</block>
-					</view>
-				</scroll-view>
-			</view>
-		</view>
-	</view>
+	<blockSongs blocks="{{blocks[1]}}"></blockSongs>
 	<!-- 第三层 -->
-	<view class="page-select">
-		<view class="select-title">
-			<view class="select-text-front">
-				{{blocks[2].uiElement.subTitle.title}}
-			</view>
-			<view class="select-text-after">
-				{{blocks[2].uiElement.button.text}}
-			</view>
-		</view>
-		<view class="select-body">
-			<scroll-view
-			 class="scroll-view"
-			 scroll-x="true"
-			 style="width: 100%"
-			>
-				<block wx:for="{{blocks[2].creatives}}" wx:key="index">
-					<view
-					 class="select-box"
-					 bindtap="gotoSongList"
-					 data-id="{{item.creativeId}}"
-					>
-						<image class="select-img" src="{{item.uiElement.image.imageUrl}}"></image>
-						<text class="select-text" >
-          {{item.uiElement.mainTitle.title}}
-        </text>
-					</view>
-				</block>
-			</scroll-view>
-
-		</view>
-	</view>
-
+	<blockList blocks="{{blocks[2]}}"></blockList>
 	<!-- 第四层 -->
 	<view class="page-select">
 		<view class="select-title">
@@ -247,7 +127,6 @@
 				更多新歌
 			</view>
 		</view>
-
 		<view class="play-body">
 			<view>
 				<scroll-view
@@ -291,90 +170,10 @@
 			</view>
 		</view>
 	</view>
-
 	<!-- 第七层推荐 -->
-	<view class="page-play">
-		<view class="play-title">
-			<view class="play-text-front">
-				{{blocks[6].uiElement.subTitle.title}}
-			</view>
-			<view class="play-text-after">
-				<image class="play-text-img" src="../../image/find_play_pic.png"></image>
-				{{blocks[6].uiElement.button.text}}
-			</view>
-		</view>
-
-		<view class="play-body">
-			<view>
-				<scroll-view
-				 class="scroll-view"
-				 scroll-x="true"
-				 style="width: 100%"
-				>
-					<view
-					 class="play-body-outside"
-					 wx:for="{{blocks[6].creatives}}"
-					 wx:key="index"
-					 wx:for-item="creatives"
-					>
-						<block wx:for="{{creatives.resources}}" wx:key="index">
-							<view class="play-box">
-								<image class="play-img-bef" src="{{item.uiElement.image.imageUrl}}"></image>
-								<view class="play-box-text">
-									<view class="box-text-bre">
-										<view class="text-bre-one">
-											{{item.uiElement.mainTitle.title}}
-										</view>
-										<view class="text-bre-two">
-											- {{item.resourceExtInfo.artists[0].name}}
-										</view>
-									</view>
-									<view class="box-text-aft">
-										{{item.uiElement.subTitle.title}}
-									</view>
-								</view>
-								<view
-								 class="play-box-img"
-								 bindtap="playMusic"
-								 data-in="{{item.resourceExtInfo.songData}}"
-								>
-									<image class="play-img-aft" src="../../image/find_play.png"></image>
-								</view>
-							</view>
-						</block>
-					</view>
-				</scroll-view>
-			</view>
-		</view>
-	</view>
+	<blockSongs blocks="{{blocks[6]}}"></blockSongs>
 	<!-- 第八层 -->
-	<view class="page-select">
-		<view class="select-title">
-			<view class="select-text-front">
-				{{blocks[7].uiElement.subTitle.title}}
-			</view>
-			<view class="select-text-after">
-				{{blocks[7].uiElement.button.text}}
-			</view>
-		</view>
-		<view class="select-body">
-			<scroll-view
-			 class="scroll-view"
-			 scroll-x="true"
-			 style="width: 100%"
-			>
-				<block wx:for="{{blocks[7].creatives}}" wx:key="index">
-					<view class="select-box">
-						<image class="select-img" src="{{item.uiElement.image.imageUrl}}"></image>
-						<text class="select-text" >
-          {{item.uiElement.mainTitle.title}}
-        </text>
-					</view>
-				</block>
-			</scroll-view>
-
-		</view>
-	</view>
+	<blockList blocks="{{blocks[7]}}"></blockList>
 </view>
 
 <control></control>

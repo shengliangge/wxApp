@@ -1,5 +1,5 @@
 // pages/search/search.js
-const API = require('../../utils/api')
+const API = require('../../utils/req')
 const app = getApp();
 Page({
 
