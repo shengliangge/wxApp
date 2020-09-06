@@ -9,7 +9,8 @@
     "pages/rankingList/rankingList",
     "pages/songList/songList",
     "pages/recommend/recommend",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/singer/singer"
   ],
   "window": {
     "backgroundTextStyle": "light",
