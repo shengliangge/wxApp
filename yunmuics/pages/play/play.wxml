@@ -77,7 +77,7 @@
 			 backgroundColor="rgba(255,255,255,.3)"
 			 activeColor="rgba(255,255,255,.8)"
 			 value="{{currentProcessNum}}"
-
+			 block-size="12"
 			></slider>
 			<view>
 				{{duration}}

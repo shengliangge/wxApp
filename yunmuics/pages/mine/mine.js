@@ -38,7 +38,7 @@ Page({
         describe: '本周热门收听',
       }
     ],
-    userInfo: {},
+    userId: {},
     login_token: '',
     playlist: [],
     user: {}
@@ -49,39 +49,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    console.log(app.globalData.login_token)
+    app.globalData.userId= wx.getStorageSync("userId");
     this.verification()   //验证是否登陆
   },
   verification() {   //验证是否登陆
-    if (app.globalData.login_token == '') {
+    let login_token = wx.getStorageSync("login_token")
+    if (login_token == '') {
       this.tips('未登录,请登陆后尝试！', '去登陆', true, '/pages/login/login')
     } else {
       // 从全局中取数据
       this.setData({
-        userInfo: app.globalData.userInfo,
-        login_token: app.globalData.login_token
+        userId: app.globalData.userId,
+        login_token
       })
-      
       this.getUserDetail();
       this.getUserPlaylist();
     }
 
   },
   getUserDetail() {
-    $api.getUserDetail({ uid: this.data.userInfo.data.account.id }).then(res => {
+    $api.getUserDetail({ uid: this.data.userId }).then(res => {
       //请求成功
       // console.log("用户信息详情", res.data)
       this.setData({
         user: res.data
       })
     }).catch(err => {
-        //请求失败
-        that.tips('服务器正忙~~', '返回', false, '/pages/find/find')
-      })
+      //请求失败
+      that.tips('服务器正忙~~', '返回', false, '/pages/find/find')
+    })
   },
   getUserPlaylist() {
     $api.getUserPlaylist({
-      uid: this.data.userInfo.data.account.id,
+      uid: this.data.userId,
       cookie: this.data.login_token
     }).then(res => {
       //请求成功
@@ -90,9 +90,9 @@ Page({
         playlist: res.data.playlist
       })
     }).catch(err => {
-        //请求失败
-        that.tips('服务器正忙~~', '返回', false, '/pages/find/find')
-      })
+      //请求失败
+      that.tips('服务器正忙~~', '返回', false, '/pages/find/find')
+    })
   },
   gotoSongList(e) {   //跳转歌单页面
     let listId = e.currentTarget.dataset.id;

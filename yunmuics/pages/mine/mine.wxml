@@ -7,8 +7,8 @@
 <view class="wrapper">
 	<view class="main">
 		<view class="mine">
-			<image class="mine-pic" src="{{userInfo.data.profile.avatarUrl}}" />
-			<text class="mine-name">{{userInfo.data.profile.nickname}}</text>
+			<image class="mine-pic" src="{{user.profile.avatarUrl}}" />
+			<text class="mine-name">{{user.profile.nickname}}</text>
 			<text class="mine-vip">开通黑胶VIP</text>
 			<text class="mine-grade">Lv.{{user.level}}</text>
 		</view>

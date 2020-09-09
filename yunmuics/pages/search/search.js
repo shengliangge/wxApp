@@ -1,5 +1,4 @@
-// pages/search/search.js
-// const API = require('../../utils/req')
+
 const $api = require('../../utils/api.js').API;
 const app = getApp();
 Page({
@@ -115,7 +114,6 @@ Page({
     $api.getSearchResult({ keywords: this.data.searchKey, type: 1, limit: 100, offset: 2 }).then(res => {
       // 请求成功
       if (res.statusCode === 200) {
-        // console.log(res)
         this.setData({
           searchResult: res.data.result.songs,
           showSearchResult: false,
@@ -138,17 +136,12 @@ Page({
 
   // input失去焦点函数
   routeSearchResPage: function (e) {
-    // console.log(e.detail.value)
-    // console.log(this.data.searchKey)
-    // console.log(this.data.searchKey.length)  
     if (this.data.searchKey.length > 0) {  // 当搜索框有值的情况下才把搜索值存放到历史中，避免将空值存入历史记录
       let history = wx.getStorageSync("history") || [];
-      // console.log(history);
       history = history.filter(item => item !== this.data.searchKey)  // 历史去重
       history.unshift(this.data.searchKey)
       wx.setStorageSync("history", history);
     }
-     
   },
 
   // 清空page对象data的history数组 重置缓存为[]（空）
@@ -180,8 +173,6 @@ Page({
 
   // 点击热门搜索值或搜索历史，填入搜索框
   fill_value: function (e) {
-    // console.log(this.data.history)
-    // console.log(e.currentTarget.dataset.value)
     this.setData({
       searchKey: e.currentTarget.dataset.value,//点击=把值给searchKey,让他去搜索
       inputValue: e.currentTarget.dataset.value,//在输入框显示内容

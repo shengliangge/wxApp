@@ -35,7 +35,8 @@ Page({
       let code = res.data.code   //状态码
       msg = res.data.msg   //登陆信息
       if (code === 200) {    //如果登陆成功
-        app.globalData.userInfo = res;  //将用户信息传给全局用户信息中
+        wx.setStorageSync("userId", res.data.account.id);
+        app.globalData.userId = res.data.account.id;  //将用户id传给全局中
         // 保存cookie登陆信息到Storage
         this.saveUserLoginInfo(res.cookies)
         app.globalData.navId = 1
@@ -65,11 +66,9 @@ Page({
     for (let i = 0; i < cookies.length; i++) {
       //判断当前项前缀是否是 "MUSIC_U="
       if (cookies[i].search("MUSIC_U=") != -1) {
-        //找到了之后，将其wx.setStorage，保存到本地
-        // wx.setStorage({     //存储到本地
-        //   key: "login_token",
-        //   data: cookies[i]
-        // })
+        //找到了之后，保存到本地
+        wx.setStorageSync("login_token", cookies[i]);
+      console.log(wx.getStorageSync("login_token"));
         app.globalData.login_token = cookies[i];
       }
     }

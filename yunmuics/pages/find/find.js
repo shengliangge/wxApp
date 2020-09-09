@@ -64,6 +64,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.globalData.login_token=wx.getStorageSync("login_token")
+    app.globalData.userId= wx.getStorageSync("userId");
     this.setData({
       login_token: app.globalData.login_token
     })

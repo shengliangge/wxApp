@@ -14,7 +14,7 @@ App({
   },
 
   globalData: {
-    userInfo: {},
+    userId: 0,
     waitForPlaying: [],//等待播放歌单
     history_songId: [],//历史歌单
     songName: '',//歌名
