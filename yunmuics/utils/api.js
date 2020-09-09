@@ -46,6 +46,9 @@ const API = {
   getUserPlaylist: (data) => request(GET, `/user/playlist`, data),  // 登陆后调用此接口 , 传入用户 id, 可以获取用户歌单
   getRecommendSongs: (data) => request(GET, `/recommend/songs`, data),  // 调用此接口 , 可获得每日推荐歌单 ( 需要登录 )
   getPlaylistDetail: (data) => request(GET, `/playlist/detail`, data),  // 获取歌单详情
+  getHotSongs: (data) => request(GET, '/song/url', data),  // 热搜接口
+  getSearchSuggest: (data) => request(GET, `/search/suggest`, data),  // 搜索建议接口
+  getSearchResult: (data) => request(GET, `/search`, data),  // 搜索结果接口
 };
 module.exports = {
   API: API

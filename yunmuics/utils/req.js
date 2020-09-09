@@ -26,7 +26,7 @@ module.exports ={
   getPage:(data)=>{
     return request('/homepage/dragon/ball',data)//首页-发现
   },
-  gethotSongs:(data) =>{
+  hotSongs:(data) =>{
     return request('/song/url',data)//热搜接口
   },
   searchSuggest:(data)=>{

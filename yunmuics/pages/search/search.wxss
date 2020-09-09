@@ -195,13 +195,13 @@
     align-content: center;
 }
 .song {
-    margin: -120rpx 0 0 30rpx;
+    margin: -100rpx 0 0 30rpx;
     display: flex;
     flex-wrap: wrap;
 }
 .othersong {
-    margin-top: -80rpx;
-    margin-left: 30rpx;
+    margin-top: -100rpx;
+    margin-left: 70rpx;
 }
 .rankigList-songname {
     font-size: 30rpx;
@@ -240,7 +240,8 @@
     position: absolute;
     z-index: 2;
     background: #fff;
-    border-bottom: 1px solid #eaeaea;
+    box-shadow: 1px 1px 5px #888888;
+    margin-top: 20rpx;
 }
 .header_view_hide{
     display: none;
@@ -249,6 +250,7 @@
       width: 50rpx;
       height: 50rpx;
      margin-top: 25rpx;
+     margin-left: 20rpx;
 }
 
 .search-title {
@@ -318,8 +320,8 @@
     display: block;
     float: right;
     position: absolute;
-    margin-left: 60rpx;
-    margin-top: -36rpx;
+    margin-left: 85rpx;
+    margin-top: -46rpx;
     font-size: 14px;
     color: darkgrey;
     /* padding: 15rpx;
